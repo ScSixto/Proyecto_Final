@@ -31,7 +31,6 @@ public class ConstantsGUI {
 	public static final String T_EXPORT = "Export";
 	public static final String T_EXIT = "Exit";
 	public static final String T_HOMEPAGE = "HomePage";
-	public static final String T_HOMEPAGE_WIDTH = "HomePageWidth";
 	public static final String T_CONFIRMATION = "Confirmation";
 	public static final String T_MESSAGE_END_PROGRAM = "Message_End_Program";
 	public static final String T_MESSAGE_CONFIRMATION_END_PROGRAM = "Message_Confirmation_End_Program";
@@ -47,6 +46,8 @@ public class ConstantsGUI {
 	public static final String T_TEXT_OF_PISCICULTURE = "Text_Of_Pisciculture";
 	public static final String T_TITLE_TABLE_CULTIVES = "Title_Table_Cultives";
 	public static final String T_GRAPHICS = "Graphics";
+	public static final String T_SIZE_HOMEPAGE = "Size_HomePage";
+	public static final String T_SELECT_OPTION = "Select_Option";
 	// Titulos de Gráficos
 	public static final String GRAPHIC_TITLE_CULTIVATED_FISHES_PER_YEAR = "Cultivated_Fishes_Per_Year";
 	public static final String T_TITLE_REPORT_GRAPHICS = "Title_Report_Graphics";
@@ -61,6 +62,7 @@ public class ConstantsGUI {
 	public static final String T_TEXT_REPORT_GRAPHICS_EIGHT = "Text_Report_Graphics_Eight";
 	public static final String T_TEXT_REPORT_GRAPHICS_NINE = "Text_Report_Graphics_Nine";
 	public static final String T_TEXT_REPORT_GRAPHICS_TEN = "Text_Report_Graphics_Ten";
+//	public static final String T_HOMEPAGE_LENGHT = "Home_Page_Length";
 
     public static final char LOWERCASE_ACCENTED_N = (char) 241;
     public static final char LOWERCASE_ACCENTED_A = (char) 225;
@@ -78,7 +80,7 @@ public class ConstantsGUI {
 	public static final String BUTTON_NO = "No_Button";
 	public static final String BUTTON_ACCEPT = "Accept_Button";
 	
-	public static final Color COLOR_BACKGRAUND = Color.decode("#d7d8d8");
+	public static final Color COLOR_BACKGRAUND = Color.decode("#cdd3f9");
 	public static final Color COLOR_PRESENTATION = Color.decode("#333333");
 	public static final Color COLOR_LINE = Color.decode("#17a788");
 	public static final Color COLOR_WHITE = Color.WHITE;
@@ -101,14 +103,15 @@ public class ConstantsGUI {
 	public static final String LINE = EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH;
 	public static final String HTML_TAG_CENTER= "<html><center>";
 	public static final String HTML_TAG_B= "<html><b>";
+	public static final String TOWN_BRICENIO_CORRECT= "BRICE�O";
+	public static final String TOWN_BRICENIO_INCORRECT= "BRICEÑO";
 
 //Valores gráfica de barras
-// --------------------------------------------------------------------------------------------------------
 	public static final Color DEFAULT_AXIS_COLOR = ConstantsGUI.COLOR_BLACK;
 	public static final int MAX_PIXEL_COL_HEIGHT_VALUE = 300;
-	public static final int MAX_PIXEL_COL_WIDTH_VALUE = 35;
+	public static final int MAX_PIXEL_COL_WIDTH_VALUE = 25;
 	public static final int AXIS_LINE_WIDTH = 1;
-	public static final int COL_SEPARATION = 15;
+	public static final int COL_SEPARATION = 5;
 	public static final int Y_AXIS_VALUE_QUANTITY = 5;
 	public static final Font DATA_LABEL_FONT = new Font("Arial",Font.PLAIN,9);
 	public static final int Y_AXIS_LABEL_WIDTH = 30;
@@ -118,10 +121,6 @@ public class ConstantsGUI {
 	public static final int INFORMATION_CIRCLE_LABEL_SEPARATION = 5;
 	public static final Font TITLE_GRAPHIC_FONT = new Font("Arial", Font.BOLD, 15);
 	public static final Color TITLE_GRAPHIC_FOREGROUND = ConstantsGUI.COLOR_BLACK;
-// --------------------------------------------------------------------------------------------------------
-//Valores gráfica Circular
-	public static final int CIRCLE_GRAPHIC_RADIOUS = 150;
-	public static final double CIRCLE_GRAPHIC_MAX_ANGLE = 360;
 	
 	public static Icon convertToIcon(String route, int width, int heigth) {
 		ImageIcon icon = new ImageIcon(route);
@@ -139,9 +138,8 @@ public class ConstantsGUI {
 	public static JLabel createLabelTitleMenu(String text) {
 		JLabel label = new JLabel(HTML_TAG_B+text);
 		label.setFont(new Font("Roboto", Font.ITALIC, 30));
-		label.setForeground(ConstantsGUI.COLOR_BACKGRAUND_SIXTO);
+		label.setForeground(COLOR_WHITE);
 		return label;
 	}
-	
 	
 }

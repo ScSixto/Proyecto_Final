@@ -1,9 +1,6 @@
 package models;
 
 import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
 
 public class TesterMetodos {
 
@@ -51,18 +48,7 @@ public class TesterMetodos {
         return numericSeparator;
     }
 
-    public static void asdasd(){
-        HashMap<String, String> h = new HashMap<>();
-        h.put("key", "value");
-        System.out.println(h.get("key") + ", size:" + h.values().size());
-        h.put("key", "asdfgasdf");
-        System.out.println(h.get("key") + ", size:" + h.values().size());
-        // Iterator<Entry<String,String>> it = h.entrySet().iterator();
-        
-    }
-
-    public static void main(String[] args) {
-        // System.out.println(TesterMetodos.formatDouble(321234343345634531.2));
-        asdasd();
-    }
+    // public static void main(String[] args) {
+    //     System.out.println(TesterMetodos.formatDouble(321234343345634531.2));
+    // }
 }

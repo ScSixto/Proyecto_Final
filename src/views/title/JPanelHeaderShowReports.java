@@ -1,7 +1,6 @@
 package views.title;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
@@ -23,7 +22,6 @@ public class JPanelHeaderShowReports extends JPanel{
 	public JPanelHeaderShowReports(ActionListener actionListener,String command) {
 		setLayout(new BorderLayout());
 		setBorder(BorderFactory.createEmptyBorder(0,20,0,20));
-		setOpaque(true);
 		setBackground(ConstantsGUI.COLOR_LINE);
 		initComponents(actionListener, command);
 		setVisible(true);
@@ -31,6 +29,7 @@ public class JPanelHeaderShowReports extends JPanel{
 	
 	private void initComponents(ActionListener actionListener,String command) {
 		addButton( actionListener,command);
+		addLabel(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_EIGHT);
 	}
 	
 	public void addButton(ActionListener actionListener,String command) {
@@ -42,14 +41,20 @@ public class JPanelHeaderShowReports extends JPanel{
 	
 	public void addLabel(String title) {
 		text = title;
-		if(this.getComponents().length > 1)this.remove(this.getComponent(1));
+		if(this.getComponents().length > 1)
+			this.remove(this.getComponent(1));
 		labelTitleReport = ConstantsGUI.createLabelTitleMenu(HandlerLanguage.languageProperties.getProperty(text));
 		labelTitleReport.setBorder(BorderFactory.createEmptyBorder(0,(int)(this.getWidth()*0.35),0,0));
 		add(labelTitleReport,BorderLayout.CENTER);
 	}
 	
 	public void changeLanguage() {
-		if(text != null)
+//		if(labelTitleReport != null)
 		labelTitleReport.setText(ConstantsGUI.HTML_TAG_B+HandlerLanguage.languageProperties.getProperty(text));
 	}
+	
+	public void emptyText() {
+		text = "";
+	}
+
 }

@@ -23,16 +23,20 @@ import general.HandlerLanguage;
 import views.ConstantsGUI;
 
 public class JPanelTable extends JPanel{
+	
+	public static final int HEIGHT_ROWS = 25;
+	public static final int MAX_QUANTITY_ROWS = 12;
 
 	private static final long serialVersionUID = 1L;
 	private DefaultTableModel dtmElements;
 	private JTable jtElements;
 	private JScrollPane jsTable;
 
-	public JPanelTable(){
+	public JPanelTable() {
 		setOpaque(false);
 		initComponents();
 		setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+		this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH * 0.12),(int)(ConstantsGUI.HEIGHT*0.6)));
 		setVisible(true);
 	}
 
@@ -47,17 +51,19 @@ public class JPanelTable extends JPanel{
 
 		Font fontHeader = new Font("Franklin Gothic Demi", Font.ITALIC,15);
 		
+		
 		jtElements = new JTable();
 		jtElements.setModel(dtmElements);
 		jtElements.setFont(new Font("Arial", Font.PLAIN,15));
+		jtElements.getTableHeader().setBackground(ConstantsGUI.COLOR_LINE);
 		jtElements.getTableHeader().setReorderingAllowed(false);
 		jtElements.getTableHeader().setForeground(Color.white);
 		jtElements.getTableHeader().setFont(fontHeader);
 		jtElements.setBackground(Color.white);
 		jtElements.setFillsViewportHeight(true);
 		jtElements.setBorder(null);
-		jtElements.setRowHeight(25);
-		
+		jtElements.setRowHeight(HEIGHT_ROWS);
+		changeLanguageTableCultives();
 		jsTable = new JScrollPane(jtElements);
 		jsTable.setForeground(Color.white);
 		// jsTable.getVerticalScrollBar().setUI(new JScrollFormat());
@@ -76,12 +82,57 @@ public class JPanelTable extends JPanel{
 	}
 	
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
-		setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+//		setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 		cleanRowsTable();
-		jtElements.getTableHeader().setBackground(ConstantsGUI.COLOR_LINE);
-		changeLanguageTableCultives();
-		stringFormat(info);
-		this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH * 0.12),(int)(ConstantsGUI.HEIGHT*0.6)));
+		stringFormatTableCultives(info);
+//		this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH * 0.12),(int)(ConstantsGUI.HEIGHT*0.6)));
+	}
+	
+	private int stringFormatTableCultives(HashMap<String, ArrayList<Object[]>> info) {
+		ArrayList<Object[]> arrayFormat = new ArrayList<Object[]>();
+		Iterator<Entry<String, ArrayList<Object[]>>> it = info.entrySet().iterator();
+		int j = 0;
+	    while (it.hasNext()) {
+	        Entry<String, ArrayList<Object[]>> pair = it.next();
+	        for (Object[] object : pair.getValue()) {
+	        	int i = 0;
+	        	arrayFormat.add(new Object[] {object[i],validateTownBricenio(pair.getKey()),object[++i],object[++i],object[++i],object[++i],object[++i],object[++i]});
+	        	j++;
+	        }
+	        it.remove(); 
+	    }
+		addRunnerList(arrayFormat);
+		System.out.println(j + " - cantidad");
+		return j;
+	}
+	
+	public void showCultivesReports(HashMap<String, ArrayList<Object[]>> info) {
+		cleanRowsTable();
+		int numberRows = stringFormatTableCultives(info);
+		recalculateSize(numberRows);
+	}
+	
+	private void recalculateSize(int numberRows) {
+		int size = (HEIGHT_ROWS * MAX_QUANTITY_ROWS) + 1;
+		int borde = 0;
+		if(numberRows < MAX_QUANTITY_ROWS)
+			borde = size - (numberRows*HEIGHT_ROWS);
+		setBorder(BorderFactory.createEmptyBorder(10, 0, borde, 0));
+	}
+	
+//	private void recalculateSize(int numberRows) {
+//		int minimumBorderValue = 0;
+//		int borderCalculate = -(HEIGHT_ROWS)*numberRows+SIZE_BORDER;
+//		int border;
+//		if(borderCalculate >= minimumBorderValue)
+//			border = borderCalculate;
+//		else
+//			border = minimumBorderValue;
+//		setBorder(BorderFactory.createEmptyBorder(10, 0, border, 0));
+//	}
+	
+	private String validateTownBricenio(String town) {
+		return (town.equalsIgnoreCase(ConstantsGUI.TOWN_BRICENIO_INCORRECT))?ConstantsGUI.TOWN_BRICENIO_CORRECT:town;
 	}
 	
 	public void changeLanguageTableCultives() {
@@ -98,7 +149,7 @@ public class JPanelTable extends JPanel{
 	}
 		
     private void setColumnWidth(){
-		int[] columWidthArray = new int[]{15,150,20,150,80,80,110,100};
+		int[] columWidthArray = new int[]{15,95,20,150,80,80,110,100};
         for(int i = 0; i < columWidthArray.length; i++){
             jtElements.getColumnModel().getColumn(i).setPreferredWidth(columWidthArray[i]);
         }
@@ -109,41 +160,23 @@ public class JPanelTable extends JPanel{
 //		dtmElements.fireTableDataChanged();
 //	}
 	
-	@SuppressWarnings("unchecked")
-	public void stringFormat(ArrayList<Object[]> info, int quantityColumns) {
-		ArrayList<Object[]> arrayFormat = new ArrayList<Object[]>();
-		int j = 0;
-		for (Object[] objects : info) {
-			int i = 1;
-			Object[] vector = new Object[quantityColumns];
-			for (Object[] objectsCultive : ((ArrayList<Object[]>) objects[2])) {
-				vector[0] = j++ +"-" + objects[1];
-				vector[i] = objectsCultive[i];
-				arrayFormat.add(vector);
-				if(i == objectsCultive.length-1)
-					break;
-				i++;
-			}
-		}
-		addRunnerList(arrayFormat);
-	}
+//	@SuppressWarnings("unchecked")
+//	public void stringFormat(ArrayList<Object[]> info) {
+//		ArrayList<Object[]> arrayFormat = new ArrayList<Object[]>();
+//		int j = 0;
+//		for (Object[] objects : info) {
+//			int i = 1;
+//			for (Object[] objectsCultive : ((ArrayList<Object[]>) objects[2])) {
+//				if(i == objectsCultive.length-1)
+//					break;
+//				i++;
+//			}
+//		}
+//		addRunnerList(arrayFormat);
+//	}
 	
 	private void cleanRowsTable() {
 		dtmElements.setNumRows(0);
-	}
-	
-	private void stringFormat(HashMap<String, ArrayList<Object[]>> info) {
-		ArrayList<Object[]> arrayFormat = new ArrayList<Object[]>();
-		Iterator<Entry<String, ArrayList<Object[]>>> it = info.entrySet().iterator();
-	    while (it.hasNext()) {
-	        Entry<String, ArrayList<Object[]>> pair = it.next();
-	        for (Object[] object : pair.getValue()) {
-	        	int i = 0;
-	        	arrayFormat.add(new Object[] {object[i],pair.getKey(),object[++i],object[++i],object[++i],object[++i],object[++i],object[++i]});
-			}
-	        it.remove(); 
-	    }
-		addRunnerList(arrayFormat);
 	}
 	
 }

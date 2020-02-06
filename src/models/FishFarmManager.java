@@ -131,10 +131,20 @@ public class FishFarmManager{
 //-------------------------------------------------------------------------------------------------
 //REPORTS
 //-------------------------------------------------------------------------------------------------
+   
+    public Object[] getSpeciesName() {
+    	Object[] listOfSpecies = new Object[this.speciesList.size()];
+    	int i = 0;
+    	for (Species species : speciesList) {
+    		listOfSpecies[i++] = species.getName();
+		}
+    	return listOfSpecies;
+    }
+    
+    
     public ArrayList<Integer> getCultiveYearList(){
-		ArrayList<Integer> yearList = new ArrayList<>();
-		
-		boolean yearExist = false;
+    	ArrayList<Integer> yearList = new ArrayList<>();
+    	boolean yearExist = false;
     	for (Town town : townList) {
     		for (Cultive cultive : town.getCultiveList()) {
 				int yearCultive = cultive.getYear();
@@ -387,36 +397,46 @@ public class FishFarmManager{
     	return cultivesTown;
     }
     
+    public HashMap<String, ArrayList<Object[]>> cultivesPerTownReport(String townSearched){
+    	HashMap<String, ArrayList<Object[]>> cultivesPerTwon = new HashMap<>();
+    	cultivesPerTwon.put(townSearched, getCultivesPerTown(townSearched));
+		return cultivesPerTwon;
+    }
+    
     //-------------------------------------------------------------------------------------------------
     //CULTIVE PER SPECIE
     //-------------------------------------------------------------------------------------------------
     
-    public ArrayList<Object[]> getCultivesPerSpecie(String specieSearched){
-    	ArrayList<Object[]> cultivesSpecie = new ArrayList<Object[]>();
+    public HashMap<String, ArrayList<Object[]>> getCultivesPerSpecies(String specieSearched){
+    	HashMap<String, ArrayList<Object[]>> cultivesPerSpecies = new HashMap<>();
     	for (Town town : townList) {
+    		ArrayList<Object[]> cultivesSpecie = new ArrayList<Object[]>();
     		for (Cultive cultive : town.getCultiveList()) {
     			if(cultive.getSpecies().getName().equalsIgnoreCase(specieSearched)) {
     				cultivesSpecie.add(cultive.toObjectVector());
     			}	
 			}
+    		cultivesPerSpecies.put(town.getName(), cultivesSpecie);
 		}
-    	return cultivesSpecie;
+    	return cultivesPerSpecies;
     }
     
     //-------------------------------------------------------------------------------------------------
     //CULTIVE PER YEAR
     //-------------------------------------------------------------------------------------------------
     
-    public ArrayList<Object[]> getCultivesPerYear(int yearSearched){
-    	ArrayList<Object[]> cultivesYear = new ArrayList<Object[]>();
+    public HashMap<String, ArrayList<Object[]>> getCultivesPerYear(int yearSearched){
+    	HashMap<String, ArrayList<Object[]>> cultivesPerYear = new HashMap<>();
     	for (Town town : townList) {
+    		ArrayList<Object[]> cultivesYear = new ArrayList<Object[]>();
     		for (Cultive cultive : town.getCultiveList()) {
     			if(cultive.getYear() == (yearSearched)) {
     				cultivesYear.add(cultive.toObjectVector());
     			}	
 			}
+    		cultivesPerYear.put(town.getName(), cultivesYear);
 		}
-    	return cultivesYear;
+    	return cultivesPerYear;
     }
     
     //Esto es solo de prueba
@@ -428,6 +448,12 @@ public class FishFarmManager{
                 		+ "\n\t\t(" + cultive.getYear() + ") Catidad: " + cultive.getCultivatedQuantity());
             }
         }
+    }
+    
+    public void holaputo() {
+    	for (int species : getCultiveYearList()) {
+			System.out.println(species);
+		}
     }
 /*
     public void showConsoleReportReport(){
@@ -447,9 +473,9 @@ public class FishFarmManager{
         }
     }*/
     
-    public void reportdelreport() {
-    	for (Object[] object : getCultivesPerYear(2018)) {
-			System.err.println(object[0] + "-" + object[1] + "-" + object[2] + "-"  + object[3] );
-		}
-	}
+//    public void reportdelreport() {
+//    	for (Object[] object : getCultivesPerYear(2018)) {
+//			System.err.println(object[0] + "-" + object[1] + "-" + object[2] + "-"  + object[3] );
+//		}
+//	}
 }

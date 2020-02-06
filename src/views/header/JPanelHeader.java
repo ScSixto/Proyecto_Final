@@ -34,11 +34,12 @@ public class JPanelHeader extends JPanel{
 	
 	public void changeLanguage() {
 		panelCenter.changeLanguage();
+//		System.out.println(getWidth() + "anchoH");
+//		System.out.println(getHeight() + "largoH");
 	}
 	
 	private void setBackGraund() {
-		backGraundImage = new ImageIcon("resources/img/fondo3.png").getImage();
-		// backGraundImage = new ImageIcon("resources/img/fondoPeces.png").getImage();
+		backGraundImage = new ImageIcon("resources/img/fondoPeces.png").getImage();
 	}
 	
 	public void paintComponent(Graphics g) {

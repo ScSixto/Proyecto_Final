@@ -35,6 +35,8 @@ public class JLColumnLabel extends JLabel {
         g.setColor(this.barColor);
         g.fillRect(0,(int) (ConstantsGUI.MAX_PIXEL_COL_HEIGHT_VALUE - colHeight), ConstantsGUI.MAX_PIXEL_COL_WIDTH_VALUE, colHeight - ConstantsGUI.AXIS_LINE_WIDTH);
         g.setColor(Color.black);
+        // g.getFont().deriveFont(ConstantsGUI.DATA_LABEL_FONT.getStyle(), ConstantsGUI.DATA_LABEL_FONT.getSize()-6);
+        // g.drawString(this.colName,ConstantsGUI.COL_SEPARATION, (int) (ConstantsGUI.MAX_PIXEL_COL_HEIGHT_VALUE - colHeight) + ConstantsGUI.DATA_LABEL_FONT.getSize() + 1);
         super.paint(g);
     }
 }

@@ -2,7 +2,6 @@ package views.body;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import views.ConstantsGUI;
@@ -17,14 +16,12 @@ public class JLInformationLabel extends JLabel{
     private Color color;
 
     public JLInformationLabel(String text, Color color){
-        // JLabel label = new JLabel(text + "");
-        super(text + "asdasdasd asd asd as asdasd asd asdasdasdasdasd asd asd as da p");
+        super(text);
         //this.setMinimumSize(new Dimension(ConstantsGUI.INFORMATION_CIRCLE_DIAMETER,ConstantsGUI.INFORMATION_CIRCLE_DIAMETER));
         //this.setPreferredSize(new Dimension(ConstantsGUI.INFORMATION_CIRCLE_DIAMETER,ConstantsGUI.INFORMATION_CIRCLE_DIAMETER));
         this.setFont(ConstantsGUI.DATA_LABEL_FONT);
         this.setHorizontalTextPosition(SwingConstants.LEFT);
         this.setVerticalTextPosition(SwingConstants.CENTER);
-        // this.add(label);
         this.setOpaque(false);
         this.color = color;
         this.setBorder(BorderFactory.createEmptyBorder((ConstantsGUI.INFORMATION_CIRCLE_DIAMETER/6), ConstantsGUI.INFORMATION_CIRCLE_DIAMETER + ConstantsGUI.INFORMATION_CIRCLE_LABEL_SEPARATION, ConstantsGUI.INFORMATION_CIRCLE_SEPARATION,0));

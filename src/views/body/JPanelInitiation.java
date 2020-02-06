@@ -2,10 +2,10 @@ package views.body;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,47 +22,47 @@ public class JPanelInitiation extends JPanel{
 	private JLabel labelTitleTable;
 	private JPanel panelYAxis;
 	private JPanelTable table;
+	private JPanelMenuIcons buttons;
 	
-	public JPanelInitiation() {
+	public JPanelInitiation(ActionListener actionListener) {
 		setLayout(new FlowLayout(FlowLayout.CENTER));
-//		setBorder(BorderFactory.createEmptyBorder(20,30,0,10));
 		setOpaque(false);
-		initComponents();
+		initComponents(actionListener);
 		setVisible(true);
 	}
 	
-	public void initComponents() {
+	public void initComponents(ActionListener actionListener) {
 		panelYAxis = new JPanel();
 		panelYAxis.setLayout(new BoxLayout(panelYAxis, BoxLayout.Y_AXIS));
 		panelYAxis.setOpaque(false);
 		add(panelYAxis);
 		addInformation();
-		addTable();
+		addTable(actionListener);
 	}
-
+	
 	public void addInformation() {
 		labelTitle = ConstantsGUI.createLabelTitles(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE));
-//		labelTitle.setBackground(Color.BLACK);
-//		labelTitle.setOpaque(true);
-		panelYAxis.add(labelTitle);
+//		labelTitle.setBackground(new Color(49,201,150,150));
+		labelTitle.setOpaque(true);
+		//		panelYAxis.add(new JPanelTitle(labelTitle,true));
+		addPanel(labelTitle);
 		createLine();
 		labelText = new JLabel("<html>"+ HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_OF_PISCICULTURE) + "</html>");
 		labelText.setFont(new Font("Roboto", Font.PLAIN, 20));
 		labelText.setForeground(ConstantsGUI.COLOR_PRESENTATION);
-//		labelText.setBackground(Color.BLACK);
+//		labelText.setBackground(Color.WHITE);
 //		labelText.setOpaque(true);
-		panelYAxis.add(labelText);
+		addPanel(labelText);
 	}
-
-	public void addTable() {
+	
+	public void addTable(ActionListener actionListener) {
 		labelTitleTable = ConstantsGUI.createLabelTitles( HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_TABLE_CULTIVES) );
-		labelTitleTable.setBorder(BorderFactory.createEmptyBorder(15,0,0,0));
-		labelTitleTable.setFont(new Font("Roboto", Font.ITALIC, 50));
-		labelTitleTable.setForeground(ConstantsGUI.COLOR_PRESENTATION);
-//		labelTitleTable.setBackground(Color.BLACK);
-//		labelTitleTable.setOpaque(true);
-		panelYAxis.add(labelTitleTable);
+//		panelYAxis.add(new JPanelTitle(labelTitleTable,true));
+		addPanel(labelTitleTable);
 		createLine();
+		
+		buttons = new JPanelMenuIcons(actionListener);
+		panelYAxis.add(buttons);
 		
 		table = new JPanelTable();
 		panelYAxis.add(table);
@@ -74,16 +74,24 @@ public class JPanelInitiation extends JPanel{
 	
 	public void changeLanguage() {
 		labelTitle.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE));
-		labelText.setText("<html>" + HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_OF_PISCICULTURE) + "</p></html>");
+		labelText.setText("<html>" + HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_OF_PISCICULTURE) + "</html>");
 		labelTitleTable.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_TABLE_CULTIVES));
 		table.changeLanguageTableCultives();
+	}
+	
+	public void addPanel(JLabel label) {
+		JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		panel.setOpaque(false);
+		panel.add(label);
+		panelYAxis.add(panel);
 	}
 	
 	public void createLine() {
 		JLabel line = new JLabel(ConstantsGUI.LINE);
 		line.setFont(new Font("Roboto", Font.BOLD, 40));
 		line.setForeground(ConstantsGUI.COLOR_LINE);
-		panelYAxis.add(line);
+		line.setOpaque(false);
+		addPanel(line);
 	}
 	
 

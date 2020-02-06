@@ -3,7 +3,6 @@ package views.body;
 import java.awt.FlowLayout;
 import java.awt.Component;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -11,7 +10,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
 import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 
@@ -38,28 +36,24 @@ public class JPBarGraphicPanel extends JPanel {
 		this.setBorder(BorderFactory.createEmptyBorder(10, 30, 10, 30));
 		this.setOpaque(true);
 		this.setBackground(ConstantsGUI.COLOR_WHITE);
-		this.setMaximumSize(new Dimension(300, ConstantsGUI.MAX_PIXEL_COL_HEIGHT_VALUE + ConstantsGUI.AXIS_LINE_WIDTH));
 	}
 
 	public JPBarGraphicPanel(HashMap<String, Double> cols, String graphicTitle) {
 		this();
-		// this.setMaximumSize(new Dimension((int) (ConstantsGUI.MAXIMUM_SCREEN_WIDTH * 4 / 5),
-				// ConstantsGUI.MAX_PIXEL_COL_HEIGHT_VALUE + ConstantsGUI.AXIS_LINE_WIDTH));
+		this.setMaximumSize(new Dimension((int) (ConstantsGUI.MAXIMUM_SCREEN_WIDTH * 4 / 5),
+				ConstantsGUI.MAX_PIXEL_COL_HEIGHT_VALUE + ConstantsGUI.AXIS_LINE_WIDTH));
 		this.initComponents(cols, graphicTitle);
 		this.setVisible(true);
 	}
 
 	private void initComponents(HashMap<String, Double> cols, String graphicTitle) {
-		//this.setGraphicTitle(graphicTitle);
+		this.setGraphicTitle(graphicTitle);
 		this.setAxis(cols);
 		this.setGraphicBarPanel(cols);
 		this.addPanelList();
-		// this.addPanelInformationScrollBar();
-
 	}
 
-	private void setGraphicTitle(String graphicTitle){
-		if(this.getComponents().length > 0)this.remove(this.getComponent(0));
+	private void setGraphicTitle(String graphicTitle) {
 		this.titlePanel = new JPanel();
 		this.titlePanel.setOpaque(false);
 		JLabel titleLabel = new JLabel(graphicTitle);
@@ -72,13 +66,13 @@ public class JPBarGraphicPanel extends JPanel {
 	}
 
 	private void addPanelList() {
-		layout.setHorizontalGroup(layout.createParallelGroup()
+		layout.setHorizontalGroup(layout.createParallelGroup().addComponent(this.titlePanel)
 				.addGroup(layout.createSequentialGroup()
 						.addGroup(layout.createSequentialGroup().addComponent(this.yAxisPanel).addGroup(layout
 								.createParallelGroup().addComponent(this.graphicBarPanel).addComponent(this.xAxisPanel))
 								.addComponent(this.panelInformation))));
 		// layout.createParallelGroup().addComponent(this.titlePanel).addGroup(layout.createSequentialGroup().addComponent(yAxisPanel).addComponent(graphicBarPanel).addComponent(this.panelInformation)).addComponent(xAxisPanel)));
-		layout.setVerticalGroup(layout.createSequentialGroup()
+		layout.setVerticalGroup(layout.createSequentialGroup().addComponent(this.titlePanel)
 				.addGroup(layout.createParallelGroup().addComponent(yAxisPanel)
 						.addGroup(layout.createSequentialGroup().addComponent(graphicBarPanel).addComponent(xAxisPanel))
 						.addComponent(this.panelInformation)));
@@ -107,6 +101,7 @@ public class JPBarGraphicPanel extends JPanel {
 
 	private void setPanelInformation(HashMap<String, Color> columnInformation) {
 		this.panelInformation = new JPGraphicInformation(columnInformation);
+		this.addPanelInformationScrollBar();
 	}
 
 	public void setGraphicBarPanelFormat(){
@@ -119,16 +114,12 @@ public class JPBarGraphicPanel extends JPanel {
 		this.graphicBarPanel.setOpaque(false);
 	}
 
-	// public void addPanelInformationScrollBar() {
-    //     JScrollPane scrollPane = new JScrollPane(this.panelInformation);
-    //     // scrollPane.getVerticalScrollBar().setUI(new JScrollFormat());
-    //     // scrollPane.getHorizontalScrollBar().setUI(new JScrollFormat());
-    //     scrollPane.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
-	// 	scrollPane.setAlignmentX(Component.RIGHT_ALIGNMENT);
-    //     this.add(scrollPane);
-	// }
-	
-	public void changeLanguage(){
-		setGraphicTitle("asdasdasd");
-	}
+	public void addPanelInformationScrollBar() {
+        JScrollPane scrollPane = new JScrollPane(this.panelInformation);
+        scrollPane.getVerticalScrollBar().setUI(new JScrollFormat());
+        scrollPane.getHorizontalScrollBar().setUI(new JScrollFormat());
+        scrollPane.setBorder(null);
+		scrollPane.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(scrollPane);
+    }
 }

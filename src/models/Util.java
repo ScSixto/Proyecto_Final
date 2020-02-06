@@ -1,5 +1,7 @@
 package models;
 
+import java.util.ArrayList;
+
 public class Util{
 	
 	public static final double GRAMS_BY_KILOGRAM = 1000;
@@ -30,5 +32,27 @@ public class Util{
             }
         }
         return food;
+    }
+    
+    public static Object[] transformTownsArray(ArrayList<Object[]> townList) {
+    	Object[] vector = new Object[townList.size()];
+    	int i = 0;
+    	for (Object[] object : townList) {
+    		vector[i++] = object[1];
+		}
+    	return vector;
+    }
+    
+    public static Object[] transformYearsArray(ArrayList<Integer> yearsList) {
+    	Object[] vector = new Object[yearsList.size()];
+    	int i = 0;
+    	for (int year : yearsList) {
+			vector[i++]=year;
+		}
+    	return vector;
+    }
+    
+    public static int veryfyObject(Object object) {
+    	return (object == null)? 0:(int)object;
     }
 }

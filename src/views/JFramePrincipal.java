@@ -26,7 +26,7 @@ public class JFramePrincipal extends JFrame{
 		setMinimumSize(new Dimension(700, 400));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
-		setIconImage(new ImageIcon("resources/img/logo3.png").getImage());
+		setIconImage(new ImageIcon("resources/img/logo.png").getImage());
 		setTitle(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.TITLE_PROGRAM));
 		initComponents(actionListener);
 		setVisible(true);
@@ -91,5 +91,17 @@ public class JFramePrincipal extends JFrame{
 	
 	public void addLabel(String title) {
 		panelPpal.addLabel(title);
+	}
+	
+	public void addItemsComboBox(Object[] items) {
+		panelPpal.addItemsComboBox(items);
+	}
+	
+	public Object getItemComboBox() {
+		return panelPpal.getItemComboBox();
+	}
+	
+	public void getInformationCultives(HashMap<String, ArrayList<Object[]>> info) {
+		panelPpal.getInformationCultives(info);
 	}
 }

@@ -5,10 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Locale;
-import java.util.Map.Entry;
 
 import org.json.simple.DeserializationException;
 
@@ -29,6 +26,9 @@ public class Controller implements ActionListener{
 	public static final String SPECIES_JSON_FILE_PATH = "resources/Especies.JSON";
 	public static final String CULTIVE_JSON_FILE_URL = "https://www.datos.gov.co/resource/yi68-jjgw.json";
 	public static final String NAME_FILE_CONFIG = "config.init";
+	public static final char CULTIVE_PER_TOWN_REPORT = 'T';
+	public static final char CULTIVE_PER_SPECIES_REPORT = 'S';
+	public static final char CULTIVE_PER_YEAR_REPORT = 'Y';
 	
 	private FishFarmManager farmManager;
 	private JsonFile fileManager;
@@ -36,25 +36,25 @@ public class Controller implements ActionListener{
 	
 	private HandlerLanguage config = null;
 	private String languageDefault;
+	private char charOfTableReport;
 
 	public Controller(){
 		this.farmManager = new FishFarmManager();
 	    this.fileManager = new JsonFile();
-		//	    this.farmManager.showConsoleReport();
-		//---------------------------------------------------------------------------------------------------
-		//	    this.farmManager.showConsoleReport();
-		//	    this.farmManager.reportdelreport();
-		//---------------------------------------------------------------------------------------------------
-		
+//	    this.farmManager.showConsoleReport();
+//---------------------------------------------------------------------------------------------------
+//	    this.farmManager.showConsoleReport();
+//	    this.farmManager.reportdelreport();
+//---------------------------------------------------------------------------------------------------
 		this.init();
 	}
 	
     private void init(){
-		this.readRecords();
-		this.loadConfiguration();
-		frame = new JFramePrincipal(this);
+    	this.readRecords();
+	    this.loadConfiguration();
+		frame = new JFramePrincipal(this);	
 		this.getLanguageDefault();
-		showCultivesTable();
+        showCultivesTable();
 //---------------------------------------------------------------------------------------------------
 //        farmManager.showConsoleReportReport();
 //---------------------------------------------------------------------------------------------------
@@ -220,6 +220,9 @@ public class Controller implements ActionListener{
 		case REPORT_TEN:
 			showReportCultivesPerSpecie();
 			break;
+		case GET_INFO_TABLES:
+			getItemForTablesReport();
+			break;
 		}
 	}
 	
@@ -244,18 +247,7 @@ public class Controller implements ActionListener{
 	}
 
 	private void showCultivesTable(){
-		HashMap<String, ArrayList<Object[]>> cultivesTable = farmManager.townsAndCultives();
-		Iterator<Entry<String, ArrayList<Object[]>>> it = cultivesTable.entrySet().iterator();
-		while(it.hasNext()){
-			Entry<String, ArrayList<Object[]>> entry = it.next();
-			for (Object[] objectArray : entry.getValue()) {
-				objectArray[3] = UtilView.formatDouble((int)objectArray[3]);
-				objectArray[4] = UtilView.formatDouble((int)objectArray[4]);
-				objectArray[5] = UtilView.formatDouble((double)objectArray[5]);
-				objectArray[6] = "COL$ " + UtilView.formatDouble((double)objectArray[6]);
-			}
-		}
-		frame.showTableCultives(cultivesTable);
+		frame.showTableCultives(UtilView.showCultivesTable(farmManager.townsAndCultives()));
 	}
 	
 	private void showPanelTableReports() {
@@ -277,15 +269,37 @@ public class Controller implements ActionListener{
 	}
 	
 	private void showReportCultivesPerTown() {
+		charOfTableReport = CULTIVE_PER_TOWN_REPORT;
+		frame.addItemsComboBox(Util.transformTownsArray(farmManager.toObjectVectorTown()));
 		showPanelTables(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_EIGHT);
 	}
 	
 	private void showReportCultivesPerYear() {
+		charOfTableReport = CULTIVE_PER_YEAR_REPORT;
+		frame.addItemsComboBox(Util.transformYearsArray(farmManager.getCultiveYearList()));
 		showPanelTables(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_NINE);
 	}
 	
 	private void showReportCultivesPerSpecie() {
+		charOfTableReport = CULTIVE_PER_SPECIES_REPORT;
+		frame.addItemsComboBox(farmManager.getSpeciesName());
 		showPanelTables(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TEN);
+	}
+	
+	private void getItemForTablesReport() {
+		switch (charOfTableReport) {
+		case CULTIVE_PER_TOWN_REPORT:
+			System.out.println(frame.getItemComboBox());
+			frame.getInformationCultives(UtilView.showCultivesTable(farmManager.cultivesPerTownReport((String)frame.getItemComboBox())));
+			break;
+		case CULTIVE_PER_YEAR_REPORT:
+			frame.getInformationCultives(UtilView.showCultivesTable(farmManager.getCultivesPerYear(Util.veryfyObject(frame.getItemComboBox()))));
+			break;
+		case CULTIVE_PER_SPECIES_REPORT:
+			frame.getInformationCultives(UtilView.showCultivesTable(farmManager.getCultivesPerSpecies((String)frame.getItemComboBox())));
+			break;
+
+		}
 	}
 	
 	public static void main(String[] args) {
