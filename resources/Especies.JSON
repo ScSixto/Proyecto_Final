@@ -1,0 +1,46 @@
+{
+	"especies_de_peces":[{
+		"especie" : "CACHAMA",
+		"id_especie" : "1456",
+		"costo_libra" : "5000",
+		"tipo_agua" : "Agua Dulce",
+		"alimento" : "Plancton"
+		},{
+		"especie" : "TRUCHA",
+		"id_especie" : "1584",
+		"costo_libra" : "10000",
+		"tipo_agua" : "Agua Salada",
+		"alimento" : "Carne"
+		},{
+		"especie" : "TILAPIA NEGRA",
+		"id_especie" : "1620",
+		"costo_libra" : "4000",
+		"tipo_agua" : "Agua Dulce",
+		"alimento" : "Algas"
+		},{
+		"especie" : "TILAPIA O MOJARRA ROJA",
+		"id_especie" : "1418",
+		"costo_libra" : "6780",
+		"tipo_agua" : "Agua Salada",
+		"alimento" : "Moluscos"
+		},{
+		"especie" : "CARPA",
+		"id_especie" : "1392",
+		"costo_libra" : "10800",
+		"tipo_agua" : "Agua Dulce",
+		"alimento" : "Insectos"
+		},{
+		"especie" : "BOCACHICO",
+		"id_especie" : "1701",
+		"costo_libra" : "5490",
+		"tipo_agua" : "Agua Dulce",
+		"alimento" : "Materia Organica"
+		},{
+		"especie" : "TILAPIA O MOJARRA",
+		"id_especie" : "1204",
+		"costo_libra" : "8400",
+		"tipo_agua" : "Agua Salada",
+		"alimento" : "Huevos"
+		}
+	]
+}
