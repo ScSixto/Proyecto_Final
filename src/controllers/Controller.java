@@ -20,6 +20,7 @@ import models.Town;
 import models.Util;
 import persistence.JsonFile;
 import views.ConstantsGUI;
+import views.GraphicReportTitle;
 import views.JFramePrincipal;
 import views.body.UtilView;
 
@@ -262,7 +263,7 @@ public class Controller implements ActionListener{
 	}
 	
 	private void showCultivatedAndHarvestedFishesPerYear(){
-		frame.showBarGraphicReport(farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), CULTIVATED_AND_HARVESTED_FISHES_PER_YEAR);
+		frame.showBarGraphicReport(farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), GraphicReportTitle.CULTIVATED_AND_HARVESTED_FISHES_PER_YEAR);
 		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORT);
 	}
 
