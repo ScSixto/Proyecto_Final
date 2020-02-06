@@ -1,0 +1,20 @@
+!SESSION 2020-01-24 10:24:27.122 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_231
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_419
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.e4.core.services 4 0 2020-01-24 10:24:54.335
+!MESSAGE Invalid locale format: es_419 - Only language part will be used to create the Locale.
+!SESSION 2020-01-24 20:38:53.270 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_231
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_419
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.e4.core.services 4 0 2020-01-24 20:39:02.338
+!MESSAGE Invalid locale format: es_419 - Only language part will be used to create the Locale.
