@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
+
+import views.ConstantsGUI;
+
 import java.awt.Color;
 import java.text.DecimalFormat;
 
@@ -148,5 +151,9 @@ public class UtilView {
 			}
 		}
 		return cultivesTable;
+	}
+
+	public static int getCircleGraphicAngle(int circleMaxValue, Double value) {
+		return (int) (value * ConstantsGUI.CIRCLE_GRAPHIC_MAX_ANGLE / circleMaxValue);
 	}
 }

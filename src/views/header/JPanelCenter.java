@@ -35,7 +35,7 @@ public class JPanelCenter extends JPanel{
 	
 	private void addLogo() {
 		JLabel labelLogo = new JLabel();
-		labelLogo.setIcon(ConstantsGUI.convertToIcon("resources/img/logo.png",150,150));
+		labelLogo.setIcon(ConstantsGUI.convertToIcon("resources/img/logo3.png",150,150));
 		labelLogo.setOpaque(false);
 		add(labelLogo);
 	}

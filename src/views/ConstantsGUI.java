@@ -103,7 +103,7 @@ public class ConstantsGUI {
 	public static final String LINE = EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH;
 	public static final String HTML_TAG_CENTER= "<html><center>";
 	public static final String HTML_TAG_B= "<html><b>";
-	public static final String TOWN_BRICENIO_CORRECT= "BRICE�O";
+	public static final String TOWN_BRICENIO_CORRECT= "BRICE�O";
 	public static final String TOWN_BRICENIO_INCORRECT= "BRICEÑO";
 
 //Valores gráfica de barras
@@ -121,6 +121,8 @@ public class ConstantsGUI {
 	public static final int INFORMATION_CIRCLE_LABEL_SEPARATION = 5;
 	public static final Font TITLE_GRAPHIC_FONT = new Font("Arial", Font.BOLD, 15);
 	public static final Color TITLE_GRAPHIC_FOREGROUND = ConstantsGUI.COLOR_BLACK;
+	public static final int CIRCLE_GRAPHIC_RADIOUS = 150;
+	public static final double CIRCLE_GRAPHIC_MAX_ANGLE = 360;
 	
 	public static Icon convertToIcon(String route, int width, int heigth) {
 		ImageIcon icon = new ImageIcon(route);

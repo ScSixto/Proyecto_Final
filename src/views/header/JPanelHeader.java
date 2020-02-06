@@ -39,7 +39,7 @@ public class JPanelHeader extends JPanel{
 	}
 	
 	private void setBackGraund() {
-		backGraundImage = new ImageIcon("resources/img/fondoPeces.png").getImage();
+		backGraundImage = new ImageIcon("resources/img/fondo3.png").getImage();
 	}
 	
 	public void paintComponent(Graphics g) {

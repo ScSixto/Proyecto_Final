@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5bc0405b-7b39-4b9e-8605-1eb83b35fddb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controllers/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controllers/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/models/FishFarmManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/models/FishFarmManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/models/TesterMetodos.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/ConstantsGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/ConstantsGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/JFramePrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/JFramePrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/JPanelPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/JPanelPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/JScrollFormat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/body/JLColumnLabel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/body/JLInformationLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/body/JLInformationLabel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/body/JPBarGraphicPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/body/JPBarGraphicPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/body/JPGraphicInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/body/JPGraphicInformation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/body/JPXAxisBarGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/body/JPXAxisBarGraphic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/body/JPanelBody.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/body/JPanelBody.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/body/JPanelGraphicReports.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/body/JPanelInitiation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/body/JPanelTable$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/body/JPanelTable$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/body/JPanelTableReports.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/body/UtilView.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/body/UtilView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/dialogs/JDialogLanguage.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/dialogs/JDialogLanguage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/header/JPanelHeader.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/header/JPanelHeader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/header/JPanelLanguage.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/header/JPanelLanguage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/header/JPanelMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/header/JPanelMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/header/JPanelMenuIcons.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/header/JPanelMenuIcons.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.init" beforeDir="false" afterPath="$PROJECT_DIR$/config.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/language/languageES.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/language/languageES.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/language/languageUS.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/language/languageUS.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/FishFarmManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/FishFarmManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/TesterMetodos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/TesterMetodos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/ConstantsGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ConstantsGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/JFramePrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/JFramePrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/body/JLColumnLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JLColumnLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/body/JLInformationLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JLInformationLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/body/JPBarGraphicPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPBarGraphicPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/body/JPGraphicInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPGraphicInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/body/JPanelBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPanelBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/body/JPanelGraphicBarChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPanelGraphicBarChart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/body/JPanelGraphicReports.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPanelGraphicReports.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/body/JPanelInitiation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPanelInitiation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/body/JPanelTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPanelTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/body/UtilView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/UtilView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/header/JPanelCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/header/JPanelCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/header/JPanelHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/header/JPanelHeader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/header/JPanelMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/header/JPanelMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/header/JPanelMenuIcons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/header/JPanelMenuIcons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/title/JPanelHeaderShowReports.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/title/JPanelHeaderShowReports.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1Wo7C7kqTVINpJP2YEbq4G06vWa" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Run" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="runner.Run" />
+      <module name="Eejercicio_3.0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="runner.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Run" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5bc0405b-7b39-4b9e-8605-1eb83b35fddb" name="Default Changelist" comment="" />
+      <created>1579803962722</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579803962722</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1580933052398">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580933052398" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1580933052398">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1580933052398" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1580933052398">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1580933052398" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1580933052398">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580933052398" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1580933013802">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1580933013802" />
+  </component>
+</project>
