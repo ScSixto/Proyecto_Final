@@ -21,7 +21,7 @@ public class JPanelPrincipal extends JPanel{
 	
 	
 	public JPanelPrincipal(ActionListener actionListenner) {
-		setBackground(ConstantsGUI.COLOR_WHITE);
+		setBackground(ConstantsGUI.COLOR_BACKGRAUND);
 		setLayout(new BorderLayout());
 		initComponents(actionListenner);
 		setVisible(true);

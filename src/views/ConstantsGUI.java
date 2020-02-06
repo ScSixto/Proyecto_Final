@@ -80,7 +80,7 @@ public class ConstantsGUI {
 	public static final String BUTTON_NO = "No_Button";
 	public static final String BUTTON_ACCEPT = "Accept_Button";
 	
-	public static final Color COLOR_BACKGRAUND = Color.decode("#cdd3f9");
+	public static final Color COLOR_BACKGRAUND = Color.decode("#f2f2f2");
 	public static final Color COLOR_PRESENTATION = Color.decode("#333333");
 	public static final Color COLOR_LINE = Color.decode("#17a788");
 	public static final Color COLOR_WHITE = Color.WHITE;
@@ -93,6 +93,7 @@ public class ConstantsGUI {
 	
 //nombre paneles cardlayout
 	public static final String PANEL_INITIAL = "Panel Presentation";
+	public static final String PANEL_TABLE_CULTIVES = "Panel Cultives";
 	public static final String PANEL_SHOW_TABLE_REPORTS = "Panel Show Table Reports";
 	public static final String PANEL_TABLE_REPORTS = "Panel Table Reports";
 	public static final String PANEL_GRAPHIC_REPORT = "Panel Table Specific Report";
@@ -103,7 +104,7 @@ public class ConstantsGUI {
 	public static final String LINE = EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH;
 	public static final String HTML_TAG_CENTER= "<html><center>";
 	public static final String HTML_TAG_B= "<html><b>";
-	public static final String TOWN_BRICENIO_CORRECT= "BRICE�O";
+	public static final String TOWN_BRICENIO_CORRECT= "BRICE�O";
 	public static final String TOWN_BRICENIO_INCORRECT= "BRICEÑO";
 
 //Valores gráfica de barras

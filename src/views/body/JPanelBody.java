@@ -20,6 +20,7 @@ public class JPanelBody extends JPanel{
 	
 	private CardLayout layout;
 	private JPanelInitiation panelInitial;
+	private JPanelTableCultives panelTableCultives;
 	private JPanelShowReports showReportsTable;
 	private JPanelTableReports panelTableReports;
 	private JPanelGraphicReports panelGraphicReports;
@@ -37,6 +38,8 @@ public class JPanelBody extends JPanel{
 	private void initComponents(ActionListener actionListener) {
 		panelInitial = new JPanelInitiation(actionListener);
 		this.add(panelInitial,ConstantsGUI.PANEL_INITIAL);
+		panelTableCultives = new JPanelTableCultives(actionListener);
+		this.add(panelTableCultives,ConstantsGUI.PANEL_TABLE_CULTIVES);
 		showReportsTable = new JPanelShowReports(actionListener);
 		this.add(showReportsTable,ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 		panelTableReports = new JPanelTableReports(actionListener);
@@ -56,6 +59,7 @@ public class JPanelBody extends JPanel{
 		panelGraphicReports.changeLanguage();
 		panelTableReports.changeLanguage();
 		showReportsTable.changeLanguage();
+		panelTableCultives.changeLanguage();
 	}
 
 	public void showBarGraphicReport(HashMap<String, Double> info, GraphicReportTitle title){
@@ -70,7 +74,7 @@ public class JPanelBody extends JPanel{
 	}
 	
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
-		panelInitial.showTableCultives(info);
+		panelTableCultives.showTableCultives(info);
 	}
 	
 	public void addItemsComboBox(Object[] items) {
@@ -89,7 +93,10 @@ public class JPanelBody extends JPanel{
         switch(key){
             case ConstantsGUI.PANEL_INITIAL:
                 this.layout.show(this, ConstantsGUI.PANEL_INITIAL);
-                this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.95),(int)(ConstantsGUI.HEIGHT*1.45)));
+                break;
+            case ConstantsGUI.PANEL_TABLE_CULTIVES:
+                this.layout.show(this, ConstantsGUI.PANEL_TABLE_CULTIVES);
+                this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.87)));
                 break;
             case ConstantsGUI.PANEL_SHOW_TABLE_REPORTS:
             	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.6)));
