@@ -22,6 +22,7 @@ public class JPanelBody extends JPanel{
 	private JPanelButtonTableReports panelButtonTableReports;
 	private JPanelButtonGraphicReports panelButtonGraphicReports;
 	private JPanelShowingGraphicReports panelShowingGraphicReports;
+	private JPanelTableCultives panelTableCultives;
 	
 	public JPanelBody(ActionListener actionListener) {
 		this.layout = new CardLayout();
@@ -54,6 +55,7 @@ public class JPanelBody extends JPanel{
 		panelButtonGraphicReports.changeLanguage();
 		panelButtonTableReports.changeLanguage();
 		panelShowingTableReports.changeLanguage();
+		panelTableCultives.changeLanguage();
 	}
 
 	// public void showBarGraphicReport(HashMap<String, Double> info, GraphicReportTitle title){
@@ -68,7 +70,7 @@ public class JPanelBody extends JPanel{
 	// }
 	
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
-		panelInitial.showTableCultives(info);
+		panelTableCultives.showTableCultives(info);
 	}
 	
 	public void addItemsComboBox(Object[] items) {
@@ -87,7 +89,10 @@ public class JPanelBody extends JPanel{
         switch(key){
             case ConstantsGUI.PANEL_INITIAL:
                 this.layout.show(this, ConstantsGUI.PANEL_INITIAL);
-                this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.95),(int)(ConstantsGUI.HEIGHT*1.45)));
+                break;
+            case ConstantsGUI.PANEL_TABLE_CULTIVES:
+                this.layout.show(this, ConstantsGUI.PANEL_TABLE_CULTIVES);
+                this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.87)));
                 break;
             case ConstantsGUI.PANEL_SHOW_TABLE_REPORTS:
             	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.6)));

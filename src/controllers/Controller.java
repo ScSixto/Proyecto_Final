@@ -240,6 +240,9 @@ public class Controller implements ActionListener{
 		case GET_INFO_TABLES:
 			getItemForTablesReport();
 			break;
+		case PANEL_TABLE_CULTIVES:
+			showPanelTableCultives();
+			break;
 		}
 	}
 	
@@ -259,7 +262,6 @@ public class Controller implements ActionListener{
 	}
 
 	private void showPanelInitial() {
-		showCultivesTable();
 		showCardImage(ConstantsGUI.PANEL_INITIAL);
 	}
 
@@ -268,8 +270,17 @@ public class Controller implements ActionListener{
 	}
 	
 	private void showPanelButtonTableReports() {
+		// showCultivesTable();
 		showCardImage(ConstantsGUI.PANEL_TABLE_REPORTS);
 	}
+	private void showPanelTableCultives() {
+		showCultivesTable();
+		showCardImage(ConstantsGUI.PANEL_TABLE_CULTIVES);
+	}
+	
+	// private void showPanelTableReports() {
+	// 	showCardImage(ConstantsGUI.PANEL_TABLE_REPORTS);
+	// }
 	
 	private void showCultivatedAndHarvestedFishesPerYear(){
 		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE, ConstantsGUI.CIRCLE_GRAPHIC);

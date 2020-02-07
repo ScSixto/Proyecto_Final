@@ -1,6 +1,5 @@
 package views.body;
 
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
@@ -14,7 +13,7 @@ import views.buttons.JButtonsMenuAndDialogs;
 
 public class JPanelMenuIcons extends JPanel{
 	
-	public static final int WIDTH_BUTTONS = 33;
+	public static final int WIDTH_BUTTONS = 30;
 	public static final int HEIGTH_BUTTONS = 30;
 
 	private static final long serialVersionUID = 1L;
@@ -23,10 +22,10 @@ public class JPanelMenuIcons extends JPanel{
 	
 	public JPanelMenuIcons(ActionListener actionListener) {
 		FlowLayout layout = new FlowLayout(FlowLayout.RIGHT);
+		layout.setHgap(20);
 		setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 		setLayout(layout);
-		setBackground(Color.BLACK);
-//		setOpaque(false);
+		setOpaque(false);
 		initComponents(actionListener);
 		setVisible(true);
 	}

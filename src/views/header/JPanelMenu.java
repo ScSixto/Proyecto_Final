@@ -25,8 +25,8 @@ public class JPanelMenu extends JPanel{
 	public static final String SEPARATOR = " |";
 	
 	private JMenuBar menu;
-	private JMenu cultive,export,reports;
-	private JMenuItem add,delete,edit,invalidRunners,tables,graphics,homePage;
+	private JMenu export,reports;
+	private JMenuItem invalidRunners,tables,graphics,homePage,cultive;
 //	private JButton homePage;
 	
 	public JPanelMenu(ActionListener actionListenner) {
@@ -60,19 +60,11 @@ public class JPanelMenu extends JPanel{
 //	}
 	
 	private void addCultiveOptions(ActionListener actionListenner) {
-		cultive = createJMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_CULTIVE));
-		add = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_ADD));
-//		add.addActionListener(actionListenner);
-//		add.setActionCommand(Actions.ADD.toString());
-		cultive.add(add);
-		delete = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_DELETE));
-//		delete.addActionListener(actionListenner);
-//		delete.setActionCommand(Actions.DELETE.toString());
-		cultive.add(delete);
-		edit = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT));
-//		edit.addActionListener(actionListenner);
-//		edit.setActionCommand(Actions.EDIT.toString());
-		cultive.add(edit);
+		cultive = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_CULTIVE)+SEPARATOR);
+		cultive.addActionListener(actionListenner);
+		cultive.setActionCommand(Commands.PANEL_TABLE_CULTIVES.toString());
+		cultive.setForeground(Color.WHITE);
+		cultive.setPreferredSize(new Dimension(110,cultive.getHeight()));
 		menu.add(cultive);
 	}
 	
@@ -91,6 +83,7 @@ public class JPanelMenu extends JPanel{
 		homePage.addActionListener(actionListenner);
 		homePage.setActionCommand(Commands.PANEL_INITIAL.toString());
 		homePage.setForeground(Color.WHITE);
+		homePage.setPreferredSize(new Dimension(Integer.parseInt(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_SIZE_HOMEPAGE)),homePage.getHeight()));
 		menu.add(homePage);
 	}
 	
@@ -109,9 +102,6 @@ public class JPanelMenu extends JPanel{
 	
 	public void changeLanguage() {
 		cultive.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_CULTIVE) + SEPARATOR);
-		add.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_ADD));
-		delete.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_DELETE));
-		edit.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT));
 		export.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXPORT) + SEPARATOR);
 		homePage.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_HOMEPAGE) + SEPARATOR);
 		homePage.setPreferredSize(new Dimension(Integer.parseInt(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_SIZE_HOMEPAGE)),homePage.getHeight()));
