@@ -11,7 +11,7 @@ import views.ConstantsGUI;
 import views.title.JPanelTitle;
 
 
-public class JPanelGraphicReports extends JPanel {
+public class JPanelButtonGraphicReports extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -19,13 +19,13 @@ public class JPanelGraphicReports extends JPanel {
 	private JPanelButtonsBottom buttonsBottom;
 	private JLabel title;
 
-	// JPanelGraphicReports(HashMap<String, Double> info, String graphicTitle){
+	// JPanelButtonGraphicReports(HashMap<String, Double> info, String graphicTitle){
 	// 	this.setLayout(new FlowLayout(FlowLayout.CENTER));
 	// 	this.setOpaque(false);
 	// 	this.add(new JPBarGraphicPanel(info, graphicTitle));
 	// }
 
-	public JPanelGraphicReports(ActionListener actionListener) {
+	public JPanelButtonGraphicReports(ActionListener actionListener) {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setOpaque(false);
 		initComponents(actionListener);

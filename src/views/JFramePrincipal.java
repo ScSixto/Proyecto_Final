@@ -79,10 +79,6 @@ public class JFramePrincipal extends JFrame{
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info){
 		panelPpal.showTableCultives(info);
 	}
-
-	public void showBarGraphicReport(HashMap<String, Double> info, GraphicReportTitle graphicTitle) {
-		panelPpal.showBarGraphicReport(info, graphicTitle);
-	}
 	
 	public void repaintPanel() {
 		panelPpal.validate();
@@ -103,5 +99,9 @@ public class JFramePrincipal extends JFrame{
 	
 	public void getInformationCultives(HashMap<String, ArrayList<Object[]>> info) {
 		panelPpal.getInformationCultives(info);
+	}
+
+	public void showGraphicReport(ActionListener act, HashMap<String, Double> info,String title, char graphicType) {
+		panelPpal.showGraphicReport(act, info, title, graphicType);
 	}
 }

@@ -15,7 +15,7 @@ import general.HandlerLanguage;
 import views.ConstantsGUI;
 
 
-public class JPanelTableWhitComboBox extends JPanel{
+public class JPanelTableWithComboBox extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -26,7 +26,7 @@ public class JPanelTableWhitComboBox extends JPanel{
 	private Object[] listItems;
 	private Object itemSelected;
 	
-	public JPanelTableWhitComboBox(ActionListener actionListener) {
+	public JPanelTableWithComboBox(ActionListener actionListener) {
 //		layout = new CardLayout();
 		setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		setOpaque(false);
@@ -47,7 +47,7 @@ public class JPanelTableWhitComboBox extends JPanel{
 		comboBox.addActionListener(actionListener);
 		comboBox.setActionCommand(Commands.GET_INFO_TABLES.toString());
 		comboBox.setBackground(ConstantsGUI.COLOR_WHITE);
-		comboBox.setForeground(ConstantsGUI.COLOR_PRESENTATION);
+		comboBox.setForeground(ConstantsGUI.COLOR_BLACK);
 		comboBox.setFont(new Font("Roboto", Font.ITALIC, 16));
 		comboBox.setFocusable(false);
 		panel.add(comboBox);

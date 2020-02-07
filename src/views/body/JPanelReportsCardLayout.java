@@ -1,7 +1,6 @@
 package views.body;
 
 import java.awt.CardLayout;
-import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
@@ -18,10 +17,6 @@ public class JPanelReportsCardLayout extends JPanel{
 		setLayout(layout);
 		setOpaque(false);
 		setVisible(true);
-	}
-	
-	private void initComponents() {
-		
 	}
 	
 	public void showCardImage(String key){

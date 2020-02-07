@@ -17,7 +17,6 @@ import models.Town;
 import models.Util;
 import persistence.JsonFile;
 import views.ConstantsGUI;
-import views.GraphicReportTitle;
 import views.JFramePrincipal;
 import views.body.UtilView;
 
@@ -200,7 +199,7 @@ public class Controller implements ActionListener{
 			endProgram();
 			break;
 		case TABLE_REPORTS:
-			showPanelTableReports();
+			showPanelButtonTableReports();
 			break;
 		case PANEL_INITIAL:
 			showPanelInitial();
@@ -210,6 +209,24 @@ public class Controller implements ActionListener{
 			break;
 		case GRAPHIC_REPORT_ONE:
 			showCultivatedAndHarvestedFishesPerYear();
+			break;
+		case GRAPHIC_REPORT_TWO:
+			showHarvestedFishesPertownPerYear();
+			break;
+		case GRAPHIC_REPORT_THREE:
+			showCultivatedFishesSpeciesPerYear();
+			break;
+		case GRAPHIC_REPORT_FOUR:
+			showTownEarningsPerYear();
+			break;
+		case GRAPHIC_REPORT_FIVE:
+			showFishesSpeciesWeight();
+			break;
+		case GRAPHIC_REPORT_SIX:
+			showFishFoodUsing();
+			break;
+		case GRAPHIC_REPORT_SEVEN:
+			showWaterTypeUsing();
 			break;
 		case REPORT_EIGHT:
 			showReportCultivesPerTown();
@@ -250,13 +267,43 @@ public class Controller implements ActionListener{
 		frame.showTableCultives(UtilView.showCultivesTable(farmManager.townsAndCultives()));
 	}
 	
-	private void showPanelTableReports() {
+	private void showPanelButtonTableReports() {
 		showCardImage(ConstantsGUI.PANEL_TABLE_REPORTS);
 	}
 	
 	private void showCultivatedAndHarvestedFishesPerYear(){
-		frame.showBarGraphicReport(farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), GraphicReportTitle.CULTIVATED_AND_HARVESTED_FISHES_PER_YEAR);
-		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORT);
+		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+	}
+
+	private void showHarvestedFishesPertownPerYear(){
+		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+	}
+
+	private void showCultivatedFishesSpeciesPerYear(){
+		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+	}
+
+	private void showTownEarningsPerYear(){
+		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+	}
+
+	private void showFishesSpeciesWeight(){
+		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+	}
+
+	private void showFishFoodUsing(){
+		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+	}
+
+	private void showWaterTypeUsing(){
+		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
 	private void showGraphicButtonPanel() {
@@ -301,7 +348,6 @@ public class Controller implements ActionListener{
 
 		}
 	}
-	
 	public static void main(String[] args) {
 		new Controller();
 	}

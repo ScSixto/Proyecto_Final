@@ -38,6 +38,10 @@ public class JPanelHeaderShowReports extends JPanel{
 		buttonBack.setActionCommand(command);
 		add(buttonBack,BorderLayout.WEST);
 	}
+
+	public void setBackButtonCommand(String command){
+		buttonBack.setActionCommand(command);
+	}
 	
 	public void addLabel(String title) {
 		text = title;
@@ -52,9 +56,4 @@ public class JPanelHeaderShowReports extends JPanel{
 //		if(labelTitleReport != null)
 		labelTitleReport.setText(ConstantsGUI.HTML_TAG_B+HandlerLanguage.languageProperties.getProperty(text));
 	}
-	
-	public void emptyText() {
-		text = "";
-	}
-
 }

@@ -43,13 +43,14 @@ public class JPanelInitiation extends JPanel{
 	public void addInformation() {
 		labelTitle = ConstantsGUI.createLabelTitles(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE));
 //		labelTitle.setBackground(new Color(49,201,150,150));
-		labelTitle.setOpaque(true);
+		labelTitle.setOpaque(false);
+		labelTitle.setForeground(ConstantsGUI.COLOR_PRESENTATION);
 		//		panelYAxis.add(new JPanelTitle(labelTitle,true));
 		addPanel(labelTitle);
 		createLine();
 		labelText = new JLabel("<html>"+ HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_OF_PISCICULTURE) + "</html>");
 		labelText.setFont(new Font("Roboto", Font.PLAIN, 20));
-		labelText.setForeground(ConstantsGUI.COLOR_PRESENTATION);
+		labelText.setForeground(ConstantsGUI.COLOR_BLACK);
 //		labelText.setBackground(Color.WHITE);
 //		labelText.setOpaque(true);
 		addPanel(labelText);
@@ -85,14 +86,12 @@ public class JPanelInitiation extends JPanel{
 		panel.add(label);
 		panelYAxis.add(panel);
 	}
-	
+
 	public void createLine() {
 		JLabel line = new JLabel(ConstantsGUI.LINE);
 		line.setFont(new Font("Roboto", Font.BOLD, 40));
 		line.setForeground(ConstantsGUI.COLOR_LINE);
-		line.setOpaque(false);
+		line.setOpaque(true);
 		addPanel(line);
 	}
-	
-
 }

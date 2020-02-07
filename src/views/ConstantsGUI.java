@@ -81,7 +81,7 @@ public class ConstantsGUI {
 	public static final String BUTTON_ACCEPT = "Accept_Button";
 	
 	public static final Color COLOR_BACKGRAUND = Color.decode("#cdd3f9");
-	public static final Color COLOR_PRESENTATION = Color.decode("#333333");
+	public static final Color COLOR_PRESENTATION = Color.BLUE;//Color.decode("#333333");
 	public static final Color COLOR_LINE = Color.decode("#17a788");
 	public static final Color COLOR_WHITE = Color.WHITE;
 	//public static final Color COLOR_PRESENTATION = Color.decode("#E77714");
@@ -95,7 +95,7 @@ public class ConstantsGUI {
 	public static final String PANEL_INITIAL = "Panel Presentation";
 	public static final String PANEL_SHOW_TABLE_REPORTS = "Panel Show Table Reports";
 	public static final String PANEL_TABLE_REPORTS = "Panel Table Reports";
-	public static final String PANEL_GRAPHIC_REPORT = "Panel Table Specific Report";
+	public static final String PANEL_SHOW_GRAPHIC_REPORTS = "Panel Show Graphic Report";
 	public static final String PANEL_GRAPHIC_REPORTS = "Panel Graphics Reports";
 	public static final String PANEL_GRAPHIC_BAR_CHART = "Panel Bar Chart";
 	
@@ -105,6 +105,13 @@ public class ConstantsGUI {
 	public static final String HTML_TAG_B= "<html><b>";
 	public static final String TOWN_BRICENIO_CORRECT= "BRICE�O";
 	public static final String TOWN_BRICENIO_INCORRECT= "BRICEÑO";
+
+//Tipos de Graficas
+	public static final char BAR_GRAPHIC = 'B';
+	public static final char CIRCLE_GRAPHIC = 'C';
+	public static final char POINT_GRAPHIC = 'P';
+	public static final char TABLE_REPORT = 'T';
+
 
 //Valores gráfica de barras
 	public static final Color DEFAULT_AXIS_COLOR = ConstantsGUI.COLOR_BLACK;
