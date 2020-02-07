@@ -1,6 +1,8 @@
-package views.body;
+package views;
 
 import java.util.ArrayList;
+
+import views.UtilView;
 
 public enum CountValueToRoundNumber {
 
@@ -31,4 +33,16 @@ public enum CountValueToRoundNumber {
     public String getText() {
         return text;
     }
+
+	public static String getRoundedValue(double value) {
+	    double roundedValue = value;
+	    String roundedValueFormat = "";
+	    int count = 0;
+	    while (roundedValue / 1000 >= 1 && count <= UtilView.getMaxValueInteger(CountValueToRoundNumber.getValueList())) {
+	        roundedValue = UtilView.calculateRoundedValue(roundedValue);
+	        count++;
+	    }
+	    roundedValueFormat = String.format("%1.1f", roundedValue) + UtilView.getCountValueToRoundNumber(count);
+	    return roundedValueFormat;
+	}
 }

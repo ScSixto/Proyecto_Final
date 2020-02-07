@@ -133,6 +133,7 @@ public class ConstantsGUI {
 	public static final Color TITLE_GRAPHIC_FOREGROUND = ConstantsGUI.COLOR_BLACK;
 	public static final int CIRCLE_GRAPHIC_RADIOUS = 150;
 	public static final double CIRCLE_GRAPHIC_MAX_ANGLE = 360;
+	public static final int CIRCLE_GRAPHIC_OVAL_SPACE = 6;
 	
 	public static Icon convertToIcon(String route, int width, int heigth) {
 		ImageIcon icon = new ImageIcon(route);

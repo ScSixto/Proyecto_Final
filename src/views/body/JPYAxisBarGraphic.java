@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import views.ConstantsGUI;
+import views.UtilView;
 
 public class JPYAxisBarGraphic extends JPanel {
 

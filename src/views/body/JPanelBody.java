@@ -23,7 +23,7 @@ public class JPanelBody extends JPanel{
 	private JPanelButtonGraphicReports panelButtonGraphicReports;
 	private JPanelShowingGraphicReports panelShowingGraphicReports;
 	private JPanelTableCultives panelTableCultives;
-	
+
 	public JPanelBody(ActionListener actionListener) {
 		this.layout = new CardLayout();
 		setBorder(BorderFactory.createEmptyBorder(20,0,20,0));
@@ -44,6 +44,9 @@ public class JPanelBody extends JPanel{
 		this.add(panelButtonGraphicReports,ConstantsGUI.PANEL_GRAPHIC_REPORTS);
 		panelShowingGraphicReports = new JPanelShowingGraphicReports(actionListener);
 		this.add(panelShowingGraphicReports,ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+		panelTableCultives = new JPanelTableCultives(actionListener);
+		this.add(panelTableCultives,ConstantsGUI.PANEL_TABLE_CULTIVES);
+		
 	}
 	
 	public void addLabel(String title) {

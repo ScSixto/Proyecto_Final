@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 
 import views.ConstantsGUI;
 import views.JScrollFormat;
+import views.UtilView;
 
 public class JPBarGraphicPanel extends JPanel {
 
