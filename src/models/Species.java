@@ -47,6 +47,10 @@ public class Species{
 	public void setFood(Food food) {
 		this.food = food;
 	}
+	
+	public Object[] toObjectVector() {
+		return new Object[] {this.name,this.id,this.costByPound,this.waterType.getName(),this.food.getName()};
+	}
     
     
 }

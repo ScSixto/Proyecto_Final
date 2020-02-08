@@ -1,6 +1,9 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 public class Util{
 	
@@ -54,5 +57,61 @@ public class Util{
     
     public static int veryfyObject(Object object) {
     	return (object == null)? 0:(int)object;
+    }
+    
+//    public static Cultive createCultive(Object[] info) {
+//    	int townId = 
+//    	
+//    }
+    
+
+    public static HashMap<String, Double> convertToReportPerYear(HashMap<Integer, Long> data){
+        HashMap<String, Double> reportFormat = new HashMap<>();
+        Iterator<Entry<Integer, Long>> it = data.entrySet().iterator();
+        while (it.hasNext()){
+            Entry<Integer, Long> entry = it.next();
+            reportFormat.put(""+entry.getKey(), Double.parseDouble(""+entry.getValue()));
+        }
+        return reportFormat;
+    }
+
+    public static HashMap<String, Double> convertToReportPerTown(HashMap<Town, Double> data){
+        HashMap<String, Double> reportFormat = new HashMap<>();
+        Iterator<Entry<Town, Double>> it = data.entrySet().iterator();
+        while (it.hasNext()){
+            Entry<Town, Double> entry = it.next();
+            reportFormat.put(entry.getKey().getName(), entry.getValue());
+        }
+        return reportFormat;
+    }
+
+    public static HashMap<String, Double> convertToReportSpeciesPerYear(HashMap<Species, Double> data){
+        HashMap<String, Double> reportFormat = new HashMap<>();
+        Iterator<Entry<Species, Double>> it = data.entrySet().iterator();
+        while (it.hasNext()){
+            Entry<Species, Double> entry = it.next();
+            reportFormat.put(entry.getKey().getName(), entry.getValue());
+        }
+        return reportFormat;
+    }
+
+    public static HashMap<String, Double> convertToReportFood(HashMap<Food,Integer> data){
+        HashMap<String, Double> reportFormat = new HashMap<>();
+        Iterator<Entry<Food, Integer>> it = data.entrySet().iterator();
+        while (it.hasNext()){
+            Entry<Food, Integer> entry = it.next();
+            reportFormat.put(entry.getKey().getName(), Double.parseDouble(""+entry.getValue()));
+        }
+        return reportFormat;
+    }
+
+    public static HashMap<String, Double> convertToReportWaterType(HashMap<WaterType,Integer> data){
+        HashMap<String, Double> reportFormat = new HashMap<>();
+        Iterator<Entry<WaterType, Integer>> it = data.entrySet().iterator();
+        while (it.hasNext()){
+            Entry<WaterType, Integer> entry = it.next();
+            reportFormat.put(entry.getKey().getName(), Double.parseDouble(""+entry.getValue()));
+        }
+        return reportFormat;
     }
 }

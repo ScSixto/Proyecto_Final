@@ -14,7 +14,7 @@ public class JPanelButtonsTop extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	
-	private JButtonOptionsReports fishesCultivatedAndHarvested,fishesHarvestedPerYear,speciesCultivatedPerYear,mostUsedWaterType;
+	private JButtonOptionsReports fishesCultivatedAndHarvested,fishesHarvestedPerYear,speciesCultivatedPerYear,townEarningsPerYear;
 	
 	public JPanelButtonsTop(ActionListener actionListener) {
 		FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
@@ -30,23 +30,29 @@ public class JPanelButtonsTop extends JPanel{
 	}
 	
 	public void addButtons(ActionListener actionListener) {
-		fishesHarvestedPerYear = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TWO),'R');
-		this.add(fishesHarvestedPerYear);
-		fishesCultivatedAndHarvested = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE),'B');
+		fishesCultivatedAndHarvested = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE),ConstantsGUI.CIRCLE_GRAPHIC);
 		fishesCultivatedAndHarvested.addActionListener(actionListener);
 		fishesCultivatedAndHarvested.setActionCommand(Commands.GRAPHIC_REPORT_ONE.toString());
 		this.add(fishesCultivatedAndHarvested);
-		speciesCultivatedPerYear = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_THREE),'R');
+		fishesHarvestedPerYear = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TWO),ConstantsGUI.POINT_GRAPHIC);
+		fishesHarvestedPerYear.addActionListener(actionListener);
+		fishesHarvestedPerYear.setActionCommand(Commands.GRAPHIC_REPORT_TWO.toString());
+		this.add(fishesHarvestedPerYear);
+		speciesCultivatedPerYear = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_THREE),ConstantsGUI.BAR_GRAPHIC);
+		speciesCultivatedPerYear.addActionListener(actionListener);
+		speciesCultivatedPerYear.setActionCommand(Commands.GRAPHIC_REPORT_THREE.toString());
 		this.add(speciesCultivatedPerYear);
-		mostUsedWaterType = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_FOUR),'B');
-		this.add(mostUsedWaterType);
+		townEarningsPerYear = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_FOUR),ConstantsGUI.POINT_GRAPHIC);
+		townEarningsPerYear.addActionListener(actionListener);
+		townEarningsPerYear.setActionCommand(Commands.GRAPHIC_REPORT_FOUR.toString());
+		this.add(townEarningsPerYear);
 	}
 	
 	public void changeLanguage() {
 		fishesCultivatedAndHarvested.setNewText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE));
 		fishesHarvestedPerYear.setNewText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TWO));
 		speciesCultivatedPerYear.setNewText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_THREE));
-		mostUsedWaterType.setNewText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_FOUR));
+		townEarningsPerYear.setNewText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_FOUR));
 	}
 
 }

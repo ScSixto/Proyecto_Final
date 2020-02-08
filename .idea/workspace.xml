@@ -19,10 +19,10 @@
       <change beforePath="$PROJECT_DIR$/bin/views/body/JPGraphicInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/body/JPGraphicInformation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/views/body/JPXAxisBarGraphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/body/JPXAxisBarGraphic.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/views/body/JPanelBody.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/body/JPanelBody.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/views/body/JPanelGraphicReports.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/body/JPanelButtonGraphicReports.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/views/body/JPanelInitiation.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/views/body/JPanelTable$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/body/JPanelTable$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/views/body/JPanelTableReports.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/views/body/JPanelButtonTableReports.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/views/body/UtilView.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/body/UtilView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/views/dialogs/JDialogLanguage.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/dialogs/JDialogLanguage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/views/header/JPanelHeader.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/views/header/JPanelHeader.class" afterDir="false" />
@@ -42,8 +42,8 @@
       <change beforePath="$PROJECT_DIR$/src/views/body/JPBarGraphicPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPBarGraphicPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/body/JPGraphicInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPGraphicInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/body/JPanelBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPanelBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/body/JPanelGraphicBarChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPanelGraphicBarChart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/body/JPanelGraphicReports.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPanelGraphicReports.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/body/JPanelShowingGraphicReports.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPanelShowingGraphicReports.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/body/JPanelButtonGraphicReports.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPanelButtonGraphicReports.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/body/JPanelInitiation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPanelInitiation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/body/JPanelTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/JPanelTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/body/UtilView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/body/UtilView.java" afterDir="false" />

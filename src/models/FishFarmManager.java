@@ -377,6 +377,7 @@ public class FishFarmManager{
     	int waterTypeQuantityPerType = 0;
     	for (Town town : this.townList){
     		for (Cultive cultive : town.getCultiveList()) {
+				System.out.println(cultive.getId() + " " + cultive.getSpecies().getName());
     			if(cultive.getSpecies().getWaterType().equals(waterType))
     				waterTypeQuantityPerType += cultive.getCultivatedQuantity();
 			}

@@ -18,7 +18,9 @@ public class JPanelMenuIcons extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	
-	private JButtonsMenuAndDialogs add, delete, edit;
+	private JButtonsMenuAndDialogs add;
+	private JButtonsMenuAndDialogs delete;
+	private JButtonsMenuAndDialogs edit;
 	
 	public JPanelMenuIcons(ActionListener actionListener) {
 		FlowLayout layout = new FlowLayout(FlowLayout.RIGHT);
@@ -32,6 +34,7 @@ public class JPanelMenuIcons extends JPanel{
 	
 	private void initComponents(ActionListener actionListener) {
 		addButtons(actionListener);
+		ubication();
 	}
 	
 	private void addButtons(ActionListener actionListener) {
@@ -54,6 +57,15 @@ public class JPanelMenuIcons extends JPanel{
 		add.setToolTipText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_ADD));
 		delete.setToolTipText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_DELETE));
 		edit.setToolTipText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT));
+	}
+	
+	public JButtonsMenuAndDialogs getButtonAdd() {
+		return this.add;
+	}
+	
+	public  void ubication() {
+		System.out.println(add.getX());
+		System.out.println(add.getY());
 	}
 	
 }

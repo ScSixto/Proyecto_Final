@@ -30,15 +30,15 @@ public class JPanelButtonsTablesReport extends JPanel{
 	}
 	
 	public void addButtons(ActionListener actionListener) {
-		cultivesPerTown = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_EIGHT),'T');
+		cultivesPerTown = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_EIGHT),ConstantsGUI.TABLE_REPORT);
 		cultivesPerTown.addActionListener(actionListener);
 		cultivesPerTown.setActionCommand(Commands.REPORT_EIGHT.toString());
 		this.add(cultivesPerTown);
-		cultivesPerYear = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_NINE),'T');
+		cultivesPerYear = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_NINE),ConstantsGUI.TABLE_REPORT);
 		cultivesPerYear.addActionListener(actionListener);
 		cultivesPerYear.setActionCommand(Commands.REPORT_NINE.toString());
 		this.add(cultivesPerYear);
-		cultivesPerSpecie = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TEN),'T');
+		cultivesPerSpecie = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TEN),ConstantsGUI.TABLE_REPORT);
 		cultivesPerSpecie.addActionListener(actionListener);
 		cultivesPerSpecie.setActionCommand(Commands.REPORT_TEN.toString());
 		this.add(cultivesPerSpecie);

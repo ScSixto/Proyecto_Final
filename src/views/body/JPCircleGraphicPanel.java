@@ -1,27 +1,20 @@
 package views.body;
 
 import java.awt.FlowLayout;
-import java.awt.Component;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
 import javax.swing.GroupLayout;
-import javax.swing.JLabel;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.event.ActionListener;
 
 import views.ConstantsGUI;
-import views.JScrollFormat;
+import views.UtilView;
 
 public class JPCircleGraphicPanel extends JPanel {
 
@@ -30,25 +23,29 @@ public class JPCircleGraphicPanel extends JPanel {
 	private GroupLayout layout;
 	private JPanel circleGraphicPanel;
 	private JPGraphicInformation panelInformation;
-	private JPanel titlePanel;
 
-	public JPCircleGraphicPanel() {		
+	public JPCircleGraphicPanel(ActionListener actionListener) {		
 		this.layout = new GroupLayout(this);
 		this.setLayout(layout);
 		this.setBorder(BorderFactory.createEmptyBorder(10,30, 10, 30));
-		this.setOpaque(true);
-		this.setBackground(ConstantsGUI.COLOR_WHITE);
+		this.setOpaque(false);
+		this.setBackground(Color.BLUE);
+		//this.setVisible(false);
 		// this.setPreferredSize(new Dimension((int) (ConstantsGUI.CIRCLE_GRAPHIC_RADIOUS * 2 +300/*  panelInformation.getSize().getWidth() */),ConstantsGUI.CIRCLE_GRAPHIC_RADIOUS * 2));
 	}
 	
-	public JPCircleGraphicPanel(HashMap<String, Double> valueList, String graphicTitle) {
-		this();
-		this.initComponents(valueList, graphicTitle);
+	public JPCircleGraphicPanel(ActionListener actionListener,HashMap<String, Double> valueList) {
+		this(actionListener);
+		this.initComponents(valueList);
+		this.setVisible(true);
+	}
+
+	public void setGraphicInformation(HashMap<String, Double> valueList){
+		initComponents(valueList);
 		this.setVisible(true);
 	}
 	
-	private void initComponents(HashMap<String, Double> valueList, String graphicTitle) {
-		//this.addGraphicTitle(graphicTitle);
+	private void initComponents(HashMap<String, Double> valueList) {
 		HashMap<String, Color> informationPanelData = this.getInformationPanelData(valueList);
 		this.addCircleGraphicPanel(valueList, informationPanelData);
 		this.addPanelInformation(informationPanelData, valueList);
@@ -64,20 +61,6 @@ public class JPCircleGraphicPanel extends JPanel {
 		this.setCircleGraphicPanelFormat();
 		this.circleGraphicPanel.add(new JLArcLabel(valueList, informationPanelData));
 		this.add(circleGraphicPanel);
-	}
-
-	private void addGraphicTitle(String graphicTitle) {
-		if(this.getComponents().length > 0)this.remove(this.getComponent(0));
-		this.titlePanel = new JPanel();
-		this.titlePanel.setOpaque(false);
-		JLabel titleLabel = new JLabel(graphicTitle);
-		titleLabel.setFont(ConstantsGUI.TITLE_GRAPHIC_FONT);
-		titleLabel.setForeground(ConstantsGUI.TITLE_GRAPHIC_FOREGROUND);
-		titleLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-		titleLabel.setVerticalTextPosition(SwingConstants.CENTER);
-		titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-		this.titlePanel.add(titleLabel);
-		this.add(titlePanel, BorderLayout.NORTH);
 	}
 	
 	public void addPanelInformation(HashMap<String, Color> informationPanelData,HashMap<String, Double> valueList) {

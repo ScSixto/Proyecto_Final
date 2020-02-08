@@ -64,7 +64,7 @@ public class JPanelMenu extends JPanel{
 		cultive.addActionListener(actionListenner);
 		cultive.setActionCommand(Commands.PANEL_TABLE_CULTIVES.toString());
 		cultive.setForeground(Color.WHITE);
-		cultive.setPreferredSize(new Dimension(110,cultive.getHeight()));
+		cultive.setPreferredSize(new Dimension(120,cultive.getHeight()));
 		menu.add(cultive);
 	}
 	

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import controllers.Commands;
 import general.HandlerLanguage;
 import views.ConstantsGUI;
 import views.buttons.JButtonOptionsReports;
@@ -13,7 +14,7 @@ public class JPanelButtonsBottom extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	
-	private JButtonOptionsReports earningsTownPerYear,specieMoreHeavy,mostUsedFishFood;
+	private JButtonOptionsReports mostUsedWaterType,specieMoreHeavy,mostUsedFishFood;
 	
 	public JPanelButtonsBottom(ActionListener actionListener) {
 		FlowLayout layout = new FlowLayout(FlowLayout.CENTER);
@@ -29,18 +30,24 @@ public class JPanelButtonsBottom extends JPanel{
 	}
 	
 	public void addButtons(ActionListener actionListener) {
-		earningsTownPerYear = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_FIVE),'R');
-		this.add(earningsTownPerYear);
-		mostUsedFishFood = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_SIX),'P');
-		this.add(mostUsedFishFood);
-		specieMoreHeavy = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_SEVEN),'R');
+		specieMoreHeavy = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_FIVE),ConstantsGUI.BAR_GRAPHIC);
+		specieMoreHeavy.addActionListener(actionListener);
+		specieMoreHeavy.setActionCommand(Commands.GRAPHIC_REPORT_FIVE.toString());
 		this.add(specieMoreHeavy);
+		mostUsedFishFood = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_SIX),ConstantsGUI.CIRCLE_GRAPHIC);
+		mostUsedFishFood.addActionListener(actionListener);
+		mostUsedFishFood.setActionCommand(Commands.GRAPHIC_REPORT_SIX.toString());
+		this.add(mostUsedFishFood);
+		mostUsedWaterType = new JButtonOptionsReports(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_SEVEN),ConstantsGUI.CIRCLE_GRAPHIC);
+		mostUsedWaterType.addActionListener(actionListener);
+		mostUsedWaterType.setActionCommand(Commands.GRAPHIC_REPORT_SEVEN.toString());
+		this.add(mostUsedWaterType);
 	}
 	
 	public void changeLanguage() {
-		earningsTownPerYear.setNewText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_FIVE));
+		specieMoreHeavy.setNewText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_FIVE));
 		mostUsedFishFood.setNewText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_SIX));
-		specieMoreHeavy.setNewText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_SEVEN));
+		mostUsedWaterType.setNewText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_SEVEN));
 	}
 
 }

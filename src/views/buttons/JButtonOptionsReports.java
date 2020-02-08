@@ -25,8 +25,8 @@ public class JButtonOptionsReports extends JButton{
 		setIconButton(logo);
 		setBorder(BorderFactory.createEmptyBorder(20, 20, 5, 20));
 		setBackground(Color.WHITE);
-		setFont(new Font("Roboto", Font.BOLD, 20));
-		setForeground(ConstantsGUI.COLOR_PRESENTATION);
+		setFont(new Font("Roboto", Font.BOLD, 14));
+		setForeground(ConstantsGUI.COLOR_BLACK);
 		setHorizontalTextPosition(SwingConstants.CENTER);
 		setVerticalTextPosition(SwingConstants.BOTTOM);
 		setBorderPainted(false);
@@ -35,15 +35,30 @@ public class JButtonOptionsReports extends JButton{
 		setCursor(new Cursor(Cursor.HAND_CURSOR));
 	}
 	
+	public JButtonOptionsReports(String text) {
+//		setPreferredSize(new Dimension(50,50));
+		setText(ConstantsGUI.HTML_TAG_CENTER+text);
+		setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+		setBackground(Color.WHITE);
+		setFont(new Font("Roboto", Font.BOLD, 14));
+		setForeground(ConstantsGUI.COLOR_BLUE_HEADER);
+		setHorizontalTextPosition(SwingConstants.CENTER);
+		setVerticalTextPosition(SwingConstants.CENTER);
+		setBorderPainted(false);
+		setOpaque(false);
+		setFocusable(false);
+		setCursor(new Cursor(Cursor.HAND_CURSOR));
+	}
+	
 	private void setIconButton(char logo) {
 		switch (logo) {
-		case 'R':
-			setIcon(ConstantsGUI.convertToIcon("resources/img/diagramaTorta.png", WIDHT_AND_HEIGHT_LOGO, WIDHT_AND_HEIGHT_LOGO));
-			break;
-		case 'B':
-			setIcon(ConstantsGUI.convertToIcon("resources/img/diagramaBarras.png", WIDHT_AND_HEIGHT_LOGO, WIDHT_AND_HEIGHT_LOGO));
-			break;
-		case 'T':
+		case ConstantsGUI.CIRCLE_GRAPHIC:
+		setIcon(ConstantsGUI.convertToIcon("resources/img/diagramaTorta.png", WIDHT_AND_HEIGHT_LOGO, WIDHT_AND_HEIGHT_LOGO));
+		break;
+		case ConstantsGUI.BAR_GRAPHIC:
+		setIcon(ConstantsGUI.convertToIcon("resources/img/diagramaBarras.png", WIDHT_AND_HEIGHT_LOGO, WIDHT_AND_HEIGHT_LOGO));
+		break;
+		case ConstantsGUI.TABLE_REPORT:
 			setIcon(ConstantsGUI.convertToIcon("resources/img/tablaBoton.png", WIDHT_AND_HEIGHT_LOGO, WIDHT_AND_HEIGHT_LOGO));
 			break;
 		default:

@@ -2,7 +2,7 @@ package models;
 
 public enum WaterType{
     
-    SALTWATER("Agua salada"), SWEET_WATER("Agua dulce");
+    SALTWATER("Agua Salada"), SWEET_WATER("Agua Dulce");
 
     private String name;
 

@@ -17,9 +17,8 @@ import models.Town;
 import models.Util;
 import persistence.JsonFile;
 import views.ConstantsGUI;
-import views.GraphicReportTitle;
 import views.JFramePrincipal;
-import views.body.UtilView;
+import views.UtilView;
 
 public class Controller implements ActionListener{
 	
@@ -193,14 +192,11 @@ public class Controller implements ActionListener{
 		case CHANGE_SPANISH:
 			manageChangeLanguageES();
 			break;
-		case OPEN_LENGUAGE_DIALOG:
-			frame.openDialogLanguage();
-			break;
 		case EXIT:
 			endProgram();
 			break;
 		case TABLE_REPORTS:
-			showPanelTableReports();
+			showPanelButtonTableReports();
 			break;
 		case PANEL_INITIAL:
 			showPanelInitial();
@@ -210,6 +206,24 @@ public class Controller implements ActionListener{
 			break;
 		case GRAPHIC_REPORT_ONE:
 			showCultivatedAndHarvestedFishesPerYear();
+			break;
+		case GRAPHIC_REPORT_TWO:
+			showHarvestedFishesPertownPerYear();
+			break;
+		case GRAPHIC_REPORT_THREE:
+			showCultivatedFishesSpeciesPerYear();
+			break;
+		case GRAPHIC_REPORT_FOUR:
+			showTownEarningsPerYear();
+			break;
+		case GRAPHIC_REPORT_FIVE:
+			showFishesSpeciesWeight();
+			break;
+		case GRAPHIC_REPORT_SIX:
+			showFishFoodUsing();
+			break;
+		case GRAPHIC_REPORT_SEVEN:
+			showWaterTypeUsing();
 			break;
 		case REPORT_EIGHT:
 			showReportCultivesPerTown();
@@ -227,7 +241,12 @@ public class Controller implements ActionListener{
 			showPanelTableCultives();
 			break;
 		case OPEN_DIALOG_ADD:
-			frame.showDialogAdd();
+			showDialogAdd();
+			break;
+		case CLOSE_DIALOGS:
+			frame.closeDialog();
+			break;
+		case CREATE_CULTIVE:
 			break;
 		}
 	}
@@ -255,18 +274,52 @@ public class Controller implements ActionListener{
 		frame.showTableCultives(UtilView.showCultivesTable(farmManager.townsAndCultives()));
 	}
 	
+	private void showPanelButtonTableReports(){
+		showCultivesTable();
+		showCardImage(ConstantsGUI.PANEL_TABLE_REPORTS);
+	}
 	private void showPanelTableCultives() {
 		showCultivesTable();
 		showCardImage(ConstantsGUI.PANEL_TABLE_CULTIVES);
 	}
 	
-	private void showPanelTableReports() {
-		showCardImage(ConstantsGUI.PANEL_TABLE_REPORTS);
-	}
+	// private void showPanelTableReports() {
+	// 	showCardImage(ConstantsGUI.PANEL_TABLE_REPORTS);
+	// }
 	
 	private void showCultivatedAndHarvestedFishesPerYear(){
-		frame.showBarGraphicReport(farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), GraphicReportTitle.CULTIVATED_AND_HARVESTED_FISHES_PER_YEAR);
-		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORT);
+		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+	}
+
+	private void showHarvestedFishesPertownPerYear(){
+		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TWO, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+	}
+
+	private void showCultivatedFishesSpeciesPerYear(){
+		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_THREE, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+	}
+
+	private void showTownEarningsPerYear(){
+		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_FOUR, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+	}
+
+	private void showFishesSpeciesWeight(){
+		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_FIVE, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+	}
+
+	private void showFishFoodUsing(){
+		frame.showGraphicReport(this, Util.convertToReportFood(farmManager.getFishFoodQuantityPerType()), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_SIX, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+	}
+
+	private void showWaterTypeUsing(){
+		frame.showGraphicReport(this, Util.convertToReportWaterType(farmManager.getWaterTypeQuantityPerType()), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE, ConstantsGUI.CIRCLE_GRAPHIC);
+		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
 	private void showGraphicButtonPanel() {
@@ -310,6 +363,14 @@ public class Controller implements ActionListener{
 			break;
 
 		}
+	}
+	
+	private void showDialogAdd() {
+		frame.showDialogAdd(Util.transformTownsArray(farmManager.toObjectVectorTown()),farmManager.getSpeciesName());
+	}
+	
+	private void createAndAddCultive() {
+		
 	}
 	
 	public static void main(String[] args) {

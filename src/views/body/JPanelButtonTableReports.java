@@ -10,14 +10,14 @@ import general.HandlerLanguage;
 import views.ConstantsGUI;
 import views.title.JPanelTitle;
 
-public class JPanelTableReports extends JPanel{
+public class JPanelButtonTableReports extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	
 	private JLabel title;
 	private JPanelButtonsTablesReport panelTablesReport;
 	
-	public JPanelTableReports(ActionListener actionListener) {
+	public JPanelButtonTableReports(ActionListener actionListener) {
 		setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		setOpaque(false);
 		initComponents(actionListener);

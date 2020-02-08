@@ -12,14 +12,12 @@ import javax.swing.JScrollPane;
 
 import general.HandlerLanguage;
 import views.dialogs.JDialogAddAndEditCultives;
-import views.dialogs.JDialogLanguage;
 
 public class JFramePrincipal extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
 	private JPanelPrincipal panelPpal;
-	private JDialogLanguage dialogLanguage;
 	private JDialogAddAndEditCultives addDialog;
 
 	private JScrollPane scroll;
@@ -40,10 +38,9 @@ public class JFramePrincipal extends JFrame{
 		scroll.setBorder(null);
 		scroll.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panelPpal = new JPanelPrincipal(actionListener);
-		dialogLanguage = new JDialogLanguage(this,actionListener);		
 		scroll.setViewportView(panelPpal);
 		addScrollBar();
-		addDialog = new JDialogAddAndEditCultives(this);
+		addDialog = new JDialogAddAndEditCultives(actionListener);
 	}
 	
     public void addScrollBar(){
@@ -56,11 +53,7 @@ public class JFramePrincipal extends JFrame{
 	public void changeLanguage() {
 		setTitle(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.TITLE_PROGRAM));
 		panelPpal.changeLanguage();
-		dialogLanguage.changeLanguage();
-	}
-	
-	public void openDialogLanguage() {
-		dialogLanguage.setVisible(true);
+		addDialog.changeLanguage();
 	}
 	
 	public void showCardImage(String key){
@@ -81,10 +74,6 @@ public class JFramePrincipal extends JFrame{
 	
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info){
 		panelPpal.showTableCultives(info);
-	}
-
-	public void showBarGraphicReport(HashMap<String, Double> info, GraphicReportTitle graphicTitle) {
-		panelPpal.showBarGraphicReport(info, graphicTitle);
 	}
 	
 	public void repaintPanel() {
@@ -108,9 +97,22 @@ public class JFramePrincipal extends JFrame{
 		panelPpal.getInformationCultives(info);
 	}
 	
-	public void showDialogAdd() {
+	public void showDialogAdd(Object[] townList,Object[] speciesList) {
+		this.addDialog.setLocationRelativeTo(this.panelPpal.getComponent());
+		this.addDialog.setLocation(1016-422, 5+150);
+		addDialog.cleanComponents(townList,speciesList);
 		this.addDialog.setVisible(true);
-		this.addDialog.setLocation(500,600);
-		
+	}
+	
+	public void closeDialog() {
+		this.addDialog.setVisible(false);
+	}
+	
+	public Object[] createCultive() {
+		return this.addDialog.createCultive();
+	}
+
+	public void showGraphicReport(ActionListener act, HashMap<String, Double> info,String title, char graphicType) {
+		panelPpal.showGraphicReport(act, info, title, graphicType);
 	}
 }
