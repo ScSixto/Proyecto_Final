@@ -105,8 +105,8 @@ public class FishFarmManager{
         this.townList.get(this.searchTown(townId)).addCultive(cultive);
     }
 
-    public static Cultive createCultive(int year, Species species,int cultivatedQuantity, int harvestedQuantity, double averageWeightByHarvestedAnimalKg, double costByKg){
-        return new Cultive(year, species, cultivatedQuantity, harvestedQuantity, averageWeightByHarvestedAnimalKg, costByKg);
+    public static Cultive createCultive(int year, Species species,int cultivatedQuantity, int harvestedQuantity, double averageWeightByHarvestedAnimalKg){
+        return new Cultive(year, species, cultivatedQuantity, harvestedQuantity, averageWeightByHarvestedAnimalKg);
     }
 
     public void removeCultive(int cultiveId, int townId) throws UnfoundObject{
@@ -124,7 +124,7 @@ public class FishFarmManager{
     public HashMap<String, ArrayList<Object[]>> townsAndCultives(){
     	HashMap<String, ArrayList<Object[]>> townsAndCultives = new HashMap<>();
 		for (Town town : townList) {
-			townsAndCultives.put(town.getName(), town.toObjectVectorCultives());
+			townsAndCultives.put(Util.getConvertedTownName(town), town.toObjectVectorCultives());
 		}
 		return townsAndCultives;
     }
@@ -136,7 +136,7 @@ public class FishFarmManager{
     	Object[] listOfSpecies = new Object[this.speciesList.size()];
     	int i = 0;
     	for (Species species : speciesList) {
-    		listOfSpecies[i++] = species.getName();
+    		listOfSpecies[i++] = Util.getConvertedSpeciesName(species);
 		}
     	return listOfSpecies;
     }
@@ -191,23 +191,24 @@ public class FishFarmManager{
     
     //FISH QUANTITY PER YEAR
     //-------------------------------------------------------------------------------------------------
-/*    public HashMap<Integer, Long> getFishesPerYear(char cultiveState){
+   public HashMap<Integer, Long> getFishesPerYear(char cultiveState){
     	HashMap<Integer, Long> fishesPerYear = new HashMap<>();
     	ArrayList<Integer> yearQuantity = getCultiveYearList();
 		for (Integer year : yearQuantity){
-			fishesPerYear.put(year, this.calculateFishesPerYear(year, cultiveState));		
+			Long fishesPerYearValue = this.calculateFishesPerYear(year, cultiveState);
+			if(fishesPerYearValue > 0)fishesPerYear.put(year, fishesPerYearValue);		
 		}
 		return fishesPerYear;
 	}
-*/	
-    public HashMap<String, Double> getFishesPerYear(char cultiveState){
+	
+    /* public HashMap<String, Double> getFishesPerYear(char cultiveState){
     	HashMap<String, Double> fishesPerYear = new HashMap<>();
     	ArrayList<Integer> yearQuantity = getCultiveYearList();
 		for (Integer year : yearQuantity){
 			fishesPerYear.put(""+year, (double)this.calculateFishesPerYear(year, cultiveState));		
 		}
 		return fishesPerYear;
-    }
+    } */
 
     public long calculateFishesPerYear(int year, char cultiveState){
     	long fishesQuantity = 0;
@@ -240,7 +241,8 @@ public class FishFarmManager{
     public HashMap<Town, Double> calculateFishKilogramsPerTown(int year, char cultiveState){
     	HashMap<Town, Double> fishKilogramsPerTown = new HashMap<>();
     	for (Town town : this.townList){
-			fishKilogramsPerTown.put(town, this.calculateFishKilogramsPerYearPerTown(year, town, cultiveState));
+			double fishKilogramsPerTownValue = this.calculateFishKilogramsPerYearPerTown(year, town, cultiveState);
+			if(fishKilogramsPerTownValue > 0)fishKilogramsPerTown.put(town, fishKilogramsPerTownValue);
 		}
     	return fishKilogramsPerTown;
     }
@@ -266,7 +268,8 @@ public class FishFarmManager{
     public HashMap<Species, Double> getHarvestedFishKilogramsPerSpecies(int year){
     	HashMap<Species, Double> fishKilogramsPerSpecies = new HashMap<>();
     	for (Species species : this.speciesList){
-    		fishKilogramsPerSpecies.put(species, this.calculateHarvestedFishKilogramsPerSpecies(year, species));
+			double fishKilogramsPerSpeciesValue = this.calculateHarvestedFishKilogramsPerSpecies(year, species);
+    		if(fishKilogramsPerSpeciesValue > 0)fishKilogramsPerSpecies.put(species, fishKilogramsPerSpeciesValue);
     	}
     	return fishKilogramsPerSpecies;
     }
@@ -275,7 +278,7 @@ public class FishFarmManager{
     	double fishKilogramsPerSpecies = 0;
     	for(Town town: this.townList){
     		for (Cultive cultive : town.getCultiveList()){
-				if(cultive.getYear() == year && cultive.getSpecies() == species){
+				if(cultive.getYear() == year && cultive.getSpecies().equals(species)){
 					fishKilogramsPerSpecies += cultive.calculateTotalCultiveWeightKg();
 				}
 			}
@@ -285,7 +288,7 @@ public class FishFarmManager{
     //-------------------------------------------------------------------------------------------------
     //EARNINGS PER TOWN
     //-------------------------------------------------------------------------------------------------
-/*    public HashMap<Integer,HashMap<Town, Double>> getEarningsPerTownPerYear(){
+   public HashMap<Integer,HashMap<Town, Double>> getEarningsPerTownPerYear(){
     	HashMap<Integer,HashMap<Town, Double>> earningsPerTownPerYear = new HashMap<>();
     	for (Integer year : this.getCultiveYearList()){
     		earningsPerTownPerYear.put(year, this.getEarningsPerTown(year));		
@@ -296,18 +299,19 @@ public class FishFarmManager{
     public HashMap<Town, Double> getEarningsPerTown(int year){
     	HashMap<Town, Double> earningsPerTown = new HashMap<>();
     	for (Town town : this.townList){
-    		earningsPerTown.put(town, this.calculateEarningsPerTown(year, town));
+			double earningsPerTownValue = this.calculateEarningsPerTown(year, town); 
+    		if(earningsPerTownValue>0)earningsPerTown.put(town,earningsPerTownValue);
     	}
     	return earningsPerTown;
 	}
-*/
-	public HashMap<String, Double> getEarningsPerTown(int year){
+
+	/* public HashMap<String, Double> getEarningsPerTown(int year){
     	HashMap<String, Double> earningsPerTown = new HashMap<>();
     	for (Town town : this.townList){
     		earningsPerTown.put(town.getName(), this.calculateEarningsPerTown(year, town));
     	}
     	return earningsPerTown;
-    }
+    } */
 
     public double calculateEarningsPerTown(int year, Town town){
     	double earningsPerTown = 0;
@@ -377,7 +381,7 @@ public class FishFarmManager{
     	int waterTypeQuantityPerType = 0;
     	for (Town town : this.townList){
     		for (Cultive cultive : town.getCultiveList()) {
-				System.out.println(cultive.getId() + " " + cultive.getSpecies().getName());
+				// System.out.println(cultive.getId() + " " + cultive.getSpecies().getName());
     			if(cultive.getSpecies().getWaterType().equals(waterType))
     				waterTypeQuantityPerType += cultive.getCultivatedQuantity();
 			}

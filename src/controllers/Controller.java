@@ -87,7 +87,7 @@ public class Controller implements ActionListener{
             for(Object[] cultiveObj: cultiveList){
             	try {
             		speciesPosition = this.farmManager.searchSpeciesByName((String)cultiveObj[2]);
-	                cultive = FishFarmManager.createCultive((Integer)cultiveObj[1], this.farmManager.getSpecies(speciesPosition), (Integer)cultiveObj[3], (Integer)cultiveObj[4], Util.toKilograms((Double)cultiveObj[5]),(Double)cultiveObj[6]);
+	                cultive = FishFarmManager.createCultive((Integer)cultiveObj[1], this.farmManager.getSpecies(speciesPosition), (Integer)cultiveObj[3], (Integer)cultiveObj[4], Util.toKilograms((Double)cultiveObj[5]));
 	                try{
 	                    this.farmManager.addCultive(cultive, this.farmManager.getTownId(this.farmManager.searchTownByName((String)cultiveObj[0])));
 	                }catch(UnfoundObject e){
@@ -207,11 +207,17 @@ public class Controller implements ActionListener{
 		case GRAPHIC_REPORTS:
 			showGraphicButtonPanel();
 			break;
+		case BEFORE_CARD_GRAPHIC_REPORT:
+			showBeforeCardGraphicReport();
+			break;
+		case NEXT_CARD_GRAPHIC_REPORT:
+			showNextCardGraphicReport();
+			break;
 		case GRAPHIC_REPORT_ONE:
 			showCultivatedAndHarvestedFishesPerYear();
 			break;
 		case GRAPHIC_REPORT_TWO:
-			showHarvestedFishesPertownPerYear();
+			showHarvestedFishesPerTownPerYear();
 			break;
 		case GRAPHIC_REPORT_THREE:
 			showCultivatedFishesSpeciesPerYear();
@@ -246,7 +252,15 @@ public class Controller implements ActionListener{
 		}
 	}
 	
-	private void manageChangeLanguage(){
+	private void showNextCardGraphicReport() {
+		frame.showNextCardGraphicReport();
+	}
+
+	private void showBeforeCardGraphicReport() {
+		frame.showBeforeCardGraphicReport();
+	}
+
+	private void manageChangeLanguage() {
 		frame.changeLanguage();		
 	}
 	
@@ -266,7 +280,7 @@ public class Controller implements ActionListener{
 	}
 
 	private void showCultivesTable(){
-		frame.showTableCultives(UtilView.showCultivesTable(farmManager.townsAndCultives()));
+		frame.showTableCultives(UtilView.formatCultivesTable(farmManager.townsAndCultives()));
 	}
 	
 	private void showPanelButtonTableReports(){
@@ -283,37 +297,38 @@ public class Controller implements ActionListener{
 	// }
 	
 	private void showCultivatedAndHarvestedFishesPerYear(){
-		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE, ConstantsGUI.CIRCLE_GRAPHIC);
+		frame.showGraphicReport(this, Util.convertToReportPerYear(farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE)), ConstantsGUI.GRAPHIC_TITLE_CULTIVATED_AND_HARVESTED_FISHES_PER_YEAR, ConstantsGUI.CIRCLE_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
-	private void showHarvestedFishesPertownPerYear(){
-		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TWO, ConstantsGUI.CIRCLE_GRAPHIC);
+	private void showHarvestedFishesPerTownPerYear(){
+		frame.showGraphicReport(this, Util.convertToReportPerTown(farmManager.calculateFishKilogramsPerTown(2016, FishFarmManager.HARVESTED_FISHES_STATE)),
+				ConstantsGUI.GRAPHIC_TITLE_HARVESTED_FISHES_PER_TOWN_PER_YEAR, ConstantsGUI.POINT_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
 	private void showCultivatedFishesSpeciesPerYear(){
-		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_THREE, ConstantsGUI.CIRCLE_GRAPHIC);
+		frame.showGraphicReport(this, Util.convertToReportSpeciesPerYear(farmManager.getHarvestedFishKilogramsPerSpecies(2016)), ConstantsGUI.GRAPHIC_TITLE_CULTIVATED_FISHES_SPECIES_KG_PER_YEAR, ConstantsGUI.BAR_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
 	private void showTownEarningsPerYear(){
-		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_FOUR, ConstantsGUI.CIRCLE_GRAPHIC);
+		frame.showGraphicReport(this, Util.convertToReportPerTown(farmManager.getEarningsPerTown(2016)), ConstantsGUI.GRAPHIC_TITLE_TOWN_EARNINGS_PER_YEAR, ConstantsGUI.POINT_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
 	private void showFishesSpeciesWeight(){
-		frame.showGraphicReport(this, farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_FIVE, ConstantsGUI.CIRCLE_GRAPHIC);
+		frame.showGraphicReport(this, Util.convertToReportSpeciesPerYear(farmManager.getAverageWeightPerSpeciesKg()), ConstantsGUI.GRAPHIC_TITLE_SPECIES_WEIGHT, ConstantsGUI.BAR_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
 	private void showFishFoodUsing(){
-		frame.showGraphicReport(this, Util.convertToReportFood(farmManager.getFishFoodQuantityPerType()), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_SIX, ConstantsGUI.CIRCLE_GRAPHIC);
+		frame.showGraphicReport(this, Util.convertToReportFood(farmManager.getFishFoodQuantityPerType()), ConstantsGUI.GRAPHIC_TITLE_FISH_FOOD_USING, ConstantsGUI.CIRCLE_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
 	private void showWaterTypeUsing(){
-		frame.showGraphicReport(this, Util.convertToReportWaterType(farmManager.getWaterTypeQuantityPerType()), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_ONE, ConstantsGUI.CIRCLE_GRAPHIC);
+		frame.showGraphicReport(this, Util.convertToReportWaterType(farmManager.getWaterTypeQuantityPerType()), ConstantsGUI.GRAPHIC_TITLE_WATER_TYPE_USING, ConstantsGUI.CIRCLE_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
@@ -321,42 +336,36 @@ public class Controller implements ActionListener{
 		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORTS);
 	}
 	
-	private void showPanelTables(String title) {
-		showCardImage(ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
-		frame.addLabel(title);
-	}
-	
 	private void showReportCultivesPerTown() {
 		charOfTableReport = CULTIVE_PER_TOWN_REPORT;
-		frame.addItemsComboBox(Util.transformTownsArray(farmManager.toObjectVectorTown()));
-		showPanelTables(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_EIGHT);
+		frame.addItemsComboBox(Util.transformTownsArray(farmManager.toObjectVectorTown()),ConstantsGUI.T_TEXT_REPORT_GRAPHICS_EIGHT);
+		showCardImage(ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 	}
 	
 	private void showReportCultivesPerYear() {
 		charOfTableReport = CULTIVE_PER_YEAR_REPORT;
-		frame.addItemsComboBox(Util.transformYearsArray(farmManager.getCultiveYearList()));
-		showPanelTables(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_NINE);
+		frame.addItemsComboBox(Util.transformYearsArray(farmManager.getCultiveYearList()), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_NINE);
+		showCardImage(ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 	}
 	
 	private void showReportCultivesPerSpecie() {
 		charOfTableReport = CULTIVE_PER_SPECIES_REPORT;
-		frame.addItemsComboBox(farmManager.getSpeciesName());
-		showPanelTables(ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TEN);
+		frame.addItemsComboBox(farmManager.getSpeciesName(), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TEN);
+		showCardImage(ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 	}
 	
 	private void getItemForTablesReport() {
 		switch (charOfTableReport) {
 		case CULTIVE_PER_TOWN_REPORT:
 			System.out.println(frame.getItemComboBox());
-			frame.getInformationCultives(UtilView.showCultivesTable(farmManager.cultivesPerTownReport((String)frame.getItemComboBox())));
+			frame.getInformationCultives(UtilView.formatCultivesTable(farmManager.cultivesPerTownReport((String)frame.getItemComboBox())));
 			break;
 		case CULTIVE_PER_YEAR_REPORT:
-			frame.getInformationCultives(UtilView.showCultivesTable(farmManager.getCultivesPerYear(Util.veryfyObject(frame.getItemComboBox()))));
+			frame.getInformationCultives(UtilView.formatCultivesTable(farmManager.getCultivesPerYear(Util.veryfyObject(frame.getItemComboBox()))));
 			break;
 		case CULTIVE_PER_SPECIES_REPORT:
-			frame.getInformationCultives(UtilView.showCultivesTable(farmManager.getCultivesPerSpecies((String)frame.getItemComboBox())));
+			frame.getInformationCultives(UtilView.formatCultivesTable(farmManager.getCultivesPerSpecies((String)frame.getItemComboBox())));
 			break;
-
 		}
 	}
 	public static void main(String[] args) {

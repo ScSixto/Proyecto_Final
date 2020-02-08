@@ -9,16 +9,14 @@ public class Cultive{
     private int cultivatedQuantity;
     private int harvestedQuantity;
 	private double averageWeightByHarvestedAnimalKg;
-	private double costByKg;
 
-    public Cultive(int year, Species species,int cultivatedQuantity, int harvestedQuantity, double averageWeightByHarvestedAnimalKg, double costByKg){
+    public Cultive(int year, Species species,int cultivatedQuantity, int harvestedQuantity, double averageWeightByHarvestedAnimalKg){
         this.id = ++sequential;
         this.year  = year;
         this.species = species;
         this.cultivatedQuantity = cultivatedQuantity;
         this.harvestedQuantity = harvestedQuantity;
         this.averageWeightByHarvestedAnimalKg = averageWeightByHarvestedAnimalKg;
-        this.costByKg = costByKg;
     }
 
     public int getId(){
@@ -54,16 +52,8 @@ public class Cultive{
 		this.averageWeightByHarvestedAnimalKg = averageWeightByHarvestedAnimalKg;
 	}
 
-	public double getCostByKg() {
-  		return costByKg;
-  	}
-
-  	public void setCostByKg(double costByKg) {
-  		this.costByKg = costByKg;
-  	}
-
   	public double calculateTotalCultiveCost(){
-  		return (this.costByKg *(this.harvestedQuantity * this.averageWeightByHarvestedAnimalKg));
+  		return ((this.species.getCostByPound()*2)*(this.harvestedQuantity * this.averageWeightByHarvestedAnimalKg));
   	}
   	
   	public double calculateTotalCultiveWeightKg(){
@@ -71,6 +61,6 @@ public class Cultive{
   	}
   	
   	public Object[] toObjectVector() {
-  		return new Object[] {this.id, this.year, this.species.getName(), this.cultivatedQuantity, this.harvestedQuantity, this.calculateTotalCultiveWeightKg(), this.calculateTotalCultiveCost()};
+  		return new Object[] {this.id, this.year, Util.getConvertedSpeciesName(this.species), this.cultivatedQuantity, this.harvestedQuantity, this.calculateTotalCultiveWeightKg(), this.calculateTotalCultiveCost()};
   	}
 }

@@ -49,12 +49,8 @@ public class JPanelPrincipal extends JPanel{
 		panelBody.showTableCultives(info);
 	}
 
-	public void addLabel(String title) {
-		panelBody.addLabel(title);
-	}
-	
-	public void addItemsComboBox(Object[] items) {
-		panelBody.addItemsComboBox(items);
+	public void addItemsComboBox(Object[] items, String title) {
+		panelBody.addItemsComboBox(items, title);
 	}
 	
 	public Object getItemComboBox() {
@@ -65,8 +61,16 @@ public class JPanelPrincipal extends JPanel{
 		panelBody.getInformationCultives(info);
 	}
 
-	public void showGraphicReport(ActionListener act,HashMap<String, Double> info, String title, char graphicType) {
+	public void showGraphicReport(ActionListener act,HashMap<String, Object> info, String title, char graphicType) {
 		panelBody.showGraphicReport(act,info, title, graphicType);
+	}
+
+	public void showNextCardGraphicReport() {
+		panelBody.showNextCardGraphicReport();
+	}
+
+	public void showBeforeCardGraphicReport() {
+		panelBody.showBeforeCardGraphicReport();
 	}
 	
 //	public void repaint() {

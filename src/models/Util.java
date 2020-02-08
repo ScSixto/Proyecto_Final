@@ -59,8 +59,8 @@ public class Util{
     	return (object == null)? 0:(int)object;
     }
 
-    public static HashMap<String, Double> convertToReportPerYear(HashMap<Integer, Long> data){
-        HashMap<String, Double> reportFormat = new HashMap<>();
+    public static HashMap<String, Object> convertToReportPerYear(HashMap<Integer, Long> data){
+        HashMap<String, Object> reportFormat = new HashMap<>();
         Iterator<Entry<Integer, Long>> it = data.entrySet().iterator();
         while (it.hasNext()){
             Entry<Integer, Long> entry = it.next();
@@ -69,28 +69,38 @@ public class Util{
         return reportFormat;
     }
 
-    public static HashMap<String, Double> convertToReportPerTown(HashMap<Town, Double> data){
-        HashMap<String, Double> reportFormat = new HashMap<>();
+    public static HashMap<String, Object> convertToReportPerTown(HashMap<Town, Double> data){
+        HashMap<String, Object> reportFormat = new HashMap<>();
         Iterator<Entry<Town, Double>> it = data.entrySet().iterator();
         while (it.hasNext()){
             Entry<Town, Double> entry = it.next();
-            reportFormat.put(entry.getKey().getName(), entry.getValue());
+            reportFormat.put(getConvertedTownName(entry.getKey()), entry.getValue());
         }
         return reportFormat;
     }
 
-    public static HashMap<String, Double> convertToReportSpeciesPerYear(HashMap<Species, Double> data){
-        HashMap<String, Double> reportFormat = new HashMap<>();
+    public static String getConvertedTownName(Town town){
+        // System.out.println("Si entra a esta mrda");
+        return town.getName().substring(0,1).toUpperCase() + town.getName().substring(1).toLowerCase();
+    }
+
+    public static String getConvertedSpeciesName(Species species){
+        // System.out.println("Si entra a esta mrda");
+        return species.getName().substring(0,1).toUpperCase() + species.getName().substring(1).toLowerCase();
+    }
+
+    public static HashMap<String, Object> convertToReportSpeciesPerYear(HashMap<Species, Double> data){
+        HashMap<String, Object> reportFormat = new HashMap<>();
         Iterator<Entry<Species, Double>> it = data.entrySet().iterator();
         while (it.hasNext()){
             Entry<Species, Double> entry = it.next();
-            reportFormat.put(entry.getKey().getName(), entry.getValue());
+            reportFormat.put(getConvertedSpeciesName(entry.getKey()), entry.getValue());
         }
         return reportFormat;
     }
 
-    public static HashMap<String, Double> convertToReportFood(HashMap<Food,Integer> data){
-        HashMap<String, Double> reportFormat = new HashMap<>();
+    public static HashMap<String, Object> convertToReportFood(HashMap<Food,Integer> data){
+        HashMap<String, Object> reportFormat = new HashMap<>();
         Iterator<Entry<Food, Integer>> it = data.entrySet().iterator();
         while (it.hasNext()){
             Entry<Food, Integer> entry = it.next();
@@ -99,8 +109,8 @@ public class Util{
         return reportFormat;
     }
 
-    public static HashMap<String, Double> convertToReportWaterType(HashMap<WaterType,Integer> data){
-        HashMap<String, Double> reportFormat = new HashMap<>();
+    public static HashMap<String, Object> convertToReportWaterType(HashMap<WaterType,Integer> data){
+        HashMap<String, Object> reportFormat = new HashMap<>();
         Iterator<Entry<WaterType, Integer>> it = data.entrySet().iterator();
         while (it.hasNext()){
             Entry<WaterType, Integer> entry = it.next();

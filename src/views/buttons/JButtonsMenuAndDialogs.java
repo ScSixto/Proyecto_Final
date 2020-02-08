@@ -9,7 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-import views.ConstantsGUI;
+import views.UtilView;
 
 public class JButtonsMenuAndDialogs extends JButton{
 
@@ -20,7 +20,7 @@ public class JButtonsMenuAndDialogs extends JButton{
 	
 	public JButtonsMenuAndDialogs(String routeImage) {
 		setPreferredSize(new Dimension(DIMENSION_WHIDTH,DIMENSION_HEIGHT));
-		setIcon(ConstantsGUI.convertToIcon(routeImage,DIMENSION_WHIDTH,DIMENSION_HEIGHT));
+		setIcon(UtilView.convertToIcon(routeImage,DIMENSION_WHIDTH,DIMENSION_HEIGHT));
 		setOpaque(false);
 		setBorderPainted(false);
 		setContentAreaFilled(false);
@@ -29,7 +29,7 @@ public class JButtonsMenuAndDialogs extends JButton{
 	
 	public JButtonsMenuAndDialogs(String routeImage, int width, int heigth) {
 		setPreferredSize(new Dimension(width,heigth));
-		setIcon(ConstantsGUI.convertToIcon(routeImage,width,heigth));
+		setIcon(UtilView.convertToIcon(routeImage,width,heigth));
 		setOpaque(false);
 		setBorderPainted(false);
 		setContentAreaFilled(false);
@@ -43,7 +43,7 @@ public class JButtonsMenuAndDialogs extends JButton{
 		setForeground(colorText);
 		setHorizontalTextPosition(SwingConstants.CENTER);
 		setVerticalTextPosition(SwingConstants.BOTTOM);
-		setIcon(ConstantsGUI.convertToIcon(routeImage,heigth-20,heigth-20));
+		setIcon(UtilView.convertToIcon(routeImage,heigth-20,heigth-20));
 		setOpaque(false);
 		setBorderPainted(false);
 		setContentAreaFilled(false);

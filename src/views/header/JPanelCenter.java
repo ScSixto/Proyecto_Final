@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import views.ConstantsGUI;
+import views.UtilView;
 
 public class JPanelCenter extends JPanel{
 
@@ -35,7 +35,7 @@ public class JPanelCenter extends JPanel{
 	
 	private void addLogo() {
 		JLabel labelLogo = new JLabel();
-		labelLogo.setIcon(ConstantsGUI.convertToIcon("resources/img/logo3.png",150,150));
+		labelLogo.setIcon(UtilView.convertToIcon("resources/img/logo3.png",150,150));
 		labelLogo.setOpaque(false);
 		add(labelLogo);
 	}

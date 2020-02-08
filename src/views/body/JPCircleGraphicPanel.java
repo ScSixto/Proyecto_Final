@@ -12,6 +12,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GradientPaint;
 
 import views.ConstantsGUI;
 import views.UtilView;
@@ -20,7 +23,7 @@ public class JPCircleGraphicPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private GroupLayout layout;
+	private  GroupLayout layout;
 	private JPanel circleGraphicPanel;
 	private JPGraphicInformation panelInformation;
 
@@ -28,8 +31,8 @@ public class JPCircleGraphicPanel extends JPanel {
 		this.layout = new GroupLayout(this);
 		this.setLayout(layout);
 		this.setBorder(BorderFactory.createEmptyBorder(10,30, 10, 30));
-		this.setOpaque(false);
-		this.setBackground(Color.BLUE);
+		this.setBackground(Color.WHITE);
+		this.setOpaque(true);
 		//this.setVisible(false);
 		// this.setPreferredSize(new Dimension((int) (ConstantsGUI.CIRCLE_GRAPHIC_RADIOUS * 2 +300/*  panelInformation.getSize().getWidth() */),ConstantsGUI.CIRCLE_GRAPHIC_RADIOUS * 2));
 	}
@@ -104,4 +107,11 @@ public class JPCircleGraphicPanel extends JPanel {
 		public void changeLanguage(){
 		}
 	
+
+	public void paint(Graphics g){
+		Graphics2D g2 = (Graphics2D) g;
+		// g2.setPaint(new Paint(new GradientPaint(0, 0, Color.darkGray, 70, 70, Color.white)));
+		g2.setPaint(new GradientPaint(0, 0, Color.darkGray, 70, 70, Color.white));
+		super.paint(g2);
+	}
 }

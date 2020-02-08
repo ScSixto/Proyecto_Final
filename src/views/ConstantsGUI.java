@@ -2,13 +2,10 @@ package views;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.Paint;
 import java.awt.Toolkit;
 import java.awt.Font;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 
@@ -49,7 +46,14 @@ public class ConstantsGUI {
 	public static final String T_SIZE_HOMEPAGE = "Size_HomePage";
 	public static final String T_SELECT_OPTION = "Select_Option";
 	// Titulos de Gráficos
-	public static final String GRAPHIC_TITLE_CULTIVATED_FISHES_PER_YEAR = "Cultivated_Fishes_Per_Year";
+	public static final String GRAPHIC_TITLE_CULTIVATED_AND_HARVESTED_FISHES_PER_YEAR = "Graphic_Title_Cultivated_Fishes_Per_Year";
+	public static final String GRAPHIC_TITLE_HARVESTED_FISHES_PER_TOWN_PER_YEAR = "Graphic_Title_Harvested_Fishes_Per_Town_Per_Year";
+	public static final String GRAPHIC_TITLE_CULTIVATED_FISHES_SPECIES_KG_PER_YEAR = "Graphic_Title_Harvested_Fishes_species_Kg_Per_Year";
+	public static final String GRAPHIC_TITLE_TOWN_EARNINGS_PER_YEAR = "Graphic_Title_Town_Earnings_Per_Year";
+	public static final String GRAPHIC_TITLE_SPECIES_WEIGHT = "Graphic_Title_Species_Weight";
+	public static final String GRAPHIC_TITLE_FISH_FOOD_USING = "Graphic_Title_Fish_Food_Using";
+	public static final String GRAPHIC_TITLE_WATER_TYPE_USING = "Graphic_Title_Water_Type_Using";
+	
 	public static final String T_TITLE_REPORT_GRAPHICS = "Title_Report_Graphics";
 	public static final String T_TITLE_REPORT_TABLES = "Title_Report_Tables";
 	public static final String T_TEXT_REPORT_GRAPHICS_ONE = "Text_Report_Graphics_One";
@@ -118,29 +122,26 @@ public class ConstantsGUI {
 
 //Valores gráfica de barras
 	public static final Color DEFAULT_AXIS_COLOR = ConstantsGUI.COLOR_BLACK;
-	public static final int MAX_PIXEL_COL_HEIGHT_VALUE = 300;
-	public static final int MAX_PIXEL_COL_WIDTH_VALUE = 25;
+	public static final int MAX_PIXEL_COL_HEIGHT_VALUE = 350;
+	public static final int MAX_PIXEL_COL_WIDTH_VALUE = 27;
 	public static final int AXIS_LINE_WIDTH = 1;
 	public static final int COL_SEPARATION = 5;
 	public static final int Y_AXIS_VALUE_QUANTITY = 5;
 	public static final Font DATA_LABEL_FONT = new Font("Arial",Font.PLAIN,9);
 	public static final int Y_AXIS_LABEL_WIDTH = 30;
+
 	public static final int INFORMATION_CIRCLE_DIAMETER = 15;
 	public static final int INFORMATION_CIRCLE_ANGLE = 45;
 	public static final int INFORMATION_CIRCLE_SEPARATION = 15;
 	public static final int INFORMATION_CIRCLE_LABEL_SEPARATION = 5;
 	public static final Font TITLE_GRAPHIC_FONT = new Font("Arial", Font.BOLD, 15);
 	public static final Color TITLE_GRAPHIC_FOREGROUND = ConstantsGUI.COLOR_BLACK;
+
 	public static final int CIRCLE_GRAPHIC_RADIOUS = 150;
 	public static final double CIRCLE_GRAPHIC_MAX_ANGLE = 360;
 	public static final int CIRCLE_GRAPHIC_OVAL_SPACE = 6;
-	
-	public static Icon convertToIcon(String route, int width, int heigth) {
-		ImageIcon icon = new ImageIcon(route);
-		Icon scaleIcon = new ImageIcon(icon.getImage().getScaledInstance(width,heigth, Image.SCALE_SMOOTH));
-		return scaleIcon;
-	}
-	
+	public static final int GRAPHIC_MAX_DATA_QUANTITY = 20;
+
 	public static JLabel createLabelTitles(String text) {
 		JLabel label = new JLabel(text);
 		label.setFont(new Font("Roboto", Font.ITALIC, 50));

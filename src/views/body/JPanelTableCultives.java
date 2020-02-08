@@ -52,7 +52,7 @@ public class JPanelTableCultives extends JPanel{
 		labelTitleTable.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_TABLE_CULTIVES));
 		table.changeLanguageTableCultives();
 	}
-	
+
 	public void addPanel(JLabel label) {
 		JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		panel.setOpaque(false);

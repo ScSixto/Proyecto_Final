@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 import views.ConstantsGUI;
+import views.UtilView;
 
 public class JButtonOptionsReports extends JButton{
 
@@ -39,16 +40,16 @@ public class JButtonOptionsReports extends JButton{
 	private void setIconButton(char logo) {
 		switch (logo) {
 		case ConstantsGUI.CIRCLE_GRAPHIC:
-		setIcon(ConstantsGUI.convertToIcon("resources/img/diagramaTorta.png", WIDHT_AND_HEIGHT_LOGO, WIDHT_AND_HEIGHT_LOGO));
+		setIcon(UtilView.convertToIcon("resources/img/diagramaTorta.png", WIDHT_AND_HEIGHT_LOGO, WIDHT_AND_HEIGHT_LOGO));
 		break;
 		case ConstantsGUI.BAR_GRAPHIC:
-		setIcon(ConstantsGUI.convertToIcon("resources/img/diagramaBarras.png", WIDHT_AND_HEIGHT_LOGO, WIDHT_AND_HEIGHT_LOGO));
+		setIcon(UtilView.convertToIcon("resources/img/diagramaBarras.png", WIDHT_AND_HEIGHT_LOGO, WIDHT_AND_HEIGHT_LOGO));
 		break;
 		case ConstantsGUI.TABLE_REPORT:
-			setIcon(ConstantsGUI.convertToIcon("resources/img/tablaBoton.png", WIDHT_AND_HEIGHT_LOGO, WIDHT_AND_HEIGHT_LOGO));
+			setIcon(UtilView.convertToIcon("resources/img/tablaBoton.png", WIDHT_AND_HEIGHT_LOGO, WIDHT_AND_HEIGHT_LOGO));
 			break;
 		default:
-			setIcon(ConstantsGUI.convertToIcon("resources/img/diagramaPuntos.png", WIDHT_AND_HEIGHT_LOGO, WIDHT_AND_HEIGHT_LOGO));
+			setIcon(UtilView.convertToIcon("resources/img/diagramaPuntos.png", WIDHT_AND_HEIGHT_LOGO, WIDHT_AND_HEIGHT_LOGO));
 			break;
 		
 		}

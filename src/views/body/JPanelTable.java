@@ -102,7 +102,7 @@ public class JPanelTable extends JPanel{
 	        it.remove(); 
 	    }
 		addRunnerList(arrayFormat);
-		System.out.println(j + " - cantidad");
+		// System.out.println(j + " - cantidad");
 		return j;
 	}
 	

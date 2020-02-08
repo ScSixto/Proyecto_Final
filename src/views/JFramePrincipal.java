@@ -85,12 +85,8 @@ public class JFramePrincipal extends JFrame{
 		panelPpal.repaint();
 	}
 	
-	public void addLabel(String title) {
-		panelPpal.addLabel(title);
-	}
-	
-	public void addItemsComboBox(Object[] items) {
-		panelPpal.addItemsComboBox(items);
+	public void addItemsComboBox(Object[] items, String title) {
+		panelPpal.addItemsComboBox(items, title);
 	}
 	
 	public Object getItemComboBox() {
@@ -101,7 +97,15 @@ public class JFramePrincipal extends JFrame{
 		panelPpal.getInformationCultives(info);
 	}
 
-	public void showGraphicReport(ActionListener act, HashMap<String, Double> info,String title, char graphicType) {
+	public void showGraphicReport(ActionListener act, HashMap<String, Object> info,String title, char graphicType) {
 		panelPpal.showGraphicReport(act, info, title, graphicType);
+	}
+
+	public void showNextCardGraphicReport() {
+		panelPpal.showNextCardGraphicReport();
+	}
+
+	public void showBeforeCardGraphicReport() {
+		panelPpal.showBeforeCardGraphicReport();
 	}
 }

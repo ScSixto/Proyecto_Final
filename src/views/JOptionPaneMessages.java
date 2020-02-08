@@ -53,11 +53,11 @@ public class JOptionPaneMessages {
 	}
 	
 //	public static int showMessageConfirmationDelete() {
-//		return JOptionPane.showConfirmDialog(null,Constants.MESSAGE_CONFIRMATION_DELETE,"Confirmación",JOptionPane.YES_NO_OPTION);
+//		return JOptionPane.showConfirmDialog(null,Constants.MESSAGE_CONFIRMATION_DELETE,"Confirmaciï¿½n",JOptionPane.YES_NO_OPTION);
 //	}
 //	
 //	public static int showMessageConfirmationEdit() {
-//		return JOptionPane.showConfirmDialog(null,Constants.MESSAGE_CONFIRMATION_EDIT,"Confirmación",JOptionPane.YES_NO_OPTION);
+//		return JOptionPane.showConfirmDialog(null,Constants.MESSAGE_CONFIRMATION_EDIT,"Confirmaciï¿½n",JOptionPane.YES_NO_OPTION);
 //	}
 	
 	public static int jOptionPaneYesOption() {
@@ -65,7 +65,7 @@ public class JOptionPaneMessages {
 	}
 	
 	public static void showMessageExport() {
-		showMessage("Archivo exportado", "Exportar", JOptionPane.PLAIN_MESSAGE, ConstantsGUI.convertToIcon("resources/img/export.png",40,40));
+		showMessage("Archivo exportado", "Exportar", JOptionPane.PLAIN_MESSAGE, UtilView.convertToIcon("resources/img/export.png",40,40));
 	}
 	
 //	public static void showMessageCorrectDelete() {
