@@ -226,6 +226,9 @@ public class Controller implements ActionListener{
 		case PANEL_TABLE_CULTIVES:
 			showPanelTableCultives();
 			break;
+		case OPEN_DIALOG_ADD:
+			frame.showDialogAdd();
+			break;
 		}
 	}
 	

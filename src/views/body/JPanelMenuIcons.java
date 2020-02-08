@@ -38,7 +38,7 @@ public class JPanelMenuIcons extends JPanel{
 		add = new JButtonsMenuAndDialogs("resources/img/add.png",WIDTH_BUTTONS,HEIGTH_BUTTONS);
 		add.setToolTipText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_ADD));
 		add.addActionListener(actionListener);
-		add.setActionCommand(Commands.CHANGE_SPANISH.toString());
+		add.setActionCommand(Commands.OPEN_DIALOG_ADD.toString());
 		add(add);
 		delete = new JButtonsMenuAndDialogs("resources/img/delete.png",WIDTH_BUTTONS,HEIGTH_BUTTONS);
 		delete.setToolTipText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_DELETE));

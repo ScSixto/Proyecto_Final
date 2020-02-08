@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
 import general.HandlerLanguage;
+import views.dialogs.JDialogAddAndEditCultives;
 import views.dialogs.JDialogLanguage;
 
 public class JFramePrincipal extends JFrame{
@@ -19,6 +20,7 @@ public class JFramePrincipal extends JFrame{
 	
 	private JPanelPrincipal panelPpal;
 	private JDialogLanguage dialogLanguage;
+	private JDialogAddAndEditCultives addDialog;
 
 	private JScrollPane scroll;
 	
@@ -41,6 +43,7 @@ public class JFramePrincipal extends JFrame{
 		dialogLanguage = new JDialogLanguage(this,actionListener);		
 		scroll.setViewportView(panelPpal);
 		addScrollBar();
+		addDialog = new JDialogAddAndEditCultives(this);
 	}
 	
     public void addScrollBar(){
@@ -103,5 +106,11 @@ public class JFramePrincipal extends JFrame{
 	
 	public void getInformationCultives(HashMap<String, ArrayList<Object[]>> info) {
 		panelPpal.getInformationCultives(info);
+	}
+	
+	public void showDialogAdd() {
+		this.addDialog.setVisible(true);
+		this.addDialog.setLocation(500,600);
+		
 	}
 }

@@ -112,24 +112,24 @@ public class JPanelTable extends JPanel{
 		recalculateSize(numberRows);
 	}
 	
-	private void recalculateSize(int numberRows) {
-		int size = (HEIGHT_ROWS * MAX_QUANTITY_ROWS) + 1;
-		int borde = 0;
-		if(numberRows < MAX_QUANTITY_ROWS)
-			borde = size - (numberRows*HEIGHT_ROWS);
-		setBorder(BorderFactory.createEmptyBorder(10, 0, borde, 0));
-	}
-	
 //	private void recalculateSize(int numberRows) {
-//		int minimumBorderValue = 0;
-//		int borderCalculate = -(HEIGHT_ROWS)*numberRows+SIZE_BORDER;
-//		int border;
-//		if(borderCalculate >= minimumBorderValue)
-//			border = borderCalculate;
-//		else
-//			border = minimumBorderValue;
-//		setBorder(BorderFactory.createEmptyBorder(10, 0, border, 0));
+//		int size = (HEIGHT_ROWS * MAX_QUANTITY_ROWS) + 1;
+//		int borde = 0;
+//		if(numberRows < MAX_QUANTITY_ROWS)
+//			borde = size - (numberRows*HEIGHT_ROWS);
+//		setBorder(BorderFactory.createEmptyBorder(10, 0, borde, 0));
 //	}
+	
+	private void recalculateSize(int numberRows) {
+		int minimumBorderValue = 0;
+		int borderCalculate = -(HEIGHT_ROWS)*numberRows+(HEIGHT_ROWS * MAX_QUANTITY_ROWS);
+		int border;
+		if(borderCalculate >= minimumBorderValue)
+			border = borderCalculate;
+		else
+			border = minimumBorderValue;
+		setBorder(BorderFactory.createEmptyBorder(10, 0, border, 0));
+	}
 	
 	private String validateTownBricenio(String town) {
 		return (town.equalsIgnoreCase(ConstantsGUI.TOWN_BRICENIO_INCORRECT))?ConstantsGUI.TOWN_BRICENIO_CORRECT:town;
