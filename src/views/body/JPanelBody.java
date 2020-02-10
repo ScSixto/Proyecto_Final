@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import views.ConstantsGUI;
+import views.buttons.JButtonsMenuAndDialogs;
 
 
 public class JPanelBody extends JPanel{
@@ -56,6 +57,10 @@ public class JPanelBody extends JPanel{
 		panelShowingTableReports.changeLanguage();
 		panelTableCultives.changeLanguage();
 		panelShowingGraphicReports.changeLenguage();
+	}
+	
+	public JButtonsMenuAndDialogs getComponent() {
+		return this.panelTableCultives.getComponent();
 	}
 
 	// public void showBarGraphicReport(HashMap<String, Double> info, GraphicReportTitle title){

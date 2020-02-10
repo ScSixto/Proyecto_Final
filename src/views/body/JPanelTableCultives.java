@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import general.HandlerLanguage;
 import views.ConstantsGUI;
+import views.buttons.JButtonsMenuAndDialogs;
 
 public class JPanelTableCultives extends JPanel{
 
@@ -67,5 +68,9 @@ public class JPanelTableCultives extends JPanel{
 		line.setOpaque(false);
 		addPanel(line);
 	}
-
+	
+	public JButtonsMenuAndDialogs getComponent() {
+		return this.buttons.getButtonAdd();
+	}
+	
 }

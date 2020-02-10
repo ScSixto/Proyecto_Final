@@ -47,7 +47,7 @@ public class JPanelHeaderShowReports extends JPanel{
 		text = title;
 		if(this.getComponents().length > 1)
 			this.remove(this.getComponent(1));
-		labelTitleReport = ConstantsGUI.createLabelTitleMenu(HandlerLanguage.languageProperties.getProperty(text));
+		labelTitleReport = ConstantsGUI.createLabelTitleMenu(HandlerLanguage.languageProperties.getProperty(text),ConstantsGUI.COLOR_WHITE);
 		 labelTitleReport.setBorder(BorderFactory.createEmptyBorder(0,(int)((-6.5*HandlerLanguage.languageProperties.getProperty(text).length())+570),0,0));
 		// labelTitleReport.setHorizontalTextPosition(SwingConstants.RIGHT);
 		// labelTitleReport.setBackground(Color.DARK_GRAY);

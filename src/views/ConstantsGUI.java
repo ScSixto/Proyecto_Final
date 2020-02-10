@@ -29,14 +29,16 @@ public class ConstantsGUI {
 	public static final String T_EXIT = "Exit";
 	public static final String T_HOMEPAGE = "HomePage";
 	public static final String T_CONFIRMATION = "Confirmation";
-	public static final String T_MESSAGE_END_PROGRAM = "Message_End_Program";
-	public static final String T_MESSAGE_CONFIRMATION_END_PROGRAM = "Message_Confirmation_End_Program";
+	public static final String T_ERROR = "Error";
+	public static final String T_WARNING = "Warning";
 	public static final String T_TOWN = "Town";
 	public static final String T_YEAR = "Year";
 	public static final String T_SPECIE = "Specie";
 	public static final String T_CULTIVATED_QUANTITY = "Cultivated_Quantity";
 	public static final String T_HARVESTED_QUANTITY = "Harvested_Quantity";
 	public static final String T_TOTAL_CULTIVE_WEIGHT_KG = "Total_Cultive_Weight";
+	public static final String T_AVERAGE_CULTIVE_WEIGHT_G = "Average_Cultive_Weight";
+	public static final String T_GET_ID_CULTIVE = "Get_Id_Cultive";
 	public static final String T_TOTAL_CULTIVE_PRICE = "Total_Cultive_Price";
 	public static final String T_REPORTS = "Reports";
 	public static final String T_TABLES = "Tables";
@@ -45,6 +47,19 @@ public class ConstantsGUI {
 	public static final String T_GRAPHICS = "Graphics";
 	public static final String T_SIZE_HOMEPAGE = "Size_HomePage";
 	public static final String T_SELECT_OPTION = "Select_Option";
+//	Mensajes Excepciones y otros
+	public static final String MESSAGE_NUMBER_FORMAT_EXCEPTION = "Message_NumberFormatException";
+	public static final String MESSAGE_EMPTY_FIELDS_EXCEPTION = "Message_Empty_Fields_Exception";
+	public static final String MESSAGE_UNFOUND_EXCEPTION = "Message_Unfound_Object_Exception";
+	public static final String MESSAGE_CONFIRMATION_ADD_CULTIVE = "Message_Confirmation_Cultive";
+	public static final String MESSAGE_QUESTION_EDIT_CULTIVE = "Message_Question_Edit_Cultive";
+	public static final String MESSAGE_CONFIRMATION_EDIT_CULTIVE = "Message_Confirmation_Edit_Cultive";
+	public static final String MESSAGE_QUESTION_DELETE_CULTIVE = "Message_Question_Delete_Cultive";
+	public static final String MESSAGE_CONFIRMATION_DELETE_CULTIVE = "Message_Confirmation_Delete_Cultive";
+	public static final String T_MESSAGE_END_PROGRAM = "Message_End_Program";
+	public static final String T_MESSAGE_CONFIRMATION_END_PROGRAM = "Message_Confirmation_End_Program";
+	
+	
 	// Titulos de Gráficos
 	public static final String GRAPHIC_TITLE_CULTIVATED_AND_HARVESTED_FISHES_PER_YEAR = "Graphic_Title_Cultivated_Fishes_Per_Year";
 	public static final String GRAPHIC_TITLE_HARVESTED_FISHES_PER_TOWN_PER_YEAR = "Graphic_Title_Harvested_Fishes_Per_Town_Per_Year";
@@ -85,17 +100,21 @@ public class ConstantsGUI {
 	public static final String BUTTON_YES = "Yes_Button";
 	public static final String BUTTON_NO = "No_Button";
 	public static final String BUTTON_ACCEPT = "Accept_Button";
+	public static final String BUTTON_CANCEL = "Cancel_Option";
+	public static final String BUTTON_SEARCH = "Button_Search";
+	public static final int YES_OPTION = 1;
+	public static final int NO_OPTION = 0;
 	
 	// public static final Color COLOR_BACKGRAUND = Color.decode("#cdd3f9");
 	// public static final Color COLOR_PRESENTATION = Color.BLUE;//Color.decode("#333333");
+	public static final Color COLOR_BUTTONS_REPORT = Color.decode("#A2E0D7");
 	public static final Color COLOR_BACKGRAUND = Color.decode("#f2f2f2");
 	public static final Color COLOR_PRESENTATION = Color.decode("#333333");
 	public static final Color COLOR_LINE = Color.decode("#17a788");
 	public static final Color COLOR_WHITE = Color.WHITE;
-	//public static final Color COLOR_PRESENTATION = Color.decode("#E77714");
 	public static final Color COLOR_BACKGRAUND_SIXTO = Color.decode("#ffffff");
-	//public static final String COLOR_PRESENTATION_SIXTO = "#E77714";
 	public static final Color COLOR_BLACK = Color.BLACK;
+	public static final Color COLOR_BLUE_HEADER = Color.decode("#1e3a45");
 	public static final Paint COLOR_SCROLL_GRAY = Color.decode("#444444");
 
 	
@@ -110,17 +129,26 @@ public class ConstantsGUI {
 	
 //adiciones
 	public static final String LINE = EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH;
+	public static final String HTML_TAG= "<html>";
 	public static final String HTML_TAG_CENTER= "<html><center>";
 	public static final String HTML_TAG_B= "<html><b>";
-	public static final String TOWN_BRICENIO_CORRECT= "BRICE�O";
+	public static final String TOWN_BRICENIO_CORRECT= "Brice�o";
 	public static final String TOWN_BRICENIO_INCORRECT= "BRICEÑO";
+	public static final String EMPTY= "";
+	public static final double GRAMS_BY_KILOGRAM = 1000;
 
 //Tipos de Graficas
 	public static final char BAR_GRAPHIC = 'B';
 	public static final char CIRCLE_GRAPHIC = 'C';
 	public static final char POINT_GRAPHIC = 'P';
 	public static final char TABLE_REPORT = 'T';
-
+//Tipo de ventana
+	public static final char WARNING = 'W';
+	public static final char CONFIRMATION = 'C';
+	public static final char ERROR = 'E';
+//Coordenadas botones
+	public static final int UBICATION_X_BUTTON_ADD = 1016;
+	public static final int UBICATION_Y_BUTTON_ADD = 5;
 
 //Valores gráfica de barras
 	public static final Color DEFAULT_AXIS_COLOR = ConstantsGUI.COLOR_BLACK;
@@ -152,10 +180,10 @@ public class ConstantsGUI {
 		return label;
 	}
 	
-	public static JLabel createLabelTitleMenu(String text) {
+	public static JLabel createLabelTitleMenu(String text,Color color) {
 		JLabel label = new JLabel(HTML_TAG_B+text);
 		label.setFont(new Font("Roboto", Font.ITALIC, 30));
-		label.setForeground(COLOR_WHITE);
+		label.setForeground(color);
 		return label;
 	}
 	

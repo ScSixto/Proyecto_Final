@@ -44,7 +44,7 @@ public class JPanelInitiation extends JPanel{
 		createLine();
 		labelText = new JLabel("<html>"+ HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_OF_PISCICULTURE) + "</html>");
 		labelText.setFont(new Font("Roboto", Font.PLAIN, 20));
-		labelText.setForeground(ConstantsGUI.COLOR_BLACK);
+		labelText.setForeground(ConstantsGUI.COLOR_PRESENTATION);
 //		labelText.setBackground(Color.WHITE);
 //		labelText.setOpaque(true);
 		addPanel(labelText);
@@ -66,7 +66,7 @@ public class JPanelInitiation extends JPanel{
 		JLabel line = new JLabel(ConstantsGUI.LINE);
 		line.setFont(new Font("Roboto", Font.BOLD, 40));
 		line.setForeground(ConstantsGUI.COLOR_LINE);
-		line.setOpaque(true);
+		line.setOpaque(false);
 		addPanel(line);
 	}
 }

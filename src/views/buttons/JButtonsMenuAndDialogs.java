@@ -43,7 +43,7 @@ public class JButtonsMenuAndDialogs extends JButton{
 		setForeground(colorText);
 		setHorizontalTextPosition(SwingConstants.CENTER);
 		setVerticalTextPosition(SwingConstants.BOTTOM);
-		setIcon(UtilView.convertToIcon(routeImage,heigth-20,heigth-20));
+		setIcon(UtilView.convertToIcon(routeImage,width-20,heigth-20));
 		setOpaque(false);
 		setBorderPainted(false);
 		setContentAreaFilled(false);
@@ -61,6 +61,4 @@ public class JButtonsMenuAndDialogs extends JButton{
 		setFocusable(false);
 		setCursor(new Cursor(Cursor.HAND_CURSOR));
 	}
-
-		
 }

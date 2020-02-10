@@ -8,6 +8,7 @@ import java.util.HashMap;
 import javax.swing.JPanel;
 
 import views.body.JPanelBody;
+import views.buttons.JButtonsMenuAndDialogs;
 import views.footer.JPanelFooter;
 import views.header.JPanelHeader;
 
@@ -79,6 +80,10 @@ public class JPanelPrincipal extends JPanel{
 
 	public void showNextGeneralCardGraphicReport() {
 		panelBody.showNextGeneralCardGraphicReport();
+	}
+	
+	public JButtonsMenuAndDialogs getComponent() {
+		return this.panelBody.getComponent();
 	}
 	
 //	public void repaint() {

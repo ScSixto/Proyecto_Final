@@ -66,8 +66,6 @@ public class JPanelTable extends JPanel{
 		changeLanguageTableCultives();
 		jsTable = new JScrollPane(jtElements);
 		jsTable.setForeground(Color.white);
-		// jsTable.getVerticalScrollBar().setUI(new JScrollFormat());
-		// jsTable.getHorizontalScrollBar().setUI(new JScrollFormat());		
 		jsTable.setBorder(null);
 		jsTable.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.add(jsTable);
@@ -82,10 +80,8 @@ public class JPanelTable extends JPanel{
 	}
 	
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
-//		setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 		cleanRowsTable();
 		stringFormatTableCultives(info);
-//		this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH * 0.12),(int)(ConstantsGUI.HEIGHT*0.6)));
 	}
 	
 	private int stringFormatTableCultives(HashMap<String, ArrayList<Object[]>> info) {
@@ -102,7 +98,6 @@ public class JPanelTable extends JPanel{
 	        it.remove(); 
 	    }
 		addRunnerList(arrayFormat);
-		// System.out.println(j + " - cantidad");
 		return j;
 	}
 	
@@ -112,24 +107,24 @@ public class JPanelTable extends JPanel{
 		recalculateSize(numberRows);
 	}
 	
-	private void recalculateSize(int numberRows) {
-		int size = (HEIGHT_ROWS * MAX_QUANTITY_ROWS) + 1;
-		int borde = 0;
-		if(numberRows < MAX_QUANTITY_ROWS)
-			borde = size - (numberRows*HEIGHT_ROWS);
-		setBorder(BorderFactory.createEmptyBorder(10, 0, borde, 0));
-	}
-	
 //	private void recalculateSize(int numberRows) {
-//		int minimumBorderValue = 0;
-//		int borderCalculate = -(HEIGHT_ROWS)*numberRows+SIZE_BORDER;
-//		int border;
-//		if(borderCalculate >= minimumBorderValue)
-//			border = borderCalculate;
-//		else
-//			border = minimumBorderValue;
-//		setBorder(BorderFactory.createEmptyBorder(10, 0, border, 0));
+//		int size = (HEIGHT_ROWS * MAX_QUANTITY_ROWS) + 1;
+//		int borde = 0;
+//		if(numberRows < MAX_QUANTITY_ROWS)
+//			borde = size - (numberRows*HEIGHT_ROWS);
+//		setBorder(BorderFactory.createEmptyBorder(10, 0, borde, 0));
 //	}
+	
+	private void recalculateSize(int numberRows) {
+		int minimumBorderValue = 0;
+		int borderCalculate = -(HEIGHT_ROWS)*numberRows+((HEIGHT_ROWS * MAX_QUANTITY_ROWS)-5);
+		int border;
+		if(borderCalculate >= minimumBorderValue)
+			border = borderCalculate;
+		else
+			border = minimumBorderValue;
+		setBorder(BorderFactory.createEmptyBorder(10, 0, border, 0));
+	}
 	
 	private String validateTownBricenio(String town) {
 		return (town.equalsIgnoreCase(ConstantsGUI.TOWN_BRICENIO_INCORRECT))?ConstantsGUI.TOWN_BRICENIO_CORRECT:town;
@@ -145,7 +140,6 @@ public class JPanelTable extends JPanel{
 				HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TOTAL_CULTIVE_PRICE)};
 		dtmElements.setColumnIdentifiers(header);
 		setColumnWidth();
-//		this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH * 0.12),(int)(ConstantsGUI.HEIGHT*0.5)));
 	}
 		
     private void setColumnWidth(){

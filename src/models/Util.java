@@ -43,7 +43,7 @@ public class Util{
     	Object[] vector = new Object[townList.size()];
     	int i = 0;
     	for (Object[] object : townList) {
-    		vector[i++] = object[1];
+    		vector[i++] = getConvertedTownAndSpeciesName((String)object[1]);
 		}
     	return vector;
     }
@@ -57,10 +57,28 @@ public class Util{
     	return vector;
     }
     
+    public static String getConvertedTownAndSpeciesName(String town){
+        return town.substring(0,1).toUpperCase() + town.substring(1).toLowerCase();
+    }
+
     public static int veryfyObject(Object object) {
     	return (object == null)? 0:(int)object;
     }
-
+    
+    public static Object[] convertInformation(Object[] info) {
+    	info[3] = Integer.parseInt((String)info[3]);
+    	info[4] = Integer.parseInt((String)info[4]);
+    	info[5] = Util.toKilograms(Double.parseDouble((String)info[5]));
+    	return info;
+    }
+    
+    public static void editCultive(Cultive cultive, Object[] info) {
+    	cultive.setSpecies((Species)info[2]);
+    	cultive.setCultivatedQuantity((int)info[3]);
+    	cultive.setHarvestedQuantity((int)info[4]);
+    	cultive.setAverageWeightByHarvestedAnimalKg((double)info[5]);
+    }
+    
     public static HashMap<String, Object> convertToReportPerYear(HashMap<Integer, Long> data){
         HashMap<String, Object> reportFormat = new HashMap<>();
         Iterator<Entry<Integer, Long>> it = data.entrySet().iterator();
@@ -82,12 +100,10 @@ public class Util{
     }
 
     public static String getConvertedTownName(Town town){
-        // System.out.println("Si entra a esta mrda");
         return town.getName().substring(0,1).toUpperCase() + town.getName().substring(1).toLowerCase();
     }
 
     public static String getConvertedSpeciesName(Species species){
-        // System.out.println("Si entra a esta mrda");
         return species.getName().substring(0,1).toUpperCase() + species.getName().substring(1).toLowerCase();
     }
 

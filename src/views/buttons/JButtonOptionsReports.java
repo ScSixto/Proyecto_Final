@@ -25,12 +25,41 @@ public class JButtonOptionsReports extends JButton{
 		setText(ConstantsGUI.HTML_TAG_CENTER+text);
 		setIconButton(logo);
 		setBorder(BorderFactory.createEmptyBorder(20, 20, 5, 20));
-		setBackground(Color.WHITE);
-		// setFont(new Font("Roboto", Font.BOLD, 20));
+		setBackground(ConstantsGUI.COLOR_BUTTONS_REPORT);
 		setFont(new Font("Roboto", Font.BOLD, 14));
 		setForeground(ConstantsGUI.COLOR_BLACK);
 		setHorizontalTextPosition(SwingConstants.CENTER);
 		setVerticalTextPosition(SwingConstants.BOTTOM);
+		setBorderPainted(false);
+		setOpaque(false);
+		setFocusable(false);
+		setCursor(new Cursor(Cursor.HAND_CURSOR));
+	}
+	
+	public JButtonOptionsReports(String text) {
+//		setPreferredSize(new Dimension(50,50));
+		setText(ConstantsGUI.HTML_TAG_CENTER+text);
+		setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+		setBackground(Color.WHITE);
+		setFont(new Font("Roboto", Font.BOLD, 14));
+		setForeground(ConstantsGUI.COLOR_BLUE_HEADER);
+		setHorizontalTextPosition(SwingConstants.CENTER);
+		setVerticalTextPosition(SwingConstants.CENTER);
+		setBorderPainted(false);
+		setOpaque(false);
+		setFocusable(false);
+		setCursor(new Cursor(Cursor.HAND_CURSOR));
+	}
+	
+	public JButtonOptionsReports(String text, Color color) {
+//		setPreferredSize(new Dimension(50,50));
+		setText(ConstantsGUI.HTML_TAG_CENTER+text);
+		setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+		setBackground(color);
+		setFont(new Font("Roboto", Font.BOLD, 14));
+		setForeground(ConstantsGUI.COLOR_WHITE);
+		setHorizontalTextPosition(SwingConstants.CENTER);
+		setVerticalTextPosition(SwingConstants.CENTER);
 		setBorderPainted(false);
 		setOpaque(false);
 		setFocusable(false);

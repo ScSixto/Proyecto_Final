@@ -1,6 +1,5 @@
 package views.footer;
 
-import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
@@ -14,7 +13,7 @@ public class JPanelFooter extends JPanel{
 	
 	public JPanelFooter() {
 		setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
-		setBackground(Color.decode("#49642e"));
+		setBackground(ConstantsGUI.COLOR_BLUE_HEADER);
 		setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.95),100));
 	}
 

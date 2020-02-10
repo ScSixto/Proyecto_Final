@@ -5,11 +5,13 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 
 import org.json.simple.DeserializationException;
 
-import exeptions.UnfoundObject;
+import exeptions.EmptyFieldsException;
+import exeptions.UnfoundObjectException;
 import general.HandlerLanguage;
 import models.Cultive;
 import models.FishFarmManager;
@@ -90,14 +92,13 @@ public class Controller implements ActionListener{
 	                cultive = FishFarmManager.createCultive((Integer)cultiveObj[1], this.farmManager.getSpecies(speciesPosition), (Integer)cultiveObj[3], (Integer)cultiveObj[4], Util.toKilograms((Double)cultiveObj[5]));
 	                try{
 	                    this.farmManager.addCultive(cultive, this.farmManager.getTownId(this.farmManager.searchTownByName((String)cultiveObj[0])));
-	                }catch(UnfoundObject e){
+	                }catch(UnfoundObjectException e){
 	                    Town town = FishFarmManager.createTown((String)cultiveObj[0]);
 	                    town.addCultive(cultive);
 	                    this.farmManager.addTown(town);
 	                }
-            	}catch(UnfoundObject e){
+            	}catch(UnfoundObjectException e){
             		System.out.println(e.getMessage());
-//            		e.printStackTrace();
             	}
             }
         }catch(FileNotFoundException e){
@@ -192,11 +193,8 @@ public class Controller implements ActionListener{
 		case CHANGE_SPANISH:
 			manageChangeLanguageES();
 			break;
-		case OPEN_LENGUAGE_DIALOG:
-			frame.openDialogLanguage();
-			break;
 		case EXIT:
-			endProgram();
+//			endProgram();
 			break;
 		case TABLE_REPORTS:
 			showPanelButtonTableReports();
@@ -255,6 +253,36 @@ public class Controller implements ActionListener{
 		case PANEL_TABLE_CULTIVES:
 			showPanelTableCultives();
 			break;
+		case OPEN_DIALOG_ADD:
+			showDialogAdd();
+			break;
+		case CLOSE_DIALOGS:
+			frame.closeDialog();
+			break;
+		case CREATE_CULTIVE:
+			createAndShowCultive();
+			break;
+		case OPEN_DIALOG_EDIT:
+			frame.showDialogSearchEdit();
+			break;
+		case EDIT_CULTIVE:
+			getInformationAndEditCultive();
+			break;
+		case DELETE_CULTIVE:
+			deleteCultive();
+			break;
+		case SEARCH_CULTIVE:
+			showDialogEdit();
+			break;
+		case NO_OPTION:
+			frame.noOption();
+			break;
+		case YES_OPTION:
+			frame.yesOption();
+			break;
+		case OPEN_DIALOG_DELETE:
+			frame.showDialogDeleteCultive();
+			break;
 		}
 	}
 	
@@ -282,12 +310,12 @@ public class Controller implements ActionListener{
 		frame.showCardImage(key);
 	}
 	
-	private void endProgram() {
-		if(frame.showMessageConfirmationEndProgram() == frame.jOptionPaneYesOption()) {
-			frame.showMessageEndProgram();
-			System.exit(0);	
-		}
-	}
+//	private void endProgram() {
+//		if(frame.showMessageConfirmationEndProgram() == frame.jOptionPaneYesOption()) {
+//			frame.showMessageEndProgram();
+//			System.exit(0);	
+//		}
+//	}
 
 	private void showPanelInitial() {
 		showCardImage(ConstantsGUI.PANEL_INITIAL);
@@ -382,6 +410,98 @@ public class Controller implements ActionListener{
 			break;
 		}
 	}
+	
+	private void showDialogAdd() {
+		frame.showDialogAdd(Util.transformTownsArray(farmManager.toObjectVectorTown()),farmManager.getSpeciesName());
+	}
+	
+	private void createAndShowCultive() {
+		try {
+			frame.isEmptyComponentsAddDialog();
+			createAndAddCultive();
+			frame.messageCorrectAddCultive();
+			showCultivesTable();
+			frame.closeDialog();
+		} catch (EmptyFieldsException e) {
+			frame.setMessageError(e.getMessage());
+		}catch (NumberFormatException e) {
+			frame.messageNumberFormat();
+		}
+		
+	}
+	
+	private void createAndAddCultive() {
+		Object [] infoCultives = Util.convertInformation(frame.createCultive());
+		Cultive cultive;
+		int speciesPosition;
+		try {
+			speciesPosition = this.farmManager.searchSpeciesByName((String)infoCultives[2]);
+			cultive = FishFarmManager.createCultive((int)infoCultives[1],this.farmManager.getSpecies(speciesPosition),(int)infoCultives[3],(int)infoCultives[4],(double)infoCultives[5]);
+			this.farmManager.addCultive(cultive, this.farmManager.getTownId(this.farmManager.searchTownByName((String)infoCultives[0])));
+		}catch (UnfoundObjectException e) {
+			frame.messageUnfoundObject();
+		}
+	}
+	
+	private void deleteCultive() {
+		try {
+			frame.verifyComponentsDeleteDialog();
+			Object[] info = farmManager.searchCultiveDelete(frame.getIdCultiveDelete());
+			if(frame.messageQuestionDeleteCultive() == ConstantsGUI.YES_OPTION) {
+				farmManager.deleteCultive(info);
+				frame.messageCorrectDeleteCultive();
+				showCultivesTable();
+				frame.closeDialog();
+			}
+		}catch (EmptyFieldsException e) {
+			frame.setMessageError(e.getMessage());
+		}catch (UnfoundObjectException e) {
+			frame.messageUnfoundObject();
+		}
+	}
+	
+	private void showDialogEdit() {
+		try {
+			frame.verifyComponentsEditDialogSearch();
+			int id = frame.getIdCultiveEditSearch();
+			HashMap<String, Object[]> infoCultive = farmManager.getCultive(id);
+			frame.closeDialog();
+			frame.showDialogEdit(Util.transformTownsArray(farmManager.toObjectVectorTown()),farmManager.getSpeciesName(),infoCultive);
+		} catch (EmptyFieldsException e) {
+			frame.setMessageError(e.getMessage());
+		} catch (UnfoundObjectException e) {
+			frame.messageUnfoundObject();
+		}catch (NumberFormatException e) {
+			frame.messageNumberFormat();
+		}
+	}
+	
+	private void getInformationAndEditCultive() {
+		try {
+			frame.isEmptyComponentsEditDialog();
+			if(frame.messageQuestionEditCultive() == ConstantsGUI.YES_OPTION) {
+				editCultive();
+				frame.messageCorrectEditCultive();
+				showCultivesTable();
+				frame.closeDialog();
+			}
+		} catch (EmptyFieldsException e) {
+			frame.setMessageError(e.getMessage());
+		}catch (NumberFormatException e) {
+			frame.messageNumberFormat();
+		}
+	}
+	
+	private void editCultive() {
+		Object [] infoCultives = Util.convertInformation(frame.CultiveEdited());
+		try {
+			infoCultives[2] = this.farmManager.getSpecies(this.farmManager.searchSpeciesByName((String)infoCultives[2]));
+			this.farmManager.editCultive(infoCultives);
+		}catch (UnfoundObjectException e) {
+			frame.messageUnfoundObject();
+		}
+	}
+	
 	public static void main(String[] args) {
 		new Controller();
 	}
