@@ -11,11 +11,10 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import controllers.Commands;
-import exeptions.EmptyFieldsException;
+import exceptions.EmptyFieldsException;
 import general.HandlerLanguage;
-import views.ConstantsGUI;
-import views.buttons.JButtonOptionsReports;
-import views.buttons.JButtonsMenuAndDialogs;
+import views.*;
+import views.buttons.*;
 
 
 public class JDialogSearchCultive extends JDialog{

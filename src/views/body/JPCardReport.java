@@ -100,7 +100,7 @@ public class JPCardReport extends JPanel{
                     this.cardPanel.add(new JPCircleGraphicPanel(actionListener, UtilView.convertGraphicData(infoList.get(i))),infoList.get(i).toString());
                     break;
                 case ConstantsGUI.POINT_GRAPHIC:
-                    this.cardPanel.add(new JPBarGraphicPanel(actionListener, UtilView.convertGraphicData(infoList.get(i))),infoList.get(i).toString());
+                    this.cardPanel.add(new JPPointGraphicPanel(actionListener, UtilView.convertGraphicData(infoList.get(i))),infoList.get(i).toString());
                     break;
                 default:
                     this.cardPanel.add(new JPBarGraphicPanel(actionListener, UtilView.convertGraphicData(infoList.get(i))),infoList.get(i).toString());

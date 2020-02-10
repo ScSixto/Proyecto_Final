@@ -1,28 +1,29 @@
 package models;
 
-public class Species{
+public class Species {
 
-    private String name;
-    private int id;
-    private double costByPound;
-    private WaterType waterType;
-    private Food food;
+	private String name;
+	private int id;
+	private double costByPound;
+	private WaterType waterType;
+	private Food food;
 
-    public Species(int id, String name, double costByPound, WaterType waterType, Food food){
-        this.name = name;
-        this.id = id;
-        this.costByPound = costByPound;
-        this.waterType = waterType;
-        this.food = food;
-    }
+	public Species(int id, String name, double costByPound,
+			WaterType waterType, Food food) {
+		this.name = name;
+		this.id = id;
+		this.costByPound = costByPound;
+		this.waterType = waterType;
+		this.food = food;
+	}
 
-    public int getId(){
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getName(){
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
 	public double getCostByPound() {
 		return costByPound;
@@ -47,10 +48,10 @@ public class Species{
 	public void setFood(Food food) {
 		this.food = food;
 	}
-	
+
 	public Object[] toObjectVector() {
-		return new Object[] {this.name,this.id,this.costByPound,this.waterType.getName(),this.food.getName()};
+		return new Object[] { this.name, this.id, this.costByPound,
+				this.waterType.getName(), this.food.getName() };
 	}
-    
-    
+
 }

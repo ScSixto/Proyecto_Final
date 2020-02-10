@@ -9,12 +9,10 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-
-
-public class JPanelHeader extends JPanel{
+public class JPanelHeader extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Image backGraundImage;
 	private JPanelCenter panelCenter;
 
@@ -25,24 +23,24 @@ public class JPanelHeader extends JPanel{
 		initComponents(actionListener);
 		setVisible(true);
 	}
-	
+
 	private void initComponents(ActionListener actionListener) {
 		setBackGraund();
 		panelCenter = new JPanelCenter(actionListener);
-		add(panelCenter,BorderLayout.CENTER);
+		add(panelCenter, BorderLayout.CENTER);
 	}
-	
+
 	public void changeLanguage() {
 		panelCenter.changeLanguage();
-//		System.out.println(getWidth() + "anchoH");
-//		System.out.println(getHeight() + "largoH");
+		// System.out.println(getWidth() + "anchoH");
+		// System.out.println(getHeight() + "largoH");
 	}
-	
+
 	private void setBackGraund() {
 		backGraundImage = new ImageIcon("resources/img/fondo3.png").getImage();
 	}
-	
+
 	public void paintComponent(Graphics g) {
-		g.drawImage(backGraundImage, 0, 0, getWidth(),getHeight(),this);
+		g.drawImage(backGraundImage, 0, 0, getWidth(), getHeight(), this);
 	}
 }

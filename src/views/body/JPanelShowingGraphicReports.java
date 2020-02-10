@@ -54,7 +54,7 @@ public class JPanelShowingGraphicReports extends JPanel {
 		if(this.panelContainer.getComponents().length > 1){
 			this.panelContainer.remove(this.panelContainer.getComponent(1));
 		}if(this.panelContainer.getComponents().length > 0){
-		this.panelContainer.remove(this.panelContainer.getComponent(0));
+			this.panelContainer.remove(this.panelContainer.getComponent(0));
 		}addGraphic(actionListener, info, graphicType);
 	}
 	

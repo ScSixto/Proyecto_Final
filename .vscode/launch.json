@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Binarios1",
+            "request": "launch",
+            "mainClass": "persistence.Binarios1",
+            "projectName": "Eejercicio_3.0"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"

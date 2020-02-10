@@ -43,10 +43,10 @@ public class JPCardGeneralGraphicReport extends JPanel {
     private void setGraphic(ActionListener actionListener, HashMap<String, Object> info, char graphicType) {
         this.setContentPanel();
         if(UtilView.getHashMapValuesClass(info).equals(HashMap.class.getSimpleName())){
-            System.out.println("Hashmap<String,HashMap<...>>");
+            // System.out.println("Hashmap<String,HashMap<...>>");
             this.addGraphicCardsPanel(actionListener, info, graphicType);        
         }else{
-            System.out.println("Hashmap<String,Double>");
+            // System.out.println("Hashmap<String,Double>");
             this.contentPanel.add(new JPSpecificCardPanel(actionListener, info, graphicType));
             this.setButtonCardPanel();
             this.add(this.buttonsPanel, BorderLayout.NORTH);
@@ -83,13 +83,14 @@ public class JPCardGeneralGraphicReport extends JPanel {
         this.buttonsPanel.add(nextButton);
         this.add(this.buttonsPanel, BorderLayout.NORTH);
     }
-
+    
+    @SuppressWarnings("unchecked")
     private void addGraphicCardsPanel(ActionListener actionListener, HashMap<String, Object> info, char graphicType) {
         addButtonCardPanel(actionListener);
         Iterator<Entry<String, Object>> it = info.entrySet().iterator();
         while (it.hasNext()) {
             Entry<String,Object> entry = it.next();
-            HashMap<String, Object> value = (HashMap<String,  Object>) entry.getValue();
+            HashMap<String, Object> value = (HashMap<String, Object>) entry.getValue();
             JPSpecificCardPanel specificCardPanel = new JPSpecificCardPanel(actionListener, entry.getKey(), 
                     value, graphicType);
             this.contentPanel.add(specificCardPanel);

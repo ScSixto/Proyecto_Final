@@ -10,12 +10,12 @@ import javax.swing.JPanel;
 
 import views.ConstantsGUI;
 
-public class JPanelTitle extends JPanel{
+public class JPanelTitle extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private JPanel panelY;
-	
+
 	public JPanelTitle(JLabel text) {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		setBorder(BorderFactory.createEmptyBorder(0, 90, 0, 0));
@@ -23,7 +23,7 @@ public class JPanelTitle extends JPanel{
 		initComponents(text);
 		setVisible(true);
 	}
-	
+
 	private void initComponents(JLabel text) {
 		panelY = new JPanel();
 		panelY.setLayout(new BoxLayout(panelY, BoxLayout.Y_AXIS));
@@ -32,7 +32,7 @@ public class JPanelTitle extends JPanel{
 		panelY.add(createLine());
 		add(panelY);
 	}
-	
+
 	public JLabel createLine() {
 		JLabel line = new JLabel(ConstantsGUI.LINE);
 		line.setFont(new Font("Roboto", Font.BOLD, 40));
@@ -40,5 +40,5 @@ public class JPanelTitle extends JPanel{
 		line.setOpaque(false);
 		return line;
 	}
-	
+
 }
