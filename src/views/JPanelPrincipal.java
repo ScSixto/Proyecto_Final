@@ -40,6 +40,7 @@ public class JPanelPrincipal extends JPanel{
 	public void changeLanguage() {
 		panelHeader.changeLanguage();
 		panelBody.changeLanguage();
+		panelFooter.changeLanguage();
 	}
 	
 	public void showCardImage(String key){
