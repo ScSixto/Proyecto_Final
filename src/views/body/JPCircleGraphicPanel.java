@@ -8,13 +8,12 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 
+import java.awt.Font;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GradientPaint;
 
 import views.ConstantsGUI;
 import views.UtilView;
@@ -33,7 +32,7 @@ public class JPCircleGraphicPanel extends JPanel {
 		this.setBorder(BorderFactory.createEmptyBorder(10,30, 10, 30));
 		this.setBackground(Color.WHITE);
 		this.setOpaque(true);
-		//this.setVisible(false);
+		// this.setVisible(false);
 		// this.setPreferredSize(new Dimension((int) (ConstantsGUI.CIRCLE_GRAPHIC_RADIOUS * 2 +300/*  panelInformation.getSize().getWidth() */),ConstantsGUI.CIRCLE_GRAPHIC_RADIOUS * 2));
 	}
 	
@@ -90,7 +89,7 @@ public class JPCircleGraphicPanel extends JPanel {
 		layout.setVgap(0);
         this.circleGraphicPanel.setLayout(layout);
 		this.circleGraphicPanel.setMinimumSize(new Dimension(ConstantsGUI.CIRCLE_GRAPHIC_RADIOUS*2,ConstantsGUI.CIRCLE_GRAPHIC_RADIOUS*2));
-		this.circleGraphicPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+		this.circleGraphicPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
 		this.circleGraphicPanel.setBackground(Color.magenta);
 		this.circleGraphicPanel.setOpaque(false);
 	}
@@ -104,14 +103,16 @@ public class JPCircleGraphicPanel extends JPanel {
 		//     this.panelInformation.add(scrollPane); 
 		// }
 		
-		public void changeLanguage(){
-		}
-	
+	public void changeLanguage(){
+	}
 
 	public void paint(Graphics g){
-		Graphics2D g2 = (Graphics2D) g;
-		// g2.setPaint(new Paint(new GradientPaint(0, 0, Color.darkGray, 70, 70, Color.white)));
-		g2.setPaint(new GradientPaint(0, 0, Color.darkGray, 70, 70, Color.white));
-		super.paint(g2);
+		super.paint(g);
+		g.setColor(ConstantsGUI.GRAPHIC_BORDER_COLOR);
+		g.getFont().deriveFont(Font.BOLD, 50);
+		// g.setClip(5, 5, 5, 5);
+		g.drawLine(0, 0, 0, (int)(this.getHeight()*0.999));
+		g.drawLine((int)(this.getWidth()*0.999), 0, (int)(this.getWidth()*0.999), (int)(this.getHeight()*0.999));
+		g.drawLine(0, (int)(this.getHeight()*0.999), (int)(this.getWidth()*0.999), (int)(this.getHeight()*0.999));
 	}
 }

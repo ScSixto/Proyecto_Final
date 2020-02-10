@@ -162,7 +162,7 @@ public class UtilView {
     
     public static String getHashMapValuesClass(HashMap<String, Object> data){
         String valuesClass = "Object";
-        Iterator<Entry<String, Object>> it= data.entrySet().iterator();
+        Iterator<Entry<String, Object>> it = data.entrySet().iterator();
         if(it.hasNext()){
             Entry<String, Object> entry = it.next();
             valuesClass = entry.getValue().getClass().getSimpleName();

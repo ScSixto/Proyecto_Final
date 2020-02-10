@@ -72,6 +72,14 @@ public class JPanelPrincipal extends JPanel{
 	public void showBeforeCardGraphicReport() {
 		panelBody.showBeforeCardGraphicReport();
 	}
+
+	public void showBeforeGeneralCardGraphicReport() {
+		panelBody.showBeforeGeneralCardGraphicReport();
+	}
+
+	public void showNextGeneralCardGraphicReport() {
+		panelBody.showNextGeneralCardGraphicReport();
+	}
 	
 //	public void repaint() {
 //		panelHeader.repaint();

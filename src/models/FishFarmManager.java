@@ -191,7 +191,14 @@ public class FishFarmManager{
     
     //FISH QUANTITY PER YEAR
     //-------------------------------------------------------------------------------------------------
-   public HashMap<Integer, Long> getFishesPerYear(char cultiveState){
+	public HashMap<Character,HashMap<Integer, Long>> getFishesPerYearPerCultiveState(){
+    	HashMap<Character,HashMap<Integer, Long>> fishesPerYear = new HashMap<>();
+    	fishesPerYear.put(HARVESTED_FISHES_STATE, getFishesPerYear(HARVESTED_FISHES_STATE));
+    	fishesPerYear.put(CULTIVATED_FISHES_STATE, getFishesPerYear(CULTIVATED_FISHES_STATE));
+		return fishesPerYear;
+	}
+	
+	public HashMap<Integer, Long> getFishesPerYear(char cultiveState){
     	HashMap<Integer, Long> fishesPerYear = new HashMap<>();
     	ArrayList<Integer> yearQuantity = getCultiveYearList();
 		for (Integer year : yearQuantity){
@@ -247,13 +254,21 @@ public class FishFarmManager{
     	return fishKilogramsPerTown;
     }
     
-    public HashMap<Integer,HashMap<Town, Double>> getFishKilogramsPerTownPerYear(char cultiveState){
-    	HashMap<Integer,HashMap<Town, Double>> totalFishKilogramsPerTownPerYear = new HashMap<>();
-    	for (int year : this.getCultiveYearList()){
+    public HashMap<Integer, HashMap<Town, Double>> getFishKilogramsPerState(char cultiveState){
+		HashMap<Integer, HashMap<Town, Double>> totalFishKilogramsPerTownPerYear = new HashMap<>();
+		for(int year : getCultiveYearList()){
 			totalFishKilogramsPerTownPerYear.put(year,this.calculateFishKilogramsPerTown(year, cultiveState));
 		}
     	return totalFishKilogramsPerTownPerYear;
-    }
+	}
+	
+	public HashMap<Character,HashMap<Integer, HashMap<Town, Double>>> getFishKilogramsPerTownPerYearPerCultiveState(){
+    	HashMap<Character,HashMap<Integer, HashMap<Town, Double>>> fishesPerYear = new HashMap<>();
+		fishesPerYear.put(HARVESTED_FISHES_STATE,this.getFishKilogramsPerState(HARVESTED_FISHES_STATE));
+		fishesPerYear.put(CULTIVATED_FISHES_STATE,this.getFishKilogramsPerState(CULTIVATED_FISHES_STATE));
+
+		return fishesPerYear;
+	}
     //-------------------------------------------------------------------------------------------------
     //SPECIES KILOGRAMS CULTIVATED PER YEAR
     //-------------------------------------------------------------------------------------------------

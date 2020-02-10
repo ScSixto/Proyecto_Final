@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import views.ConstantsGUI;
+
 public class Util{
 	
 	public static final double GRAMS_BY_KILOGRAM = 1000;
@@ -89,7 +91,7 @@ public class Util{
         return species.getName().substring(0,1).toUpperCase() + species.getName().substring(1).toLowerCase();
     }
 
-    public static HashMap<String, Object> convertToReportSpeciesPerYear(HashMap<Species, Double> data){
+    public static HashMap<String, Object> convertToReportPerSpecies(HashMap<Species, Double> data){
         HashMap<String, Object> reportFormat = new HashMap<>();
         Iterator<Entry<Species, Double>> it = data.entrySet().iterator();
         while (it.hasNext()){
@@ -98,6 +100,23 @@ public class Util{
         }
         return reportFormat;
     }
+
+    public static HashMap<String, Object> convertToReportPerSpeciesPerYear(HashMap<Integer, HashMap<Species, Double>> data) {
+        HashMap<String, Object> reportFormat = new HashMap<>();
+        HashMap<String,Object> hashTemp;
+        Iterator<Entry<Integer, HashMap<Species,Double>>> it1 = data.entrySet().iterator();
+        while(it1.hasNext()){
+            Entry<Integer, HashMap<Species,Double>> entry1 = it1.next();
+            Iterator<Entry<Species, Double>> it2 = entry1.getValue().entrySet().iterator();
+            hashTemp = new HashMap<>();
+            while(it2.hasNext()){
+                Entry<Species, Double> entry2 = it2.next();
+                hashTemp.put(entry2.getKey().getName(),entry2.getValue());
+            }
+            reportFormat.put(""+entry1.getKey(), hashTemp);
+        }
+        return reportFormat;
+	}
 
     public static HashMap<String, Object> convertToReportFood(HashMap<Food,Integer> data){
         HashMap<String, Object> reportFormat = new HashMap<>();
@@ -118,4 +137,77 @@ public class Util{
         }
         return reportFormat;
     }
+
+	public static HashMap<String, Object> convertToReportPerTownPerYear(HashMap<Integer, HashMap<Town, Double>> data) {
+        HashMap<String, Object> reportFormat = new HashMap<>();
+        HashMap<String,Object> hashTemp;
+        Iterator<Entry<Integer, HashMap<Town,Double>>> it1 = data.entrySet().iterator();
+        while(it1.hasNext()){
+            Entry<Integer, HashMap<Town,Double>> entry1 = it1.next();
+            Iterator<Entry<Town, Double>> it2 = entry1.getValue().entrySet().iterator();
+            hashTemp = new HashMap<>();
+            while(it2.hasNext()){
+                Entry<Town, Double> entry2 = it2.next();
+                hashTemp.put(getConvertedTownName(entry2.getKey()),entry2.getValue());
+            }
+            reportFormat.put(""+entry1.getKey(), hashTemp);
+        }
+        return reportFormat;
+	}
+
+	public static HashMap<String, Object> convertToReportPerYearPerCultiveState(HashMap<Character, HashMap<Integer, Long>> data) {
+        HashMap<String, Object> report = new HashMap<>();
+        HashMap<String,Object> hashTemp;
+        Iterator<Entry<Character, HashMap<Integer, Long>>> it1 = data.entrySet().iterator();
+        while (it1.hasNext()){
+            Entry<Character, HashMap<Integer, Long>> entry1 = it1.next();
+            Iterator<Entry<Integer, Long>> it2 = entry1.getValue().entrySet().iterator();
+            hashTemp = new HashMap<>();
+            while (it2.hasNext()) {
+                Entry<Integer, Long> entry2 = it2.next();
+                hashTemp.put(""+entry2.getKey(),entry2.getValue());
+            }
+            report.put(getCultiveStateConstant(entry1.getKey()),hashTemp);
+        }
+		return report;
+	}
+
+	private static String getCultiveStateConstant(Character key){
+        String constant = "";
+        switch (key) {
+            case FishFarmManager.HARVESTED_FISHES_STATE:
+                constant = ConstantsGUI.T_CULTIVATED_CULTIVE_STATE;
+                break;
+            case FishFarmManager.CULTIVATED_FISHES_STATE:
+                constant = ConstantsGUI.T_HARVESTED_CULTIVE_STATE;
+                break;
+            default:
+                break;
+        }
+        return constant;
+    }
+
+    public static HashMap<String, Object> convertToReportPerTownPerCultiveStatePerYear(HashMap<Character, HashMap<Integer, HashMap<Town, Double>>> data) {
+        HashMap<String, Object> report = new HashMap<>();
+        HashMap<String,Object> hashTemp1;
+        HashMap<String,Object> hashTemp2;
+        Iterator<Entry<Character, HashMap<Integer, HashMap<Town, Double>>>> it1 = data.entrySet().iterator();
+        while (it1.hasNext()) {
+            Entry<Character, HashMap<Integer, HashMap<Town, Double>>> entry1 = it1.next();
+            Iterator<Entry<Integer, HashMap<Town, Double>>> it2 = entry1.getValue().entrySet().iterator();
+            hashTemp2 = new HashMap<>();
+            while (it2.hasNext()){
+                Entry<Integer, HashMap<Town, Double>> entry2 = it2.next();
+                Iterator<Entry<Town, Double>> it3 = entry2.getValue().entrySet().iterator();
+                hashTemp1 = new HashMap<>();
+                while (it3.hasNext()) {
+                    Entry<Town, Double> entry3 = it3.next();
+                    hashTemp1.put(getConvertedTownName(entry3.getKey()),entry3.getValue());
+                }
+                hashTemp2.put(""+entry2.getKey(),hashTemp1);
+            }
+            report.put(getCultiveStateConstant(entry1.getKey()),hashTemp2);
+        }
+		return report;
+	}
 }

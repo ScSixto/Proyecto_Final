@@ -1,6 +1,8 @@
 package views.body;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +25,7 @@ public class JPBarGraphicPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
+
 	private GroupLayout layout;
 	private JPYAxisBarGraphic yAxisPanel;
 	private JPXAxisBarGraphic xAxisPanel;
@@ -33,7 +36,7 @@ public class JPBarGraphicPanel extends JPanel {
 		// System.out.println("Entra");
 		this.layout = new GroupLayout(this);
 		this.setLayout(layout);
-		this.setBorder(BorderFactory.createEmptyBorder(10, 30, 10, 30));
+		this.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
 		this.setBackground(Color.WHITE);
 		this.setOpaque(true);
 		this.setVisible(false);
@@ -127,5 +130,15 @@ public class JPBarGraphicPanel extends JPanel {
         scrollPane.setBorder(null);
 		scrollPane.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(scrollPane);
-    }
+	}
+	
+	public void paint(Graphics g){
+		super.paint(g);
+		g.setColor(ConstantsGUI.GRAPHIC_BORDER_COLOR);
+		g.getFont().deriveFont(Font.BOLD, 50);
+		// g.setClip(5, 5, 5, 5);
+		g.drawLine(0, 0, 0, (int)(this.getHeight()*0.999));
+		g.drawLine((int)(this.getWidth()*0.999), 0, (int)(this.getWidth()*0.999), (int)(this.getHeight()*0.999));
+		g.drawLine(0, (int)(this.getHeight()*0.999), (int)(this.getWidth()*0.999), (int)(this.getHeight()*0.999));
+	}
 }

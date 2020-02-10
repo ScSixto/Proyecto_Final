@@ -108,4 +108,12 @@ public class JFramePrincipal extends JFrame{
 	public void showBeforeCardGraphicReport() {
 		panelPpal.showBeforeCardGraphicReport();
 	}
+
+	public void showBeforeGeneralCardGraphicReport() {
+		panelPpal.showBeforeGeneralCardGraphicReport();
+	}
+
+	public void showNextGeneralCardGraphicReport() {
+		panelPpal.showNextGeneralCardGraphicReport();
+	}
 }

@@ -60,6 +60,14 @@ public class JLArcLabel extends JPanel{
             
             
         }
+		// Graphics2D g2 = (Graphics2D) g;
+		// g2.setPaint(new Paint(new GradientPaint(0, 0, Color.darkGray, 70, 70, Color.white)));
+		// g2.setPaint(new GradientPaint(0, 0, Color.darkGray, 70, 70, Color.white));
+		// g.setColor(ConstantsGUI.GRAPHIC_BORDER_COLOR);
+		// g.setClip(5, 5, 5, 5);
+		// g.drawLine(0, 0, 0, (int)(this.getHeight()*0.99));
+		// g.drawLine((int)(this.getWidth()*0.99), 0, (int)(this.getWidth()*0.99), (int)(this.getHeight()*0.99));
+		// g.drawLine(0, (int)(this.getHeight()*0.99), (int)(this.getWidth()*0.99), (int)(this.getHeight()*0.99));
         // g.setColor(Color.black);
 		super.paint(g);
 	}

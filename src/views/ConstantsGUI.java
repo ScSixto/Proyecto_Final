@@ -66,7 +66,9 @@ public class ConstantsGUI {
 	public static final String T_TEXT_REPORT_GRAPHICS_EIGHT = "Text_Report_Graphics_Eight";
 	public static final String T_TEXT_REPORT_GRAPHICS_NINE = "Text_Report_Graphics_Nine";
 	public static final String T_TEXT_REPORT_GRAPHICS_TEN = "Text_Report_Graphics_Ten";
-//	public static final String T_HOMEPAGE_LENGHT = "Home_Page_Length";
+	public static final String T_CULTIVATED_CULTIVE_STATE = "Text_Cultivated_Cultive_State";
+	public static final String T_HARVESTED_CULTIVE_STATE = "Text_Harvested_Cultive_State";
+	//	public static final String T_HOMEPAGE_LENGHT = "Home_Page_Length";
 
     public static final char LOWERCASE_ACCENTED_N = (char) 241;
     public static final char LOWERCASE_ACCENTED_A = (char) 225;
@@ -140,7 +142,8 @@ public class ConstantsGUI {
 	public static final int CIRCLE_GRAPHIC_RADIOUS = 150;
 	public static final double CIRCLE_GRAPHIC_MAX_ANGLE = 360;
 	public static final int CIRCLE_GRAPHIC_OVAL_SPACE = 6;
-	public static final int GRAPHIC_MAX_DATA_QUANTITY = 20;
+	public static final int GRAPHIC_MAX_DATA_QUANTITY = 10;
+	public static final Color GRAPHIC_BORDER_COLOR = Color.decode("#1e3a45");
 
 	public static JLabel createLabelTitles(String text) {
 		JLabel label = new JLabel(text);

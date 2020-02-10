@@ -123,6 +123,14 @@ public class JPanelBody extends JPanel{
 	}
 
 	public void showBeforeCardGraphicReport() {
-		panelShowingGraphicReports.showBeforeCardGraphicReport();
+		panelShowingGraphicReports.showPreviousCardGraphicReport();
+	}
+
+	public void showBeforeGeneralCardGraphicReport() {
+		panelShowingGraphicReports.showPreviousGeneralCardGraphicReport();
+	}
+
+	public void showNextGeneralCardGraphicReport() {
+		panelShowingGraphicReports.showNextGeneralCardGraphicReport();
 	}
 }

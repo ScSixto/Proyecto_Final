@@ -3,7 +3,6 @@ package views.body;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.util.HashMap;
 
 import javax.swing.BorderFactory;
@@ -11,8 +10,6 @@ import javax.swing.JPanel;
 
 import controllers.Commands;
 import views.title.JPanelHeaderShowReports;
-import views.ConstantsGUI;
-import views.UtilView;
 
 public class JPanelShowingGraphicReports extends JPanel {
 
@@ -21,21 +18,20 @@ public class JPanelShowingGraphicReports extends JPanel {
 	private JPanelHeaderShowReports headerReports;
 	private JPanel panelContainer;
 
-	private JPanel buttonFilterGraphicPanel;
-
 	JPanelShowingGraphicReports(ActionListener actionListener){
 		BorderLayout layout = new BorderLayout();
 		layout.setHgap(20);
-		layout.setVgap(50);
+		layout.setVgap(20);
 		this.setLayout(layout);
 		this.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
 		this.setOpaque(false);
-		this.addHeaderTitle(actionListener);
-		this.setPanelContainer();
+		this.initComponents(actionListener);
+		
 	}
 	
-	private void initComponents(){
-		
+	private void initComponents(ActionListener actionListener){
+		this.addHeaderTitle(actionListener);
+		this.setPanelContainer();
 	}
 	
 	private void addHeaderTitle(ActionListener actionListener) {
@@ -46,9 +42,12 @@ public class JPanelShowingGraphicReports extends JPanel {
 	private void setPanelContainer(){
 		this.panelContainer = new JPanel();
 		this.panelContainer.setLayout(new FlowLayout(FlowLayout.CENTER));
+		this.panelContainer.setOpaque(false);
+		// this.panelContainer.setPreferredSize(new Dimension(500,400));
+
 	}
 	
-	public void setBarGraphic(ActionListener actionListener, HashMap<String, Object> info, String title){
+	public void setGraphic(ActionListener actionListener, HashMap<String, Object> info, String title, char graphicType){
 		// System.out.println(title);
 		headerReports.addLabel(title);
 		// headerReports.addLabel(HandlerLanguage.languageProperties.getProperty(title));
@@ -56,74 +55,51 @@ public class JPanelShowingGraphicReports extends JPanel {
 			this.panelContainer.remove(this.panelContainer.getComponent(1));
 		}if(this.panelContainer.getComponents().length > 0){
 		this.panelContainer.remove(this.panelContainer.getComponent(0));
-		}addBarGraphic(actionListener, info);
+		}addGraphic(actionListener, info, graphicType);
 	}
 	
-	private void addBarGraphic(ActionListener actionListener, HashMap<String, Object> info){
-		if(UtilView.getHashMapValuesClass(info).equals(HashMap.class.getSimpleName())){
-			this.panelContainer.add(new JPBarGraphicPanel(actionListener,UtilView.convertGraphicData(info)),BorderLayout.SOUTH);
-			this.add(this.panelContainer,BorderLayout.CENTER);
-		}else{
-			JPCardReport panelCardReport = new JPCardReport(actionListener, info);
-			panelCardReport.setOpaque(true);
-			setButtonFilterPanel();
-			this.panelContainer.add(panelCardReport);
-			// this.panelContainer.add(this.buttonFilterGraphicPanel);
-			this.add(this.panelContainer,BorderLayout.CENTER);
-		}
-	}
-
-	private void setButtonFilterPanel(){
-		this.buttonFilterGraphicPanel = new JPanel();
-		this.buttonFilterGraphicPanel.setOpaque(true);
-		this.buttonFilterGraphicPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-	}
-
-	public void setCircleGraphic(ActionListener actionListener, HashMap<String, Object> info, String title){
-		// System.out.println(HandlerLanguage.languageProperties.getProperty(title));
-		// headerReports.addLabel(HandlerLanguage.languageProperties.getProperty(title));
-		headerReports.addLabel(title);
-		if(this.panelContainer.getComponents().length > 0)this.panelContainer.remove(this.panelContainer.getComponent(0));
-		this.panelContainer.add(new JPCircleGraphicPanel(actionListener,UtilView.convertGraphicData(info)),BorderLayout.SOUTH);
+	private void addGraphic(ActionListener actionListener, HashMap<String, Object> info, char graphicType){
+		JPCardGeneralGraphicReport panelCardReport = new JPCardGeneralGraphicReport(actionListener, info, graphicType);
+		// this.setButtonFilterPanel();
+		this.panelContainer.add(panelCardReport);
+		// this.panelContainer.add(this.buttonFilterGraphicPanel);
 		this.add(this.panelContainer,BorderLayout.CENTER);
 	}
 
-	public void setPointGraphic(ActionListener actionListener, HashMap<String, Object> info, String title){
-		headerReports.addLabel(title);
-		if(this.panelContainer.getComponents().length > 0)this.panelContainer.remove(this.panelContainer.getComponent(0));
-		this.panelContainer.add(new JPBarGraphicPanel(actionListener,UtilView.convertGraphicData(info)),BorderLayout.SOUTH);
-		this.add(this.panelContainer,BorderLayout.CENTER);
-	}
+	// private void setButtonFilterPanel(){
+	// 	this.buttonFilterGraphicPanel = new JPanel();
+	// 	this.buttonFilterGraphicPanel.setOpaque(false);
+	// 	this.buttonFilterGraphicPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+	// }
 
-	public void setGraphic(ActionListener act, HashMap<String, Object> info, String title, char graphicType) {
-		switch (graphicType) {
-			case ConstantsGUI.BAR_GRAPHIC:
-			case ConstantsGUI.POINT_GRAPHIC:
-				this.setBarGraphic(act, info, title);
-				break;
-			case ConstantsGUI.CIRCLE_GRAPHIC:
-				this.setCircleGraphic(act, info, title);
-				break;
-			default:
-				this.setCircleGraphic(act, info, title);
-				break;
-		}
-	}
-	
 	public void showNextCardGraphicReport() {
 		if(this.panelContainer.getComponents().length > 1)
-		((JPCardReport)(this.panelContainer.getComponent(1))).showNextComponent();
+		((JPCardGeneralGraphicReport)(this.panelContainer.getComponent(1))).showNextCard();
 		else
-		((JPCardReport)(this.panelContainer.getComponent(0))).showNextComponent();
+		((JPCardGeneralGraphicReport)(this.panelContainer.getComponent(0))).showNextCard();
 	}
 	
-	public void showBeforeCardGraphicReport() {
+	public void showPreviousCardGraphicReport() {
 		if(this.panelContainer.getComponents().length > 1)
-		((JPCardReport)(this.panelContainer.getComponent(1))).showPreviousComponent();
+		((JPCardGeneralGraphicReport)(this.panelContainer.getComponent(1))).showPreviousCard();
 		else{
-			((JPCardReport)(this.panelContainer.getComponent(0))).showPreviousComponent();
+		((JPCardGeneralGraphicReport)(this.panelContainer.getComponent(0))).showPreviousCard();
 			// System.out.println("sisisi");
 		}
+	}
+
+	public void showPreviousGeneralCardGraphicReport() {
+		if(this.panelContainer.getComponents().length > 1)
+		((JPCardGeneralGraphicReport)(this.panelContainer.getComponent(1))).showNextGeneralCard();
+		else
+		((JPCardGeneralGraphicReport)(this.panelContainer.getComponent(0))).showNextGeneralCard();
+	}
+
+	public void showNextGeneralCardGraphicReport() {
+		if(this.panelContainer.getComponents().length > 1)
+		((JPCardGeneralGraphicReport)(this.panelContainer.getComponent(1))).showPreviousGeneralCard();
+		else
+		((JPCardGeneralGraphicReport)(this.panelContainer.getComponent(0))).showPreviousGeneralCard();
 	}
 
 	public void changeLenguage(){
