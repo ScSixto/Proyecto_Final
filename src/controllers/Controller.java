@@ -19,7 +19,6 @@ import exceptions.UnfoundObjectException;
 import general.HandlerLanguage;
 import models.*;
 import persistence.FileManager;
-import persistence.JsonFile;
 import views.ConstantsGUI;
 import views.JFramePrincipal;
 import views.UtilView;

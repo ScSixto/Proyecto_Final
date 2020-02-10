@@ -49,6 +49,8 @@ public class ConstantsGUI {
 	public static final String T_SIZE_HOMEPAGE = "Size_HomePage";
 	public static final String T_SELECT_OPTION = "Select_Option";
 	// Mensajes Excepciones y otros
+	public static final String T_COPY_RIGHT = "Copyright";
+//	Mensajes Excepciones y otros
 	public static final String MESSAGE_NUMBER_FORMAT_EXCEPTION = "Message_NumberFormatException";
 	public static final String MESSAGE_EMPTY_FIELDS_EXCEPTION = "Message_Empty_Fields_Exception";
 	public static final String MESSAGE_UNFOUND_EXCEPTION = "Message_Unfound_Object_Exception";
@@ -142,6 +144,10 @@ public class ConstantsGUI {
 	public static final double GRAMS_BY_KILOGRAM = 1000;
 
 	// Tipos de Graficas
+	public static final String INFORMATION_CREATOR_ONE = "<b>Sebastian Felipe Sanchez Hurtado</b><br>&nbsp;&nbsp;- Facebook: Sebastian Hurtado<br>&nbsp;&nbsp;- Instagram: sebasanchez1392<br>&nbsp;&nbsp;- Telfono: +57 3112412731<br>&nbsp;&nbsp;- Correo: sebastian.sanchez02@uptc.edu.co";
+	public static final String INFORMATION_CREATOR_TWO = "<br><b>Sixto Alberto Santamaria Carre�o</b><br>&nbsp;&nbsp;- Facebook: S.c. Sixto<br>&nbsp;&nbsp;- Instagram: S.c. Sixto<br>&nbsp;&nbsp;- Telefono: +57 3157350111<br>&nbsp;&nbsp;- Correo: sixto.santamaria@uptc.edu.co";
+	
+//Tipos de Graficas
 	public static final char BAR_GRAPHIC = 'B';
 	public static final char CIRCLE_GRAPHIC = 'C';
 	public static final char POINT_GRAPHIC = 'P';
