@@ -50,16 +50,13 @@ public class JPanelBody extends JPanel{
 		
 	}
 	
-	public void addLabel(String title) {
-		panelShowingTableReports.addLabel(title);
-	}
-	
 	public void changeLanguage() {
 		panelInitial.changeLanguage();
 		panelButtonGraphicReports.changeLanguage();
 		panelButtonTableReports.changeLanguage();
 		panelShowingTableReports.changeLanguage();
 		panelTableCultives.changeLanguage();
+		panelShowingGraphicReports.changeLenguage();
 	}
 	
 	public JButtonsMenuAndDialogs getComponent() {
@@ -81,8 +78,9 @@ public class JPanelBody extends JPanel{
 		panelTableCultives.showTableCultives(info);
 	}
 	
-	public void addItemsComboBox(Object[] items) {
-		panelShowingTableReports.addItemsComboBox(items);
+	public void addItemsComboBox(Object[] items, String title) {
+		panelShowingTableReports.addItemsComboBox(items, title);
+
 	}
 	
 	public Object getItemComboBox() {
@@ -115,13 +113,21 @@ public class JPanelBody extends JPanel{
                 this.layout.show(this, ConstantsGUI.PANEL_GRAPHIC_REPORTS);
 				break;
 			case ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS:
-            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.65)));
+            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.9)));
                 this.layout.show(this, ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
                 break;
         }
     }
 
-	public void showGraphicReport(ActionListener act,HashMap<String, Double> info, String title, char graphicType){
+	public void showGraphicReport(ActionListener act,HashMap<String, Object> info, String title, char graphicType){
 		panelShowingGraphicReports.setGraphic(act, info, title, graphicType);
+	}
+
+	public void showNextCardGraphicReport() {
+		panelShowingGraphicReports.showNextCardGraphicReport();
+	}
+
+	public void showBeforeCardGraphicReport() {
+		panelShowingGraphicReports.showBeforeCardGraphicReport();
 	}
 }

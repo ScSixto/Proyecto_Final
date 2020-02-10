@@ -28,22 +28,23 @@ public class JPBarGraphicPanel extends JPanel {
 	private JPXAxisBarGraphic xAxisPanel;
 	private JPanel graphicBarPanel;
 	private JPGraphicInformation panelInformation;
-	private JPanel titlePanel;
-
+	
 	public JPBarGraphicPanel(ActionListener actionListener) {
+		// System.out.println("Entra");
 		this.layout = new GroupLayout(this);
 		this.setLayout(layout);
 		this.setBorder(BorderFactory.createEmptyBorder(10, 30, 10, 30));
+		this.setBackground(Color.WHITE);
 		this.setOpaque(true);
-		this.setBackground(Color.BLACK);
 		this.setVisible(false);
 	}
 
-	public JPBarGraphicPanel(ActionListener actionListener, HashMap<String, Double> cols) {
+	public JPBarGraphicPanel(ActionListener actionListener, HashMap<String, Double> valueList){
 		this(actionListener);
-		this.setMaximumSize(new Dimension((int) (ConstantsGUI.MAXIMUM_SCREEN_WIDTH * 4 / 5),
-				ConstantsGUI.MAX_PIXEL_COL_HEIGHT_VALUE + ConstantsGUI.AXIS_LINE_WIDTH));
-		this.initComponents(cols);
+		// System.out.println(valueList.size());
+		// this.setMaximumSize(new Dimension((int) (ConstantsGUI.MAXIMUM_SCREEN_WIDTH * 4 / 5),
+		// 		ConstantsGUI.MAX_PIXEL_COL_HEIGHT_VALUE + ConstantsGUI.AXIS_LINE_WIDTH));
+		setGraphicInformation(valueList);
 	}
 
 	public void setGraphicInformation(HashMap<String, Double> valueList){
@@ -71,16 +72,16 @@ public class JPBarGraphicPanel extends JPanel {
 	// }
 
 	private void addPanelList() {
+		// this.add(this.yAxisPanel);this.add(this.xAxisPanel);this.add(this.graphicBarPanel);this.add(this.panelInformation);
 		layout.setHorizontalGroup(layout.createParallelGroup()/* .addComponent(this.titlePanel) */
-				.addGroup(layout.createSequentialGroup()
-						.addGroup(layout.createSequentialGroup().addComponent(this.yAxisPanel).addGroup(layout
+				.addGroup(layout.createSequentialGroup().addComponent(this.yAxisPanel).addGroup(layout
 								.createParallelGroup().addComponent(this.graphicBarPanel).addComponent(this.xAxisPanel))
-								/* .addComponent(this.panelInformation) */)));
+								.addComponent(this.panelInformation)));
 		// layout.createParallelGroup().addComponent(this.titlePanel).addGroup(layout.createSequentialGroup().addComponent(yAxisPanel).addComponent(graphicBarPanel).addComponent(this.panelInformation)).addComponent(xAxisPanel)));
-		layout.setVerticalGroup(layout.createSequentialGroup().addComponent(this.titlePanel)
-				.addGroup(layout.createParallelGroup().addComponent(yAxisPanel)
+		layout.setVerticalGroup(/* .addComponent(this.titlePanel) */
+				layout.createParallelGroup().addComponent(yAxisPanel)
 						.addGroup(layout.createSequentialGroup().addComponent(graphicBarPanel).addComponent(xAxisPanel))
-						.addComponent(this.panelInformation)));
+						.addComponent(this.panelInformation));
 	}
 
 	private void setAxis(HashMap<String, Double> valueList) {

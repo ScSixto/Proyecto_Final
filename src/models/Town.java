@@ -1,6 +1,6 @@
 package models;
 
-import exeptions.UnfoundObject;
+import exeptions.UnfoundObjectException;
 
 import java.util.ArrayList;
 
@@ -31,22 +31,32 @@ public class Town{
     public void addCultive(Cultive cultive){
         this.cultiveList.add(cultive);
     }
+    
+    public void removeCultive(Cultive cultive) {
+    	this.cultiveList.remove(cultive);
+    }
 
-    public void removeCultive(int id) throws UnfoundObject{
+    public void removeCultive(int id) throws UnfoundObjectException{
         this.cultiveList.remove(this.cultiveList.get(this.searchCultive(id)));
     }
 
-    public int searchCultive(int id) throws UnfoundObject{
+    public int searchCultive(int id) throws UnfoundObjectException{
         int position = VALUE_NOT_FOUND_CODE;
-        for(int i = 0; i < cultiveList.size(); i++)
+        boolean in = false;
+        for(int i = 0; in ==false && i < cultiveList.size(); i++) {
             if(cultiveList.get(i).getId() == id){
                 position = i;
-                break;
+                in = true;
             }
-        if(position == VALUE_NOT_FOUND_CODE) throw new UnfoundObject(CULTIVE_UNFOUNDED_MESSAGE);
+        }
+        if(position == VALUE_NOT_FOUND_CODE) throw new UnfoundObjectException(CULTIVE_UNFOUNDED_MESSAGE);
         else return position;
     }
-
+    
+//    public Object[] getCultive(int id) throws UnfoundObject {
+//    	return this.cultiveList.get(this.searchCultive(id)).toObjectVector();
+//    }
+    
     public ArrayList<Cultive> getCultiveList(){
         return cultiveList;
     }

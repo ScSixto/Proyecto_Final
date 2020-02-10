@@ -37,18 +37,14 @@ public class JPanelShowingTableReports extends JPanel {
 		// this.add(this.barGraphicPanel);
 	}
 
-	public void addLabel(String title) {
-		// headerReports.emptyText();
-		this.headerReports.addLabel(title);
-	}
-
 	public void changeLanguage() {
 		this.headerReports.changeLanguage();
 		this.tableBox.changeLanguage();
 	}
 
-	public void addItemsComboBox(Object[] items) {
+	public void addItemsComboBox(Object[] items, String title) {
 		this.tableBox.addItemsComboBox(items);
+		this.headerReports.addLabel(title);
 	}
 
 	public Object getItemComboBox() {

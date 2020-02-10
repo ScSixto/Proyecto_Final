@@ -5,8 +5,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 import views.ConstantsGUI;
 
+import java.awt.Image;
 import java.awt.Color;
 import java.text.DecimalFormat;
 
@@ -44,18 +48,17 @@ public class UtilView {
     }
 
     public static Color getRandomColor() {
-        int r = getRandomNumBetween(1, 255);
+        int r = getRandomNumBetween(120, 255);
         int g = 0;
         int b = 0;
         if (r > 120) {
             g = getRandomNumBetween(120, 255);
-            b = getRandomNumBetween(20, 200);
+            b = getRandomNumBetween(20, 170);
         } else {
             g = getRandomNumBetween(1, 125);
             b = getRandomNumBetween(35, 240);
         }
-        float[] hsbColor = Color.RGBtoHSB(r, g, b, null);
-        return Color.getHSBColor(hsbColor[0], hsbColor[1], hsbColor[2]);
+        return new Color(r, g, b);
     }
 
     public static int getRandomNumBetween(int minValue, int maxValue) {
@@ -139,7 +142,7 @@ public class UtilView {
         return numericSeparator;
     }
     
-    public static HashMap<String, ArrayList<Object[]>> showCultivesTable(HashMap<String, ArrayList<Object[]>> cultivesTable){
+    public static HashMap<String, ArrayList<Object[]>> formatCultivesTable(HashMap<String, ArrayList<Object[]>> cultivesTable){
 		Iterator<Entry<String, ArrayList<Object[]>>> it = cultivesTable.entrySet().iterator();
 		while(it.hasNext()){
 			Entry<String, ArrayList<Object[]>> entry = it.next();
@@ -155,5 +158,41 @@ public class UtilView {
 
 	public static double getCircleGraphicAngle(int circleMaxValue, Double value) {
 		return value * ConstantsGUI.CIRCLE_GRAPHIC_MAX_ANGLE / circleMaxValue;
+    }
+    
+    public static String getHashMapValuesClass(HashMap<String, Object> data){
+        String valuesClass = "Object";
+        Iterator<Entry<String, Object>> it= data.entrySet().iterator();
+        if(it.hasNext()){
+            Entry<String, Object> entry = it.next();
+            valuesClass = entry.getValue().getClass().getSimpleName();
+        }
+        // System.out.println(valuesClass + " ome " + Double.class.getSimpleName());
+        // System.out.println(HashMap.class.getSimpleName());
+        return valuesClass;
+    }
+
+	public static HashMap<String, Double> convertGraphicData(HashMap<String, Object> valueList) {
+        HashMap<String, Double> retorno = new HashMap<>();
+        Iterator<Entry<String, Object>> it= valueList.entrySet().iterator();
+        while(it.hasNext()){
+            Entry<String, Object> entry = it.next();
+            retorno.put(entry.getKey(),(double)entry.getValue());
+        }
+		return retorno;
+	}
+
+    public static Icon convertToIcon(String route, int width, int heigth) {
+        ImageIcon icon = new ImageIcon(route);
+        Icon scaleIcon = new ImageIcon(icon.getImage().getScaledInstance(width,heigth, Image.SCALE_SMOOTH));
+        return scaleIcon;
+    }
+
+	public static int getShowingValueQuantity(int valueQuantity){
+        int retorno = valueQuantity;
+        while (retorno >= ConstantsGUI.GRAPHIC_MAX_DATA_QUANTITY) {
+            retorno /= 2;
+        }
+		return retorno-1;
 	}
 }

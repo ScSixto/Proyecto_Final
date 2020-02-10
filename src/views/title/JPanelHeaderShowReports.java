@@ -47,13 +47,18 @@ public class JPanelHeaderShowReports extends JPanel{
 		text = title;
 		if(this.getComponents().length > 1)
 			this.remove(this.getComponent(1));
-		labelTitleReport = ConstantsGUI.createLabelTitleMenu(HandlerLanguage.languageProperties.getProperty(text));
-		labelTitleReport.setBorder(BorderFactory.createEmptyBorder(0,(int)(this.getWidth()*0.35),0,0));
+		labelTitleReport = ConstantsGUI.createLabelTitleMenu(HandlerLanguage.languageProperties.getProperty(text),ConstantsGUI.COLOR_WHITE);
+		 labelTitleReport.setBorder(BorderFactory.createEmptyBorder(0,(int)((-6.5*HandlerLanguage.languageProperties.getProperty(text).length())+570),0,0));
+		// labelTitleReport.setHorizontalTextPosition(SwingConstants.RIGHT);
+		// labelTitleReport.setBackground(Color.DARK_GRAY);
+		// labelTitleReport.setMinimumSize(new Dimension(500,50));
+		// labelTitleReport.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
 		add(labelTitleReport,BorderLayout.CENTER);
 	}
 	
 	public void changeLanguage() {
 //		if(labelTitleReport != null)
-		labelTitleReport.setText(ConstantsGUI.HTML_TAG_B+HandlerLanguage.languageProperties.getProperty(text));
+		labelTitleReport.setText(ConstantsGUI.HTML_TAG_B/* +"<center>" */+HandlerLanguage.languageProperties.getProperty(text));
+		labelTitleReport.setBorder(BorderFactory.createEmptyBorder(0,(int)((-6.5*HandlerLanguage.languageProperties.getProperty(text).length())+570),0,0));
 	}
 }

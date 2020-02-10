@@ -77,7 +77,7 @@ public class JsonFile{
 		for(Object object: jsonCultiveArray){
 			JsonObject cultiveObj = (JsonObject) object;
 			if(cultiveObj.size() >= 8)
-			cultiveList.add(new Object[]{cultiveObj.getString("municipio"), cultiveObj.getInteger("a_o"), cultiveObj.getString("especie"), cultiveObj.getInteger("animales_sembrados"), cultiveObj.getInteger("animales_cosechados"), cultiveObj.getDouble("peso_promedio_por_animal_al_cosechar_g"), cultiveObj.getDouble("precio_al_productor_kg")});
+			cultiveList.add(new Object[]{cultiveObj.getString("municipio"), cultiveObj.getInteger("a_o"), cultiveObj.getString("especie"), cultiveObj.getInteger("animales_sembrados"), cultiveObj.getInteger("animales_cosechados"), cultiveObj.getDouble("peso_promedio_por_animal_al_cosechar_g")});
 		}
 		return cultiveList;
 	}

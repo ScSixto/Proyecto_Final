@@ -47,13 +47,17 @@ public class JPYAxisBarGraphic extends JPanel {
 
     private void initComponents(ArrayList<Double> values) {
         this.setValuesPanel();
+        int y = 0;
         for (int i = 0; i < ConstantsGUI.Y_AXIS_VALUE_QUANTITY; i++) {
             JLabel valueLabel = new JLabel(UtilView.getRoundedValue(this.maxValue - this.maxValue * i/ConstantsGUI.Y_AXIS_VALUE_QUANTITY));
             valueLabel.setFont(ConstantsGUI.DATA_LABEL_FONT);
             valueLabel.setHorizontalTextPosition(SwingConstants.RIGHT);
             // if(i != ConstantsGUI.Y_AXIS_VALUE_QUANTITY - 1)
-                valueLabel.setBorder(BorderFactory.createEmptyBorder(0,0,ConstantsGUI.MAX_PIXEL_COL_HEIGHT_VALUE / (ConstantsGUI.Y_AXIS_VALUE_QUANTITY+1) - ConstantsGUI.DATA_LABEL_FONT.getSize(),3));
-            this.valuesPanel.add(valueLabel);
+                valueLabel.setBorder(BorderFactory.createEmptyBorder(0,0,ConstantsGUI.MAX_PIXEL_COL_HEIGHT_VALUE / (ConstantsGUI.Y_AXIS_VALUE_QUANTITY) - ConstantsGUI.DATA_LABEL_FONT.getSize()-1,3));
+                y += 50;
+                valueLabel.setBounds(0, y, 20, 20);;
+                this.valuesPanel.add(valueLabel);
+                // valueLabel.setLocation(0, y);
         }
         this.add(valuesPanel);
     }
@@ -72,12 +76,12 @@ public class JPYAxisBarGraphic extends JPanel {
         super.paint(g);
         g.setColor(this.axisColor);
         g.fillRect(this.valuesPanel.getWidth() - ConstantsGUI.AXIS_LINE_WIDTH ,0, ConstantsGUI.AXIS_LINE_WIDTH, this.axisHeight);
-        g.getFont().deriveFont(ConstantsGUI.DATA_LABEL_FONT.getStyle(), ConstantsGUI.DATA_LABEL_FONT.getSize());
+        // g.getFont().deriveFont(ConstantsGUI.DATA_LABEL_FONT.getStyle(), ConstantsGUI.DATA_LABEL_FONT.getSize());
         // int y = ConstantsGUI.DATA_LABEL_FONT.getSize()+1;
         // for (int i = 0; i < ConstantsGUI.Y_AXIS_VALUE_QUANTITY; i++) {
         //     g.drawString(UtilView.getRoundedValue(this.maxValue - this.maxValue * i/ConstantsGUI.Y_AXIS_VALUE_QUANTITY), 0, y);
         //     y += ConstantsGUI.MAX_PIXEL_COL_HEIGHT_VALUE / ConstantsGUI.Y_AXIS_VALUE_QUANTITY;
         // }
-//        g.drawString(colName,0, (int) ((ConstantsGUI.MAX_PIXEL_COL_HEIGHT_VALUE * MAX_VALUE) - colHeight - this.layout.getVgap()));
+    //    g.drawString("colName",0, (int) ((ConstantsGUI.MAX_PIXEL_COL_HEIGHT_VALUE * ConstantsGUI.MAX_PIXEL_COL_HEIGHT_VALUE) - colHeight));
     }
 }

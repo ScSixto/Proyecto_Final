@@ -1,0 +1,42 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Controller<Eejercicio_3.0>",
+            "request": "launch",
+            "mainClass": "controllers.Controller",
+            "projectName": "Eejercicio_3.0"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Run<Eejercicio_3.0>",
+            "request": "launch",
+            "mainClass": "runner.Run",
+            "projectName": "Eejercicio_3.0"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Controller<Proyecto Final 3.0_3981fdde>",
+            "request": "launch",
+            "mainClass": "controllers.Controller",
+            "projectName": "Proyecto Final 3.0_3981fdde"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Run<Proyecto Final 3.0_3981fdde>",
+            "request": "launch",
+            "mainClass": "runner.Run",
+            "projectName": "Proyecto Final 3.0_3981fdde"
+        }
+    ]
+}

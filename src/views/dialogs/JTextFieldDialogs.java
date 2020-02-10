@@ -19,6 +19,7 @@ public class JTextFieldDialogs extends JTextField{
 		changeLanguage(title);
 		setOpaque(false);
 		setForeground(Color.WHITE);
+		setCaretColor (Color.WHITE);
 		setFont(createFont(Font.PLAIN,15));
 	}
 	
