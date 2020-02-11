@@ -37,17 +37,13 @@ public class JPanelBody extends JPanel {
 		panelInitial = new JPanelInitiation(actionListener);
 		this.add(panelInitial, ConstantsGUI.PANEL_INITIAL);
 		panelShowingTableReports = new JPanelShowingTableReports(actionListener);
-		this.add(panelShowingTableReports,
-				ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
+		this.add(panelShowingTableReports,ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 		panelButtonTableReports = new JPanelButtonTableReports(actionListener);
 		this.add(panelButtonTableReports, ConstantsGUI.PANEL_TABLE_REPORTS);
-		panelButtonGraphicReports = new JPanelButtonGraphicReports(
-				actionListener);
+		panelButtonGraphicReports = new JPanelButtonGraphicReports(actionListener);
 		this.add(panelButtonGraphicReports, ConstantsGUI.PANEL_GRAPHIC_REPORTS);
-		panelShowingGraphicReports = new JPanelShowingGraphicReports(
-				actionListener);
-		this.add(panelShowingGraphicReports,
-				ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+		panelShowingGraphicReports = new JPanelShowingGraphicReports(actionListener);
+		this.add(panelShowingGraphicReports,ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 		panelTableCultives = new JPanelTableCultives(actionListener);
 		this.add(panelTableCultives, ConstantsGUI.PANEL_TABLE_CULTIVES);
 
@@ -66,19 +62,6 @@ public class JPanelBody extends JPanel {
 		return this.panelTableCultives.getComponent();
 	}
 
-	// public void showBarGraphicReport(HashMap<String, Double> info,
-	// GraphicReportTitle title){
-	// String graphicTitle = "";
-	// for (GraphicReportTitle graphicReport : GraphicReportTitle.values()) {
-	// if(title.equals(graphicReport)){
-	// graphicTitle =
-	// HandlerLanguage.languageProperties.getProperty(graphicReport.getPropertyText());
-	// break;
-	// }
-	// }
-	// panelShowingGraphicReports.addGraphic(info, graphicTitle);
-	// }
-
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
 		panelTableCultives.showTableCultives(info);
 	}
@@ -95,44 +78,35 @@ public class JPanelBody extends JPanel {
 	public void getInformationCultives(HashMap<String, ArrayList<Object[]>> info) {
 		panelShowingTableReports.getInformationCultives(info);
 	}
-
-	public void showCardImage(String key) {
-		switch (key) {
-		case ConstantsGUI.PANEL_INITIAL:
-			this.layout.show(this, ConstantsGUI.PANEL_INITIAL);
-			break;
-		case ConstantsGUI.PANEL_TABLE_CULTIVES:
-			this.layout.show(this, ConstantsGUI.PANEL_TABLE_CULTIVES);
-			this.setPreferredSize(new Dimension(
-					(int) (ConstantsGUI.WIDTH * 0.9),
-					(int) (ConstantsGUI.HEIGHT * 0.87)));
-			break;
-		case ConstantsGUI.PANEL_SHOW_TABLE_REPORTS:
-			this.setPreferredSize(new Dimension(
-					(int) (ConstantsGUI.WIDTH * 0.9),
-					(int) (ConstantsGUI.HEIGHT * 0.6)));
-			this.layout.show(this, ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
-			break;
-		case ConstantsGUI.PANEL_TABLE_REPORTS:
-			this.setPreferredSize(new Dimension(
-					(int) (ConstantsGUI.WIDTH * 0.9),
-					(int) (ConstantsGUI.HEIGHT * 0.6)));
-			this.layout.show(this, ConstantsGUI.PANEL_TABLE_REPORTS);
-			break;
-		case ConstantsGUI.PANEL_GRAPHIC_REPORTS:
-			this.setPreferredSize(new Dimension(
-					(int) (ConstantsGUI.WIDTH * 0.9),
-					(int) (ConstantsGUI.HEIGHT * 0.65)));
-			this.layout.show(this, ConstantsGUI.PANEL_GRAPHIC_REPORTS);
-			break;
-		case ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS:
-			this.setPreferredSize(new Dimension(
-					(int) (ConstantsGUI.WIDTH * 0.9),
-					(int) (ConstantsGUI.HEIGHT * 0.9)));
-			this.layout.show(this, ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
-			break;
-		}
-	}
+	
+	public void showCardImage(String key){
+        switch(key){
+            case ConstantsGUI.PANEL_INITIAL:
+                this.layout.show(this, ConstantsGUI.PANEL_INITIAL);
+                this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*1.2)));
+                break;
+            case ConstantsGUI.PANEL_TABLE_CULTIVES:
+                this.layout.show(this, ConstantsGUI.PANEL_TABLE_CULTIVES);
+                this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.87)));
+                break;
+            case ConstantsGUI.PANEL_SHOW_TABLE_REPORTS:
+            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.6)));
+                this.layout.show(this, ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
+				break;
+            case ConstantsGUI.PANEL_TABLE_REPORTS:
+            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.6)));
+                this.layout.show(this, ConstantsGUI.PANEL_TABLE_REPORTS);
+                break;
+			case ConstantsGUI.PANEL_GRAPHIC_REPORTS:
+            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.65)));
+                this.layout.show(this, ConstantsGUI.PANEL_GRAPHIC_REPORTS);
+				break;
+			case ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS:
+            	this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*0.9)));
+                this.layout.show(this, ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
+                break;
+        }
+    }
 
 	public void showGraphicReport(ActionListener act,
 			HashMap<String, Object> info, String title, char graphicType) {

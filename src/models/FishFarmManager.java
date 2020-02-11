@@ -1,11 +1,11 @@
 package models;
-
 import exceptions.UnfoundObjectException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
+
 
 public class FishFarmManager {
 
@@ -117,11 +117,8 @@ public class FishFarmManager {
 		this.townList.get(this.searchTown(townId)).addCultive(cultive);
 	}
 
-	public static Cultive createCultive(int year, Species species,
-			int cultivatedQuantity, int harvestedQuantity,
-			double averageWeightByHarvestedAnimalKg) {
-		return new Cultive(year, species, cultivatedQuantity,
-				harvestedQuantity, averageWeightByHarvestedAnimalKg);
+	public static Cultive createCultive(int year, Species species,int cultivatedQuantity, int harvestedQuantity,double averageWeightByHarvestedAnimalKg) {
+		return new Cultive(year, species, cultivatedQuantity,harvestedQuantity, averageWeightByHarvestedAnimalKg);
 	}
 
 	public void removeCultive(int cultiveId, int townId)
@@ -577,22 +574,4 @@ public class FishFarmManager {
 		return cultivesPerYear;
 	}
 
-	// Esto es solo de prueba
-	public void showConsoleReport() {
-		for (Town tow : this.townList) {
-			System.out.println(tow.getId() + ". " + tow.getName());
-			for (Cultive cultive : tow.getCultiveList()) {
-				System.out.println("\t" + cultive.getId() + ". Cultivo de "
-						+ cultive.getSpecies().getName() + "\n\t\t("
-						+ cultive.getYear() + ") Catidad: "
-						+ cultive.getCultivatedQuantity());
-			}
-		}
-	}
-
-	public void holaputo() {
-		for (int species : getCultiveYearList()) {
-			System.out.println(species);
-		}
-	}
 }

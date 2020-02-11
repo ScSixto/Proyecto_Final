@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 
 import controllers.Commands;
 import exceptions.EmptyFieldsException;
+import exceptions.NumberNegativeException;
 import general.HandlerLanguage;
 import views.ConstantsGUI;
 import views.UtilView;
@@ -171,14 +172,6 @@ public class JDialogAddAndEditCultives extends JDialog{
 		}
 	}
 	
-//	public boolean isEmptyComponents() throws EmptyFieldsException{
-//		boolean isEmpty = false;
-//		if(verifyComboBox() == true || this.quantityCultivated.getText().isEmpty() || this.quantityHarvested.getText().isEmpty() || this.quantityKilograms.getText().isEmpty()) {
-//			throw new EmptyFieldsException();
-//		}
-//		return isEmpty;
-//	}
-//	
 	private boolean verifyComboBox() {
 		boolean isEmpty = false;
 		if(String.valueOf(towns.getSelectedItem()).equalsIgnoreCase(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_SELECT_OPTION)) ||
@@ -187,13 +180,17 @@ public class JDialogAddAndEditCultives extends JDialog{
 		return isEmpty;
 	}
 	
-	public Object[] createCultive() {
-		return new Object[] {brisenioCase(this.towns.getSelectedItem()),this.year.getValue(),this.species.getSelectedItem(),
+	public Object[] createCultive() throws NumberNegativeException {
+		if(Integer.parseInt(this.quantityCultivated.getText()) <= 0 || Integer.parseInt(this.quantityHarvested.getText()) <= 0|| Double.parseDouble(this.quantityKilograms.getText()) <= 0) {
+			throw new NumberNegativeException(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.MESSAGE_NUMBER_NEGATIVE_EXCEPTION));
+		}else return new Object[] {brisenioCase(this.towns.getSelectedItem()),this.year.getValue(),this.species.getSelectedItem(),
 				this.quantityCultivated.getText(),this.quantityHarvested.getText(),this.quantityKilograms.getText()};
 	}
 	
-	public Object[] createCultiveEdited() {
-		return new Object[] {this.brisenioCase(this.towns.getSelectedItem()),this.year.getValue(),this.species.getSelectedItem(),
+	public Object[] createCultiveEdited() throws NumberNegativeException {
+		if(Integer.parseInt(this.quantityCultivated.getText()) <= 0 || Integer.parseInt(this.quantityHarvested.getText()) <= 0|| Double.parseDouble(this.quantityKilograms.getText()) <= 0) {
+			throw new NumberNegativeException(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.MESSAGE_NUMBER_NEGATIVE_EXCEPTION));
+		}else return new Object[] {this.brisenioCase(this.towns.getSelectedItem()),this.year.getValue(),this.species.getSelectedItem(),
 				this.quantityCultivated.getText(),this.quantityHarvested.getText(),this.quantityKilograms.getText(),this.idCultive};
 	}
 	
@@ -212,7 +209,7 @@ public class JDialogAddAndEditCultives extends JDialog{
 		this.year.setValue((int)info[1]);
 		this.year.setEnabled(false);
 		this.species.setSelectedItem((String)info[2]);
-//		this.species.setEnabled(false);
+		this.species.setEnabled(false);
 		this.quantityCultivated.setText(String.valueOf(info[3]));
 		this.quantityHarvested.setText(String.valueOf(info[4]));
 		this.quantityKilograms.setText(String.valueOf(info[5]));

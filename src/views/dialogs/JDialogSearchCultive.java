@@ -119,8 +119,4 @@ public class JDialogSearchCultive extends JDialog{
 		this.add(panel);
 	}
 	
-//	public static void main(String[] args) {
-//		new JDialogSearchRunner().setVisible(true);
-//	}
-
 }

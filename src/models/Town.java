@@ -1,5 +1,6 @@
 package models;
 
+
 import exceptions.UnfoundObjectException;
 
 import java.util.ArrayList;
@@ -51,13 +52,8 @@ public class Town {
 		}
 		if (position == VALUE_NOT_FOUND_CODE)
 			throw new UnfoundObjectException(CULTIVE_UNFOUNDED_MESSAGE);
-		else
-			return position;
+		else return position;
 	}
-
-	// public Object[] getCultive(int id) throws UnfoundObject {
-	// return this.cultiveList.get(this.searchCultive(id)).toObjectVector();
-	// }
 
 	public ArrayList<Cultive> getCultiveList() {
 		return cultiveList;

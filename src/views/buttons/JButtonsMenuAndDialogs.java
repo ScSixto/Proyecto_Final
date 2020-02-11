@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
+import views.ConstantsGUI;
 import views.UtilView;
 
 public class JButtonsMenuAndDialogs extends JButton {
@@ -36,12 +37,25 @@ public class JButtonsMenuAndDialogs extends JButton {
 		setContentAreaFilled(false);
 		setCursor(new Cursor(Cursor.HAND_CURSOR));
 	}
+	
+	public JButtonsMenuAndDialogs(String text,String routeImage, int width, int heigth,int sizeLetter) {
+		setIcon(UtilView.convertToIcon(routeImage,width,heigth));
+		setText(text);
+		setFont(new Font("Roboto", Font.BOLD, sizeLetter));
+		setForeground(ConstantsGUI.COLOR_WHITE);
+		setBackground(ConstantsGUI.COLOR_BLUE_HEADER);
+		setHorizontalTextPosition(SwingConstants.LEFT);
+		setVerticalTextPosition(SwingConstants.CENTER);
+		setOpaque(false);
+		setBorderPainted(false);
+		setCursor(new Cursor(Cursor.HAND_CURSOR));
+	}
+	
 
-	public JButtonsMenuAndDialogs(String text, String routeImage, int width,
-			int heigth, Color colorText) {
+	public JButtonsMenuAndDialogs(String text, String routeImage, int width,int heigth, Color colorText) {
 		setPreferredSize(new Dimension(width, heigth));
 		setText(text);
-		setFont(new Font("Calibri", Font.BOLD, 13));
+		setFont(new Font("Roboto", Font.BOLD, 13));
 		setForeground(colorText);
 		setHorizontalTextPosition(SwingConstants.CENTER);
 		setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -52,12 +66,11 @@ public class JButtonsMenuAndDialogs extends JButton {
 		setCursor(new Cursor(Cursor.HAND_CURSOR));
 	}
 
-	public JButtonsMenuAndDialogs(String text, Color colorButton,
-			Color colorText) {
+	public JButtonsMenuAndDialogs(String text, Color colorButton,Color colorText) {
 		setText(text);
 		setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
 		setBackground(colorButton);
-		setFont(new Font("Calibri", Font.BOLD, 14));
+		setFont(new Font("Roboto", Font.BOLD, 14));
 		setForeground(colorText);
 		setHorizontalTextPosition(SwingConstants.CENTER);
 		setVerticalTextPosition(SwingConstants.CENTER);

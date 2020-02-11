@@ -45,6 +45,7 @@ public class ConstantsGUI {
 	public static final String T_TITLE_TABLE_CULTIVES = "Title_Table_Cultives";
 	public static final String T_GRAPHICS = "Graphics";
 	public static final String T_SIZE_HOMEPAGE = "Size_HomePage";
+	public static final String T_SIZE_EXPORT = "Size_Export";
 	public static final String T_SELECT_OPTION = "Select_Option";
 	// Mensajes Excepciones y otros
 	public static final String T_COPY_RIGHT = "Copyright";
@@ -52,6 +53,7 @@ public class ConstantsGUI {
 	public static final String MESSAGE_NUMBER_FORMAT_EXCEPTION = "Message_NumberFormatException";
 	public static final String MESSAGE_EMPTY_FIELDS_EXCEPTION = "Message_Empty_Fields_Exception";
 	public static final String MESSAGE_UNFOUND_EXCEPTION = "Message_Unfound_Object_Exception";
+	public static final String MESSAGE_NUMBER_NEGATIVE_EXCEPTION = "Message_Number_Negative_Exception";
 	public static final String MESSAGE_CONFIRMATION_ADD_CULTIVE = "Message_Confirmation_Cultive";
 	public static final String MESSAGE_QUESTION_EDIT_CULTIVE = "Message_Question_Edit_Cultive";
 	public static final String MESSAGE_CONFIRMATION_EDIT_CULTIVE = "Message_Confirmation_Edit_Cultive";
@@ -59,6 +61,7 @@ public class ConstantsGUI {
 	public static final String MESSAGE_CONFIRMATION_DELETE_CULTIVE = "Message_Confirmation_Delete_Cultive";
 	public static final String T_MESSAGE_END_PROGRAM = "Message_End_Program";
 	public static final String T_MESSAGE_CONFIRMATION_END_PROGRAM = "Message_Confirmation_End_Program";
+	public static final String T_MESSAGE_CONFIRMATION_EXPORT = "Message_Confirmation_Export";
 
 	// Titulos de Gráficos
 	public static final String GRAPHIC_TITLE_CULTIVATED_AND_HARVESTED_FISHES_PER_YEAR = "Graphic_Title_Cultivated_Fishes_Per_Year";
@@ -94,16 +97,18 @@ public class ConstantsGUI {
 	public static final char EM_DASH = (char) 8212;
 
 	public static final String ID = "Id";
-	public static final double WIDTH = Toolkit.getDefaultToolkit()
-			.getScreenSize().getWidth();
-	public static final double HEIGHT = Toolkit.getDefaultToolkit()
-			.getScreenSize().getHeight();
+	public static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+	public static final double HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	// Botones dialogos de confirmacion
 	public static final String BUTTON_YES = "Yes_Button";
 	public static final String BUTTON_NO = "No_Button";
 	public static final String BUTTON_ACCEPT = "Accept_Button";
 	public static final String BUTTON_CANCEL = "Cancel_Option";
 	public static final String BUTTON_SEARCH = "Button_Search";
+	public static final String BUTTON_XML = "Xml_Button";
+	public static final String BUTTON_JSON = "Json_Button";
+	public static final String BUTTON_TXT = "Txt_Button";
+	public static final String BUTTON_BIN = "Bin_Button";
 	public static final int YES_OPTION = 1;
 	public static final int NO_OPTION = 0;
 
@@ -128,17 +133,15 @@ public class ConstantsGUI {
 	public static final String PANEL_SHOW_GRAPHIC_REPORTS = "Panel Show Graphic Report";
 	public static final String PANEL_GRAPHIC_REPORTS = "Panel Graphics Reports";
 	public static final String PANEL_GRAPHIC_BAR_CHART = "Panel Bar Chart";
-
-	// adiciones
-	public static final String LINE = EM_DASH + "" + EM_DASH + "" + EM_DASH
-			+ "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + ""
-			+ EM_DASH + "" + EM_DASH + "" + EM_DASH;
-	public static final String HTML_TAG = "<html>";
-	public static final String HTML_TAG_CENTER = "<html><center>";
-	public static final String HTML_TAG_B = "<html><b>";
-	public static final String TOWN_BRICENIO_CORRECT = "Brice�o";
-	public static final String TOWN_BRICENIO_INCORRECT = "BRICEÑO";
-	public static final String EMPTY = "";
+	
+//adiciones
+	public static final String LINE = EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH + "" + EM_DASH;
+	public static final String HTML_TAG= "<html>";
+	public static final String HTML_TAG_CENTER= "<html><center>";
+	public static final String HTML_TAG_B= "<html><b>";
+	public static final String TOWN_BRICENIO_CORRECT= "Brice�o";
+	public static final String TOWN_BRICENIO_INCORRECT= "BRICEÑO";
+	public static final String EMPTY= "";
 	public static final double GRAMS_BY_KILOGRAM = 1000;
 
 	// Tipos de Graficas

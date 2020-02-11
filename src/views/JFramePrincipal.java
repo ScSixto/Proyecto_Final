@@ -11,8 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
 import exceptions.EmptyFieldsException;
+import exceptions.NumberNegativeException;
 import general.HandlerLanguage;
 import views.dialogs.JDialogAddAndEditCultives;
+import views.dialogs.JDialogExports;
 import views.dialogs.JDialogMessages;
 import views.dialogs.JDialogSearchCultive;
 
@@ -24,6 +26,7 @@ public class JFramePrincipal extends JFrame {
 	private JDialogAddAndEditCultives addDialog, editDialog;
 	private JDialogSearchCultive deleteDialogSearch, editDialogSearch;
 	private JDialogMessages warningDialog, errorDialog, confirmationDialog;
+	private JDialogExports dialogExports;
 	private JScrollPane scroll;
 	private int confirmation;
 
@@ -50,11 +53,10 @@ public class JFramePrincipal extends JFrame {
 		editDialog = new JDialogAddAndEditCultives(actionListener, false);
 		deleteDialogSearch = new JDialogSearchCultive(actionListener, false);
 		editDialogSearch = new JDialogSearchCultive(actionListener, true);
-		warningDialog = new JDialogMessages(actionListener,
-				ConstantsGUI.WARNING);
+		warningDialog = new JDialogMessages(actionListener,ConstantsGUI.WARNING);
 		errorDialog = new JDialogMessages(actionListener, ConstantsGUI.ERROR);
-		confirmationDialog = new JDialogMessages(actionListener,
-				ConstantsGUI.CONFIRMATION);
+		confirmationDialog = new JDialogMessages(actionListener,ConstantsGUI.CONFIRMATION);
+		dialogExports = new JDialogExports(actionListener);
 	}
 
 	public void addScrollBar() {
@@ -108,16 +110,13 @@ public class JFramePrincipal extends JFrame {
 	}
 
 	public void showDialogAdd(Object[] townList, Object[] speciesList) {
-		this.addDialog.setLocation(ConstantsGUI.UBICATION_X_BUTTON_ADD - 382,
-				ConstantsGUI.UBICATION_Y_BUTTON_ADD + 150);
+		this.addDialog.setLocation(ConstantsGUI.UBICATION_X_BUTTON_ADD - 382,ConstantsGUI.UBICATION_Y_BUTTON_ADD + 150);
 		addDialog.cleanComponents(townList, speciesList);
 		this.addDialog.setVisible(true);
 	}
 
-	public void showDialogEdit(Object[] townList, Object[] speciesList,
-			HashMap<String, Object[]> info) {
-		this.editDialog.setLocation(ConstantsGUI.UBICATION_X_BUTTON_ADD - 282,
-				ConstantsGUI.UBICATION_Y_BUTTON_ADD + 150);
+	public void showDialogEdit(Object[] townList, Object[] speciesList,HashMap<String, Object[]> info) {
+		this.editDialog.setLocation(ConstantsGUI.UBICATION_X_BUTTON_ADD - 282,ConstantsGUI.UBICATION_Y_BUTTON_ADD + 150);
 		this.editDialog.cleanComponents(townList, speciesList);
 		this.editDialog.getInformationCultiveEdit(info);
 		this.editDialog.setVisible(true);
@@ -128,13 +127,14 @@ public class JFramePrincipal extends JFrame {
 		this.editDialog.setVisible(false);
 		this.editDialogSearch.setVisible(false);
 		this.deleteDialogSearch.setVisible(false);
+		this.dialogExports.setVisible(false);
 	}
-
-	public Object[] createCultive() {
+	
+	public Object[] createCultive() throws NumberNegativeException {
 		return this.addDialog.createCultive();
 	}
 
-	public Object[] CultiveEdited() {
+	public Object[] CultiveEdited() throws NumberNegativeException {
 		return this.editDialog.createCultiveEdited();
 	}
 
@@ -146,8 +146,7 @@ public class JFramePrincipal extends JFrame {
 		editDialog.isEmptyComponents();
 	}
 
-	public void showGraphicReport(ActionListener act,
-			HashMap<String, Object> info, String title, char graphicType) {
+	public void showGraphicReport(ActionListener act,HashMap<String, Object> info, String title, char graphicType) {
 		panelPpal.showGraphicReport(act, info, title, graphicType);
 	}
 
@@ -168,9 +167,7 @@ public class JFramePrincipal extends JFrame {
 	}
 
 	public void showDialogDeleteCultive() {
-		this.deleteDialogSearch.setLocation(
-				ConstantsGUI.UBICATION_X_BUTTON_ADD - 262,
-				ConstantsGUI.UBICATION_Y_BUTTON_ADD + 250);
+		this.deleteDialogSearch.setLocation(ConstantsGUI.UBICATION_X_BUTTON_ADD - 262,ConstantsGUI.UBICATION_Y_BUTTON_ADD + 250);
 		this.deleteDialogSearch.clearComponents();
 		this.deleteDialogSearch.setVisible(true);
 	}
@@ -184,9 +181,7 @@ public class JFramePrincipal extends JFrame {
 	}
 
 	public void showDialogSearchEdit() {
-		this.editDialogSearch.setLocation(
-				ConstantsGUI.UBICATION_X_BUTTON_ADD - 212,
-				ConstantsGUI.UBICATION_Y_BUTTON_ADD + 250);
+		this.editDialogSearch.setLocation(ConstantsGUI.UBICATION_X_BUTTON_ADD - 212,ConstantsGUI.UBICATION_Y_BUTTON_ADD + 250);
 		this.editDialogSearch.clearComponents();
 		this.editDialogSearch.setVisible(true);
 	}
@@ -231,39 +226,55 @@ public class JFramePrincipal extends JFrame {
 	}
 
 	public void messageNumberFormat() {
-		setMessageError(HandlerLanguage.languageProperties
-				.getProperty(ConstantsGUI.MESSAGE_NUMBER_FORMAT_EXCEPTION));
+		setMessageError(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.MESSAGE_NUMBER_FORMAT_EXCEPTION));
 	}
 
 	public void messageUnfoundObject() {
-		setMessageError(HandlerLanguage.languageProperties
-				.getProperty(ConstantsGUI.MESSAGE_UNFOUND_EXCEPTION));
+		setMessageError(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.MESSAGE_UNFOUND_EXCEPTION));
 	}
 
 	public void messageCorrectAddCultive() {
-		setMessageConfirmation(HandlerLanguage.languageProperties
-				.getProperty(ConstantsGUI.MESSAGE_CONFIRMATION_ADD_CULTIVE));
+		setMessageConfirmation(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.MESSAGE_CONFIRMATION_ADD_CULTIVE));
 	}
 
 	public int messageQuestionEditCultive() {
-		setMessageWarning(HandlerLanguage.languageProperties
-				.getProperty(ConstantsGUI.MESSAGE_QUESTION_EDIT_CULTIVE));
+		setMessageWarning(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.MESSAGE_QUESTION_EDIT_CULTIVE));
 		return this.confirmation;
 	}
 
 	public void messageCorrectEditCultive() {
-		setMessageConfirmation(HandlerLanguage.languageProperties
-				.getProperty(ConstantsGUI.MESSAGE_CONFIRMATION_EDIT_CULTIVE));
+		setMessageConfirmation(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.MESSAGE_CONFIRMATION_EDIT_CULTIVE));
 	}
 
 	public int messageQuestionDeleteCultive() {
-		setMessageWarning(HandlerLanguage.languageProperties
-				.getProperty(ConstantsGUI.MESSAGE_QUESTION_DELETE_CULTIVE));
+		setMessageWarning(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.MESSAGE_QUESTION_DELETE_CULTIVE));
 		return this.confirmation;
 	}
 
 	public void messageCorrectDeleteCultive() {
-		setMessageConfirmation(HandlerLanguage.languageProperties
-				.getProperty(ConstantsGUI.MESSAGE_CONFIRMATION_DELETE_CULTIVE));
+		setMessageConfirmation(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.MESSAGE_CONFIRMATION_DELETE_CULTIVE));
+	}
+	
+	public int messageQuestionExit() {
+		warningDialog.setLocation((int)(ConstantsGUI.WIDTH-450),0);
+		setMessageWarning(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_MESSAGE_CONFIRMATION_END_PROGRAM));
+		return this.confirmation;
+	}
+	
+	public void ubicateWarningDialoge() {
+		warningDialog.setLocation((int)(ConstantsGUI.WIDTH/3),0);
+	}
+	
+	public void openDialogExport() {
+		if(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE).equalsIgnoreCase(ConstantsGUI.T_PISCICULTURE))
+			this.dialogExports.setLocation(ConstantsGUI.UBICATION_X_BUTTON_ADD - 278,ConstantsGUI.UBICATION_Y_BUTTON_ADD + 173);
+		else
+			this.dialogExports.setLocation(ConstantsGUI.UBICATION_X_BUTTON_ADD - 327,ConstantsGUI.UBICATION_Y_BUTTON_ADD + 173);
+			
+		this.dialogExports.setVisible(true);
+	}
+	
+	public void confirmationExportFile() {
+		this.setMessageConfirmation(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_MESSAGE_CONFIRMATION_EXPORT));
 	}
 }
