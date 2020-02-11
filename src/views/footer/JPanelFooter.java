@@ -50,7 +50,7 @@ public class JPanelFooter extends JPanel{
 		JPanel panel =  new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.setOpaque(false);
-		this.title = ConstantsGUI.createLabelTitleMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_COPY_RIGHT),ConstantsGUI.COLOR_WHITE);
+		this.title = UtilView.createLabelTitleMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_COPY_RIGHT),ConstantsGUI.COLOR_WHITE);
 		panel.add(title);
 		panel.add(createLabelInfo(ConstantsGUI.INFORMATION_CREATOR_ONE));
 		panel.add(createLabelInfo(ConstantsGUI.INFORMATION_CREATOR_TWO));

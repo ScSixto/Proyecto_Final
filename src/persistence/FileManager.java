@@ -19,12 +19,8 @@ public class FileManager {
         this.jsonFile = new JsonFile();
     }
 
-    public void readJsonFile() {
-    }
-
     public void writeJsonFile(ArrayList<Object[]> data, String filePath) throws IOException, FileFormatInvalid {
         new JsonFile().createFile(data, filePath);
-
     }
 
     public void writeXmlFile(ArrayList<Object[]> data, String filePath)

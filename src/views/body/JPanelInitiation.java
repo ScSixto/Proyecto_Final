@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import general.HandlerLanguage;
 import views.ConstantsGUI;
+import views.UtilView;
 
 public class JPanelInitiation extends JPanel {
 
@@ -35,7 +36,7 @@ public class JPanelInitiation extends JPanel {
 	}
 
 	public void addInformation() {
-		labelTitle = ConstantsGUI
+		labelTitle = UtilView
 				.createLabelTitles(HandlerLanguage.languageProperties
 						.getProperty(ConstantsGUI.T_PISCICULTURE));
 		// labelTitle.setBackground(new Color(49,201,150,150));
