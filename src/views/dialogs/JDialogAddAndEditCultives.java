@@ -69,7 +69,7 @@ public class JDialogAddAndEditCultives extends JDialog{
 	private void addTitleAndButton(ActionListener actionListener) {
 		titleDialog = ConstantsGUI.createLabelTitleMenu((this.isAdd)?HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_ADD):HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT),ConstantsGUI.COLOR_WHITE);
 		titleDialog.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
-		close = new JButtonsMenuAndDialogs("resources/img/cerrar.png", 17, 17);
+		close = new JButtonsMenuAndDialogs("resources/img/cerrar2.png", 17, 17);
 		close.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 		close.addActionListener(actionListener);
 		close.setActionCommand(Commands.CLOSE_DIALOGS.toString());

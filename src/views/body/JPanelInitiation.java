@@ -13,7 +13,7 @@ import general.HandlerLanguage;
 import views.ConstantsGUI;
 import views.UtilView;
 
-public class JPanelInitiation extends JPanel{
+public class JPanelInitiation extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -27,13 +27,13 @@ public class JPanelInitiation extends JPanel{
 		initComponents(actionListener);
 		setVisible(true);
 	}
-	
+
 	public void initComponents(ActionListener actionListener) {
 		panelYAxis = new JPanel();
 		panelYAxis.setLayout(new BoxLayout(panelYAxis, BoxLayout.Y_AXIS));
 		panelYAxis.setOpaque(false);
 		add(panelYAxis);
-		textVerify = (HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE).equalsIgnoreCase(ConstantsGUI.PISCICULTURE_TEXT))?true:false;
+		textVerify = (HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE).equalsIgnoreCase(ConstantsGUI.T_PISCICULTURE))?true:false;
 		addImageHomePage();
 		addInformation();
 	}
@@ -58,14 +58,15 @@ public class JPanelInitiation extends JPanel{
 		labelText.setForeground(ConstantsGUI.COLOR_PRESENTATION);
 		addPanel(labelText);
 	}
-	
+
 	public void changeLanguage() {
 		labelTitle.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE));
-		textVerify = (labelTitle.getText().equalsIgnoreCase(ConstantsGUI.PISCICULTURE_TEXT))?true:false;
+		textVerify = (labelTitle.getText().equalsIgnoreCase(ConstantsGUI.T_PISCICULTURE))?true:false;
 		labelText.setText(ConstantsGUI.HTML_TAG + HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TEXT_OF_PISCICULTURE));
 		imageHomePage.setIcon(UtilView.convertToIcon("resources/img/"+((textVerify)?"imagenHomePageEnglish":"imagenHomePage")+".png", 800, 420));
+		labelTitle.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE));
 	}
-	
+
 	public void addPanel(JLabel label) {
 		JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		panel.setOpaque(false);

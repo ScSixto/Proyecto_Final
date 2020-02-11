@@ -1,16 +1,16 @@
 package models;
 
-public enum WaterType{
-    
-    SALTWATER("Agua Salada"), SWEET_WATER("Agua Dulce");
+public enum WaterType {
 
-    private String name;
+	SALTWATER("Agua Salada"), SWEET_WATER("Agua Dulce");
 
-    WaterType(String name){
-        this.name = name;
-    }
+	private String name;
 
-    public String getName(){
-        return name;
-    }
+	WaterType(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
 }

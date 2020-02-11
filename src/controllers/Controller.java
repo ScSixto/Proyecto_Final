@@ -8,48 +8,58 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
 import org.json.simple.DeserializationException;
 
 import exceptions.EmptyFieldsException;
 import exceptions.NumberNegativeException;
+import exceptions.FileFormatInvalid;
 import exceptions.UnfoundObjectException;
 import general.HandlerLanguage;
-import models.Cultive;
-import models.FishFarmManager;
-import models.Town;
-import models.Util;
-import persistence.JsonFile;
+import models.*;
+import persistence.FileManager;
 import views.ConstantsGUI;
 import views.JFramePrincipal;
 import views.UtilView;
 
-public class Controller implements ActionListener{
-	
+public class Controller implements ActionListener {
+
 	public static final String SPECIES_JSON_FILE_PATH = "resources/Especies.JSON";
 	public static final String CULTIVE_JSON_FILE_URL = "https://www.datos.gov.co/resource/yi68-jjgw.json";
+	public static final String FILE_PATH_JSON = "resources/exports/TownAndCultives.json";
+	public static final String FILE_PATH_XML = "resources/exports/TownAndCultives.xml";
+	public static final String FILE_PATH_TXT = "resources/exports/TownAndCultives.txt";
+	public static final String FILE_PATH_BIN = "resources/exports/TownAndCultives.bin";
 	public static final String NAME_FILE_CONFIG = "config.init";
 	public static final char CULTIVE_PER_TOWN_REPORT = 'T';
 	public static final char CULTIVE_PER_SPECIES_REPORT = 'S';
 	public static final char CULTIVE_PER_YEAR_REPORT = 'Y';
-	
+	public static final char TYPE_XML = 'X';
+	public static final char TYPE_JSON = 'J';
+	public static final char TYPE_TXT = 'T';
+	public static final char TYPE_BIN = 'B';
+
 	private FishFarmManager farmManager;
-	private JsonFile fileManager;
+	private FileManager fileManager;
 	private JFramePrincipal frame;
-	
+
 	private HandlerLanguage config = null;
 	private String languageDefault;
 	private char charOfTableReport;
 
-	public Controller(){
+	public Controller() {
 		this.farmManager = new FishFarmManager();
-	    this.fileManager = new JsonFile();
+	    this.fileManager = new FileManager();
+		this.fileManager = new FileManager();
 		this.init();
 	}
-	
-    private void init(){
-    	this.readRecords();
-	    this.loadConfiguration();
-		frame = new JFramePrincipal(this);	
+
+	private void init() {
+		this.readRecords();
+		this.loadConfiguration();
+		frame = new JFramePrincipal(this);
 		this.getLanguageDefault();
         showCultivesTable();
     }
@@ -101,8 +111,7 @@ public class Controller implements ActionListener{
         }
     }
 
-
-	public String getLanguageDefault(){
+	public String getLanguageDefault() {
 		languageDefault = Locale.getDefault().getLanguage();
 		String language = "Spanish";
 		switch (languageDefault) {
@@ -114,65 +123,62 @@ public class Controller implements ActionListener{
 		return language;
 	}
 
-	public void loadLanguage() throws IOException{
+	public void loadLanguage() throws IOException {
 		try {
 			config.loadLanguage();
-		} catch (Exception e) {			
+		} catch (Exception e) {
 		}
 	}
 
-	public void saveConfig() throws IOException{
+	public void saveConfig() throws IOException {
 		try {
 			new HandlerLanguage(NAME_FILE_CONFIG).saveLanguage();
 		} catch (Exception e) {
 		}
 	}
 
-	public void changeToEnglish() throws IOException{
+	public void changeToEnglish() throws IOException {
 		HandlerLanguage.language = "resources/language/languageUS.properties";
 		saveConfig();
-		loadLanguage();		
+		loadLanguage();
 	}
 
-	public void changeToSpanish() throws IOException{
+	public void changeToSpanish() throws IOException {
 		HandlerLanguage.language = "resources/language/languageES.properties";
 		saveConfig();
 		loadLanguage();
 	}
 
-
-	//	Controlador carga idioma de lo que necesita	
-	public void loadConfiguration(){
-		if(config == null){
+	public void loadConfiguration() {
+		if (config == null) {
 			config = new HandlerLanguage(NAME_FILE_CONFIG);
 		}
-		try{
+		try {
 			config.loadLanguage();
-		}catch(IOException e){
+		} catch (IOException e) {
 			System.err.println("file not found : NAME_FILE_CONFIG");
 		}
 	}
-	
-	private void manageChangeLanguageUS(){
+
+	private void manageChangeLanguageUS() {
 		try {
 			changeToEnglish();
 		} catch (IOException e1) {
 			e1.printStackTrace();
-		}			
+		}
 		manageChangeLanguage();
-		
+
 	}
-	
-	private void manageChangeLanguageES(){
+
+	private void manageChangeLanguageES() {
 		try {
 			changeToSpanish();
 		} catch (IOException e1) {
 			e1.printStackTrace();
-		}	
+		}
 		manageChangeLanguage();
-		
-	}
 
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -202,8 +208,14 @@ public class Controller implements ActionListener{
 		case NEXT_CARD_GRAPHIC_REPORT:
 			showNextCardGraphicReport();
 			break;
+		case BEFORE_GENERAL_CARD_GRAPHIC_REPORT:
+			showBeforeGeneralCardGraphicReport();
+			break;
+		case NEXT_GENERAL_CARD_GRAPHIC_REPORT:
+			showNextGeneralCardGraphicReport();
+			break;
 		case GRAPHIC_REPORT_ONE:
-			showCultivatedAndHarvestedFishesPerYear();
+			showCultivatedFishesPerYear();
 			break;
 		case GRAPHIC_REPORT_TWO:
 			showHarvestedFishesPerTownPerYear();
@@ -268,9 +280,32 @@ public class Controller implements ActionListener{
 		case OPEN_DIALOG_DELETE:
 			frame.showDialogDeleteCultive();
 			break;
+		case EXPORT_BIN:
+			exportFiles(TYPE_BIN);
+			break;
+		case EXPORT_JSON:
+			exportFiles(TYPE_JSON);
+			break;
+		case EXPORT_TXT:
+			exportFiles(TYPE_TXT);
+			break;
+		case EXPORT_XML:
+			exportFiles(TYPE_XML);
+			break;
+		case OPEN_DIALOG_EXPORT:
+			frame.openDialogExport();
+			break;
 		}
 	}
 	
+	private void showBeforeGeneralCardGraphicReport() {
+		frame.showBeforeGeneralCardGraphicReport();
+	}
+
+	private void showNextGeneralCardGraphicReport() {
+		frame.showNextGeneralCardGraphicReport();
+	}
+
 	private void showNextCardGraphicReport() {
 		frame.showNextCardGraphicReport();
 	}
@@ -280,10 +315,10 @@ public class Controller implements ActionListener{
 	}
 
 	private void manageChangeLanguage() {
-		frame.changeLanguage();		
+		frame.changeLanguage();
 	}
-	
-	private void showCardImage(String key){
+
+	private void showCardImage(String key) {
 		frame.showCardImage(key);
 	}
 	
@@ -298,96 +333,94 @@ public class Controller implements ActionListener{
 		showCardImage(ConstantsGUI.PANEL_INITIAL);
 	}
 
-	private void showCultivesTable(){
+	private void showCultivesTable() {
 		frame.showTableCultives(UtilView.formatCultivesTable(farmManager.townsAndCultives()));
 	}
-	
-	private void showPanelButtonTableReports(){
+
+	private void showPanelButtonTableReports() {
 		showCultivesTable();
 		showCardImage(ConstantsGUI.PANEL_TABLE_REPORTS);
 	}
+
 	private void showPanelTableCultives() {
 		showCultivesTable();
 		showCardImage(ConstantsGUI.PANEL_TABLE_CULTIVES);
 	}
-	
-	private void showCultivatedAndHarvestedFishesPerYear(){
-		frame.showGraphicReport(this, Util.convertToReportPerYear(farmManager.getFishesPerYear(FishFarmManager.HARVESTED_FISHES_STATE)), ConstantsGUI.GRAPHIC_TITLE_CULTIVATED_AND_HARVESTED_FISHES_PER_YEAR, ConstantsGUI.CIRCLE_GRAPHIC);
+
+	private void showCultivatedFishesPerYear() {
+		frame.showGraphicReport(this,Util.convertToReportPerYear(farmManager.getFishesPerYear(FishFarmManager.CULTIVATED_FISHES_STATE)),ConstantsGUI.GRAPHIC_TITLE_CULTIVATED_AND_HARVESTED_FISHES_PER_YEAR,ConstantsGUI.CIRCLE_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
-	private void showHarvestedFishesPerTownPerYear(){
-		frame.showGraphicReport(this, Util.convertToReportPerTown(farmManager.calculateFishKilogramsPerTown(2016, FishFarmManager.HARVESTED_FISHES_STATE)),
-				ConstantsGUI.GRAPHIC_TITLE_HARVESTED_FISHES_PER_TOWN_PER_YEAR, ConstantsGUI.POINT_GRAPHIC);
+	private void showHarvestedFishesPerTownPerYear() {
+		frame.showGraphicReport(this,Util.convertToReportPerTownPerYear(farmManager.getFishKilogramsPerState(FishFarmManager.HARVESTED_FISHES_STATE)),ConstantsGUI.GRAPHIC_TITLE_HARVESTED_FISHES_PER_TOWN_PER_YEAR,ConstantsGUI.POINT_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
-	private void showCultivatedFishesSpeciesPerYear(){
-		frame.showGraphicReport(this, Util.convertToReportSpeciesPerYear(farmManager.getHarvestedFishKilogramsPerSpecies(2016)), ConstantsGUI.GRAPHIC_TITLE_CULTIVATED_FISHES_SPECIES_KG_PER_YEAR, ConstantsGUI.BAR_GRAPHIC);
+	private void showCultivatedFishesSpeciesPerYear() {
+		frame.showGraphicReport(this,Util.convertToReportPerSpeciesPerYear(farmManager.getHarvestedFishKilogramsPerSpeciesPerYear()),ConstantsGUI.GRAPHIC_TITLE_CULTIVATED_FISHES_SPECIES_KG_PER_YEAR,ConstantsGUI.BAR_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
-	private void showTownEarningsPerYear(){
-		frame.showGraphicReport(this, Util.convertToReportPerTown(farmManager.getEarningsPerTown(2016)), ConstantsGUI.GRAPHIC_TITLE_TOWN_EARNINGS_PER_YEAR, ConstantsGUI.POINT_GRAPHIC);
+	private void showTownEarningsPerYear() {
+		frame.showGraphicReport(this, Util.convertToReportPerTownPerYear(farmManager.getEarningsPerTownPerYear()),ConstantsGUI.GRAPHIC_TITLE_TOWN_EARNINGS_PER_YEAR,ConstantsGUI.POINT_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
-	private void showFishesSpeciesWeight(){
-		frame.showGraphicReport(this, Util.convertToReportSpeciesPerYear(farmManager.getAverageWeightPerSpeciesKg()), ConstantsGUI.GRAPHIC_TITLE_SPECIES_WEIGHT, ConstantsGUI.BAR_GRAPHIC);
+	private void showFishesSpeciesWeight() {
+		frame.showGraphicReport(this, Util.convertToReportPerSpecies(farmManager.getAverageWeightPerSpeciesKg()),ConstantsGUI.GRAPHIC_TITLE_SPECIES_WEIGHT,ConstantsGUI.BAR_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
-	private void showFishFoodUsing(){
-		frame.showGraphicReport(this, Util.convertToReportFood(farmManager.getFishFoodQuantityPerType()), ConstantsGUI.GRAPHIC_TITLE_FISH_FOOD_USING, ConstantsGUI.CIRCLE_GRAPHIC);
+	private void showFishFoodUsing() {
+		frame.showGraphicReport(this, Util.convertToReportFood(farmManager.getFishFoodQuantityPerType()),ConstantsGUI.GRAPHIC_TITLE_FISH_FOOD_USING,ConstantsGUI.CIRCLE_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
-	private void showWaterTypeUsing(){
-		frame.showGraphicReport(this, Util.convertToReportWaterType(farmManager.getWaterTypeQuantityPerType()), ConstantsGUI.GRAPHIC_TITLE_WATER_TYPE_USING, ConstantsGUI.CIRCLE_GRAPHIC);
+	private void showWaterTypeUsing() {
+		frame.showGraphicReport(this, Util.convertToReportWaterType(farmManager.getWaterTypeQuantityPerType()),ConstantsGUI.GRAPHIC_TITLE_WATER_TYPE_USING,ConstantsGUI.CIRCLE_GRAPHIC);
 		showCardImage(ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 	}
 
 	private void showGraphicButtonPanel() {
 		showCardImage(ConstantsGUI.PANEL_GRAPHIC_REPORTS);
 	}
-	
+
 	private void showReportCultivesPerTown() {
 		charOfTableReport = CULTIVE_PER_TOWN_REPORT;
 		frame.addItemsComboBox(Util.transformTownsArray(farmManager.toObjectVectorTown()),ConstantsGUI.T_TEXT_REPORT_GRAPHICS_EIGHT);
 		showCardImage(ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 	}
-	
+
 	private void showReportCultivesPerYear() {
 		charOfTableReport = CULTIVE_PER_YEAR_REPORT;
-		frame.addItemsComboBox(Util.transformYearsArray(farmManager.getCultiveYearList()), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_NINE);
+		frame.addItemsComboBox(Util.transformYearsArray(farmManager.getCultiveYearList()),ConstantsGUI.T_TEXT_REPORT_GRAPHICS_NINE);
 		showCardImage(ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 	}
-	
+
 	private void showReportCultivesPerSpecie() {
 		charOfTableReport = CULTIVE_PER_SPECIES_REPORT;
-		frame.addItemsComboBox(farmManager.getSpeciesName(), ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TEN);
+		frame.addItemsComboBox(farmManager.getSpeciesName(),ConstantsGUI.T_TEXT_REPORT_GRAPHICS_TEN);
 		showCardImage(ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 	}
-	
+
 	private void getItemForTablesReport() {
 		switch (charOfTableReport) {
-		case CULTIVE_PER_TOWN_REPORT:
-			System.out.println(frame.getItemComboBox());
-			frame.getInformationCultives(UtilView.formatCultivesTable(farmManager.cultivesPerTownReport((String)frame.getItemComboBox())));
+		case CULTIVE_PER_TOWN_REPORT:frame.getInformationCultives(UtilView.formatCultivesTable(farmManager.cultivesPerTownReport((String) frame.getItemComboBox())));
 			break;
 		case CULTIVE_PER_YEAR_REPORT:
 			frame.getInformationCultives(UtilView.formatCultivesTable(farmManager.getCultivesPerYear(Util.veryfyObject(frame.getItemComboBox()))));
 			break;
 		case CULTIVE_PER_SPECIES_REPORT:
-			frame.getInformationCultives(UtilView.formatCultivesTable(farmManager.getCultivesPerSpecies((String)frame.getItemComboBox())));
+			frame.getInformationCultives(UtilView.formatCultivesTable(farmManager.getCultivesPerSpecies((String) frame.getItemComboBox())));
 			break;
 		}
 	}
-	
+
 	private void showDialogAdd() {
 		frame.showDialogAdd(Util.transformTownsArray(farmManager.toObjectVectorTown()),farmManager.getSpeciesName());
 	}
-	
+
 	private void createAndShowCultive() {
 		try {
 			frame.isEmptyComponentsAddDialog();
@@ -399,51 +432,42 @@ public class Controller implements ActionListener{
 			frame.setMessageError(e.getMessage());
 		} catch (NumberNegativeException e) {
 			frame.setMessageError(e.getMessage());
-		}catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			frame.messageNumberFormat();
 		}
-		
+
 	}
 	
+
 	private void createAndAddCultive() throws NumberNegativeException {
-		Object [] infoCultives = Util.convertInformation(frame.createCultive());
+		Object[] infoCultives = Util.convertInformation(frame.createCultive());
 		Cultive cultive;
 		int speciesPosition;
 		try {
-			speciesPosition = this.farmManager.searchSpeciesByName((String)infoCultives[2]);
-			cultive = FishFarmManager.createCultive((int)infoCultives[1],this.farmManager.getSpecies(speciesPosition),(int)infoCultives[3],(int)infoCultives[4],(double)infoCultives[5]);
-			this.farmManager.addCultive(cultive, this.farmManager.getTownId(this.farmManager.searchTownByName((String)infoCultives[0])));
-		}catch (UnfoundObjectException e) {
+			speciesPosition = this.farmManager
+					.searchSpeciesByName((String) infoCultives[2]);
+			cultive = FishFarmManager.createCultive((int) infoCultives[1],
+					this.farmManager.getSpecies(speciesPosition),
+					(int) infoCultives[3], (int) infoCultives[4],
+					(double) infoCultives[5]);
+			this.farmManager.addCultive(cultive, this.farmManager
+					.getTownId(this.farmManager
+							.searchTownByName((String) infoCultives[0])));
+		} catch (UnfoundObjectException e) {
 			frame.messageUnfoundObject();
 		}
 	}
-	
+
 	private void deleteCultive() {
 		try {
 			frame.verifyComponentsDeleteDialog();
 			Object[] info = farmManager.searchCultiveDelete(frame.getIdCultiveDelete());
-			if(frame.messageQuestionDeleteCultive() == ConstantsGUI.YES_OPTION) {
+			if (frame.messageQuestionDeleteCultive() == ConstantsGUI.YES_OPTION) {
 				farmManager.deleteCultive(info);
 				frame.messageCorrectDeleteCultive();
 				showCultivesTable();
 				frame.closeDialog();
 			}
-		}catch (EmptyFieldsException e) {
-			frame.setMessageError(e.getMessage());
-		}catch (UnfoundObjectException e) {
-			frame.messageUnfoundObject();
-		}catch (NumberFormatException e) {
-			frame.messageNumberFormat();
-		}
-	}
-	
-	private void showDialogEdit() {
-		try {
-			frame.verifyComponentsEditDialogSearch();
-			int id = frame.getIdCultiveEditSearch();
-			HashMap<String, Object[]> infoCultive = farmManager.getCultive(id);
-			frame.closeDialog();
-			frame.showDialogEdit(Util.transformTownsArray(farmManager.toObjectVectorTown()),farmManager.getSpeciesName(),infoCultive);
 		} catch (EmptyFieldsException e) {
 			frame.setMessageError(e.getMessage());
 		} catch (UnfoundObjectException e) {
@@ -452,12 +476,29 @@ public class Controller implements ActionListener{
 			frame.messageNumberFormat();
 		}
 	}
-	
+
+	private void showDialogEdit() {
+		try {
+			frame.verifyComponentsEditDialogSearch();
+			int id = frame.getIdCultiveEditSearch();
+			HashMap<String, Object[]> infoCultive = farmManager.getCultive(id);
+			frame.closeDialog();
+			frame.showDialogEdit(Util.transformTownsArray(farmManager.toObjectVectorTown()),farmManager.getSpeciesName(), infoCultive);
+		} catch (EmptyFieldsException e) {
+			frame.setMessageError(e.getMessage());
+		} catch (UnfoundObjectException e) {
+			frame.messageUnfoundObject();
+		} catch (NumberFormatException e) {
+			frame.messageNumberFormat();
+		}
+	}
+
 	private void getInformationAndEditCultive() {
 		try {
 			frame.isEmptyComponentsEditDialog();
 			editCultive();
-			if(frame.messageQuestionEditCultive() == ConstantsGUI.YES_OPTION) {
+			if (frame.messageQuestionEditCultive() == ConstantsGUI.YES_OPTION) {
+				editCultive();
 				frame.messageCorrectEditCultive();
 				showCultivesTable();
 				frame.closeDialog();
@@ -472,15 +513,45 @@ public class Controller implements ActionListener{
 	}
 	
 	private void editCultive() throws NumberNegativeException {
-		try {
 		Object [] infoCultives = Util.convertInformation(frame.CultiveEdited());
-			infoCultives[2] = this.farmManager.getSpecies(this.farmManager.searchSpeciesByName((String)infoCultives[2]));
-			this.farmManager.editCultive(infoCultives);
-		}catch (UnfoundObjectException e) {
-			frame.messageUnfoundObject();
+		try {
+			try {
+				infoCultives[2] = this.farmManager.getSpecies(this.farmManager.searchSpeciesByName((String)infoCultives[2]));
+			} catch (UnfoundObjectException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (NumberFormatException e) {
+			frame.messageNumberFormat();
 		}
 	}
 	
+	private void exportFiles(char typeFile) {
+		try {
+			switch (typeFile) {
+			case TYPE_XML:
+				fileManager.writeXmlFile(farmManager.toObjectVectorTown(), FILE_PATH_XML);
+				break;
+			case TYPE_JSON:
+				fileManager.writeJsonFile(farmManager.toObjectVectorTown(), FILE_PATH_JSON);
+				break;
+			case TYPE_TXT:
+				fileManager.writeTxtFile(farmManager.toObjectVectorTown(), FILE_PATH_TXT);
+				break;
+			case TYPE_BIN:
+				fileManager.writeBinFile(farmManager.toObjectVectorTown(), FILE_PATH_BIN);
+				break;
+			}
+			frame.confirmationExportFile();
+		} catch (IOException | FileFormatInvalid e) {
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (TransformerException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static void main(String[] args) {
 		new Controller();
 	}

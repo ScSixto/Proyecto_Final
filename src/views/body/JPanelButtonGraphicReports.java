@@ -19,12 +19,6 @@ public class JPanelButtonGraphicReports extends JPanel {
 	private JPanelButtonsBottom buttonsBottom;
 	private JLabel title;
 
-	// JPanelButtonGraphicReports(HashMap<String, Double> info, String graphicTitle){
-	// 	this.setLayout(new FlowLayout(FlowLayout.CENTER));
-	// 	this.setOpaque(false);
-	// 	this.add(new JPBarGraphicPanel(info, graphicTitle));
-	// }
-
 	public JPanelButtonGraphicReports(ActionListener actionListener) {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setOpaque(false);

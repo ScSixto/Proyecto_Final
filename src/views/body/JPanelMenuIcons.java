@@ -34,7 +34,6 @@ public class JPanelMenuIcons extends JPanel{
 	
 	private void initComponents(ActionListener actionListener) {
 		addButtons(actionListener);
-		ubication();
 	}
 	
 	private void addButtons(ActionListener actionListener) {
@@ -64,10 +63,4 @@ public class JPanelMenuIcons extends JPanel{
 	public JButtonsMenuAndDialogs getButtonAdd() {
 		return this.add;
 	}
-	
-	public void ubication() {
-		System.out.println(add.getX());
-		System.out.println(add.getY());
-	}
-	
 }

@@ -13,9 +13,8 @@ import javax.swing.JPanel;
 import controllers.Commands;
 import exceptions.EmptyFieldsException;
 import general.HandlerLanguage;
-import views.ConstantsGUI;
-import views.buttons.JButtonOptionsReports;
-import views.buttons.JButtonsMenuAndDialogs;
+import views.*;
+import views.buttons.*;
 
 
 public class JDialogSearchCultive extends JDialog{
@@ -57,7 +56,7 @@ public class JDialogSearchCultive extends JDialog{
 	private void addTitleAndButton(ActionListener actionListener) {
 		titleDialog = ConstantsGUI.createLabelTitleMenu((this.anotherButton)?HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT):HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_DELETE),ConstantsGUI.COLOR_WHITE);
 		titleDialog.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
-		close = new JButtonsMenuAndDialogs("resources/img/cerrar.png", 17, 17);
+		close = new JButtonsMenuAndDialogs("resources/img/cerrar2.png", 17, 17);
 		close.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 		close.addActionListener(actionListener);
 		close.setActionCommand(Commands.CLOSE_DIALOGS.toString());
@@ -120,8 +119,4 @@ public class JDialogSearchCultive extends JDialog{
 		this.add(panel);
 	}
 	
-//	public static void main(String[] args) {
-//		new JDialogSearchRunner().setVisible(true);
-//	}
-
 }

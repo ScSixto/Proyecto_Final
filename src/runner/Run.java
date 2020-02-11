@@ -2,9 +2,9 @@ package runner;
 
 import controllers.Controller;
 
-public class Run{
+public class Run {
 
-    public static void main(String[] args){
-        new Controller();
-    }
+	public static void main(String[] args) {
+		new Controller();
+	}
 }

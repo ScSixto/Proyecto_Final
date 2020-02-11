@@ -12,11 +12,10 @@ import javax.swing.JPanel;
 import views.ConstantsGUI;
 import views.buttons.JButtonsMenuAndDialogs;
 
-
-public class JPanelBody extends JPanel{
+public class JPanelBody extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private CardLayout layout;
 	private JPanelInitiation panelInitial;
 	private JPanelShowingTableReports panelShowingTableReports;
@@ -27,29 +26,29 @@ public class JPanelBody extends JPanel{
 
 	public JPanelBody(ActionListener actionListener) {
 		this.layout = new CardLayout();
-		setBorder(BorderFactory.createEmptyBorder(20,0,20,0));
+		setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
 		setLayout(layout);
-        this.setOpaque(false);
-        initComponents(actionListener);
-        this.setVisible(true);
+		this.setOpaque(false);
+		initComponents(actionListener);
+		this.setVisible(true);
 	}
-	
+
 	private void initComponents(ActionListener actionListener) {
 		panelInitial = new JPanelInitiation(actionListener);
-		this.add(panelInitial,ConstantsGUI.PANEL_INITIAL);
+		this.add(panelInitial, ConstantsGUI.PANEL_INITIAL);
 		panelShowingTableReports = new JPanelShowingTableReports(actionListener);
 		this.add(panelShowingTableReports,ConstantsGUI.PANEL_SHOW_TABLE_REPORTS);
 		panelButtonTableReports = new JPanelButtonTableReports(actionListener);
-		this.add(panelButtonTableReports,ConstantsGUI.PANEL_TABLE_REPORTS);
+		this.add(panelButtonTableReports, ConstantsGUI.PANEL_TABLE_REPORTS);
 		panelButtonGraphicReports = new JPanelButtonGraphicReports(actionListener);
-		this.add(panelButtonGraphicReports,ConstantsGUI.PANEL_GRAPHIC_REPORTS);
+		this.add(panelButtonGraphicReports, ConstantsGUI.PANEL_GRAPHIC_REPORTS);
 		panelShowingGraphicReports = new JPanelShowingGraphicReports(actionListener);
 		this.add(panelShowingGraphicReports,ConstantsGUI.PANEL_SHOW_GRAPHIC_REPORTS);
 		panelTableCultives = new JPanelTableCultives(actionListener);
-		this.add(panelTableCultives,ConstantsGUI.PANEL_TABLE_CULTIVES);
-		
+		this.add(panelTableCultives, ConstantsGUI.PANEL_TABLE_CULTIVES);
+
 	}
-	
+
 	public void changeLanguage() {
 		panelInitial.changeLanguage();
 		panelButtonGraphicReports.changeLanguage();
@@ -58,35 +57,24 @@ public class JPanelBody extends JPanel{
 		panelTableCultives.changeLanguage();
 		panelShowingGraphicReports.changeLenguage();
 	}
-	
+
 	public JButtonsMenuAndDialogs getComponent() {
 		return this.panelTableCultives.getComponent();
 	}
 
-	// public void showBarGraphicReport(HashMap<String, Double> info, GraphicReportTitle title){
-	// 	String graphicTitle = "";
-	// 	for (GraphicReportTitle graphicReport : GraphicReportTitle.values()) {
-	// 		if(title.equals(graphicReport)){
-	// 			graphicTitle = HandlerLanguage.languageProperties.getProperty(graphicReport.getPropertyText());
-	// 			break;
-	// 		}
-	// 	}
-	// 	panelShowingGraphicReports.addGraphic(info, graphicTitle);
-	// }
-	
 	public void showTableCultives(HashMap<String, ArrayList<Object[]>> info) {
 		panelTableCultives.showTableCultives(info);
 	}
-	
+
 	public void addItemsComboBox(Object[] items, String title) {
 		panelShowingTableReports.addItemsComboBox(items, title);
 
 	}
-	
+
 	public Object getItemComboBox() {
 		return panelShowingTableReports.getItemComboBox();
 	}
-	
+
 	public void getInformationCultives(HashMap<String, ArrayList<Object[]>> info) {
 		panelShowingTableReports.getInformationCultives(info);
 	}
@@ -120,7 +108,8 @@ public class JPanelBody extends JPanel{
         }
     }
 
-	public void showGraphicReport(ActionListener act,HashMap<String, Object> info, String title, char graphicType){
+	public void showGraphicReport(ActionListener act,
+			HashMap<String, Object> info, String title, char graphicType) {
 		panelShowingGraphicReports.setGraphic(act, info, title, graphicType);
 	}
 
@@ -129,6 +118,14 @@ public class JPanelBody extends JPanel{
 	}
 
 	public void showBeforeCardGraphicReport() {
-		panelShowingGraphicReports.showBeforeCardGraphicReport();
+		panelShowingGraphicReports.showPreviousCardGraphicReport();
+	}
+
+	public void showBeforeGeneralCardGraphicReport() {
+		panelShowingGraphicReports.showPreviousGeneralCardGraphicReport();
+	}
+
+	public void showNextGeneralCardGraphicReport() {
+		panelShowingGraphicReports.showNextGeneralCardGraphicReport();
 	}
 }

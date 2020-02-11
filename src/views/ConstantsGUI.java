@@ -8,12 +8,13 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
-
 public class ConstantsGUI {
 	// Vaores de la pantalla
-	public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+	public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit()
+			.getScreenSize();
 	public static final int MAXIMUM_SCREEN_WIDTH = (int) SCREEN_SIZE.getWidth();
-	public static final int MAXIMUM_SCREEN_HEIGHT = (int) SCREEN_SIZE.getHeight();
+	public static final int MAXIMUM_SCREEN_HEIGHT = (int) SCREEN_SIZE
+			.getHeight();
 
 	public static final String TITLE_PROGRAM = "Title_Window";
 	public static final String T_CULTIVE = "Cultive";
@@ -48,6 +49,7 @@ public class ConstantsGUI {
 	public static final String T_SIZE_HOMEPAGE = "Size_HomePage";
 	public static final String T_SIZE_EXPORT = "Size_Export";
 	public static final String T_SELECT_OPTION = "Select_Option";
+	// Mensajes Excepciones y otros
 	public static final String T_COPY_RIGHT = "Copyright";
 //	Mensajes Excepciones y otros
 	public static final String MESSAGE_NUMBER_FORMAT_EXCEPTION = "Message_NumberFormatException";
@@ -61,8 +63,8 @@ public class ConstantsGUI {
 	public static final String MESSAGE_CONFIRMATION_DELETE_CULTIVE = "Message_Confirmation_Delete_Cultive";
 	public static final String T_MESSAGE_END_PROGRAM = "Message_End_Program";
 	public static final String T_MESSAGE_CONFIRMATION_END_PROGRAM = "Message_Confirmation_End_Program";
-	
-	
+	public static final String T_MESSAGE_CONFIRMATION_EXPORT = "Message_Confirmation_Export";
+
 	// Titulos de Gráficos
 	public static final String GRAPHIC_TITLE_CULTIVATED_AND_HARVESTED_FISHES_PER_YEAR = "Graphic_Title_Cultivated_Fishes_Per_Year";
 	public static final String GRAPHIC_TITLE_HARVESTED_FISHES_PER_TOWN_PER_YEAR = "Graphic_Title_Harvested_Fishes_Per_Town_Per_Year";
@@ -71,7 +73,7 @@ public class ConstantsGUI {
 	public static final String GRAPHIC_TITLE_SPECIES_WEIGHT = "Graphic_Title_Species_Weight";
 	public static final String GRAPHIC_TITLE_FISH_FOOD_USING = "Graphic_Title_Fish_Food_Using";
 	public static final String GRAPHIC_TITLE_WATER_TYPE_USING = "Graphic_Title_Water_Type_Using";
-	
+
 	public static final String T_TITLE_REPORT_GRAPHICS = "Title_Report_Graphics";
 	public static final String T_TITLE_REPORT_TABLES = "Title_Report_Tables";
 	public static final String T_TEXT_REPORT_GRAPHICS_ONE = "Text_Report_Graphics_One";
@@ -84,30 +86,37 @@ public class ConstantsGUI {
 	public static final String T_TEXT_REPORT_GRAPHICS_EIGHT = "Text_Report_Graphics_Eight";
 	public static final String T_TEXT_REPORT_GRAPHICS_NINE = "Text_Report_Graphics_Nine";
 	public static final String T_TEXT_REPORT_GRAPHICS_TEN = "Text_Report_Graphics_Ten";
-//	public static final String T_HOMEPAGE_LENGHT = "Home_Page_Length";
+	public static final String T_CULTIVATED_CULTIVE_STATE = "Text_Cultivated_Cultive_State";
+	public static final String T_HARVESTED_CULTIVE_STATE = "Text_Harvested_Cultive_State";
+	// public static final String T_HOMEPAGE_LENGHT = "Home_Page_Length";
 
-    public static final char LOWERCASE_ACCENTED_N = (char) 241;
-    public static final char LOWERCASE_ACCENTED_A = (char) 225;
-    public static final char LOWERCASE_ACCENTED_E = (char) 233;
-    public static final char LOWERCASE_ACCENTED_I = (char) 237;
-    public static final char LOWERCASE_ACCENTED_O = (char) 243;
-    public static final char LOWERCASE_ACCENTED_U = (char) 250;
-    public static final char EM_DASH = (char) 8212;
-	
+	public static final char LOWERCASE_ACCENTED_N = (char) 241;
+	public static final char LOWERCASE_ACCENTED_A = (char) 225;
+	public static final char LOWERCASE_ACCENTED_E = (char) 233;
+	public static final char LOWERCASE_ACCENTED_I = (char) 237;
+	public static final char LOWERCASE_ACCENTED_O = (char) 243;
+	public static final char LOWERCASE_ACCENTED_U = (char) 250;
+	public static final char EM_DASH = (char) 8212;
+
 	public static final String ID = "Id";
 	public static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	public static final double HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-//Botones dialogos de confirmacion
+	// Botones dialogos de confirmacion
 	public static final String BUTTON_YES = "Yes_Button";
 	public static final String BUTTON_NO = "No_Button";
 	public static final String BUTTON_ACCEPT = "Accept_Button";
 	public static final String BUTTON_CANCEL = "Cancel_Option";
 	public static final String BUTTON_SEARCH = "Button_Search";
+	public static final String BUTTON_XML = "Xml_Button";
+	public static final String BUTTON_JSON = "Json_Button";
+	public static final String BUTTON_TXT = "Txt_Button";
+	public static final String BUTTON_BIN = "Bin_Button";
 	public static final int YES_OPTION = 1;
 	public static final int NO_OPTION = 0;
-	
+
 	// public static final Color COLOR_BACKGRAUND = Color.decode("#cdd3f9");
-	// public static final Color COLOR_PRESENTATION = Color.BLUE;//Color.decode("#333333");
+	// public static final Color COLOR_PRESENTATION =
+	// Color.BLUE;//Color.decode("#333333");
 	public static final Color COLOR_BUTTONS_REPORT = Color.decode("#A2E0D7");
 	public static final Color COLOR_BACKGRAUND = Color.decode("#f2f2f2");
 	public static final Color COLOR_PRESENTATION = Color.decode("#333333");
@@ -118,8 +127,7 @@ public class ConstantsGUI {
 	public static final Color COLOR_BLUE_HEADER = Color.decode("#1e3a45");
 	public static final Paint COLOR_SCROLL_GRAY = Color.decode("#444444");
 
-	
-//nombre paneles cardlayout
+	// nombre paneles cardlayout
 	public static final String PANEL_INITIAL = "Panel Presentation";
 	public static final String PANEL_TABLE_CULTIVES = "Panel Cultives";
 	public static final String PANEL_SHOW_TABLE_REPORTS = "Panel Show Table Reports";
@@ -136,45 +144,49 @@ public class ConstantsGUI {
 	public static final String TOWN_BRICENIO_CORRECT= "Brice�o";
 	public static final String TOWN_BRICENIO_INCORRECT= "BRICEÑO";
 	public static final String EMPTY= "";
-	public static final String PISCICULTURE_TEXT= "Pisciculture";
 	public static final double GRAMS_BY_KILOGRAM = 1000;
+
+	// Tipos de Graficas
 	public static final String INFORMATION_CREATOR_ONE = "<b>Sebastian Felipe Sanchez Hurtado</b><br>&nbsp;&nbsp;- Facebook: Sebastian Hurtado<br>&nbsp;&nbsp;- Instagram: sebasanchez1392<br>&nbsp;&nbsp;- Telfono: +57 3112412731<br>&nbsp;&nbsp;- Correo: sebastian.sanchez02@uptc.edu.co";
-	public static final String INFORMATION_CREATOR_TWO = "<br><b>Sixto Alberto Santamaria Carre�o</b><br>&nbsp;&nbsp;- Facebook: S.c. Sixto<br>&nbsp;&nbsp;- Instagram: S.c. Sixto<br>&nbsp;&nbsp;- Telefono: +57 3157350111<br>&nbsp;&nbsp;- Correo: sixto.santamaria@uptc.edu.co";
+	public static final String INFORMATION_CREATOR_TWO = "<br><b>Sixto Alberto Santamaria Carre�o</b><br>&nbsp;&nbsp;- Facebook: S.c. Sixto<br>&nbsp;&nbsp;- Instagram: S.c. Sixto<br>&nbsp;&nbsp;- Telefono: +57 3157350111<br>&nbsp;&nbsp;- Correo: sixto.santamaria@uptc.edu.co";
 	
 //Tipos de Graficas
 	public static final char BAR_GRAPHIC = 'B';
 	public static final char CIRCLE_GRAPHIC = 'C';
 	public static final char POINT_GRAPHIC = 'P';
 	public static final char TABLE_REPORT = 'T';
-//Tipo de ventana
+	// Tipo de ventana
 	public static final char WARNING = 'W';
 	public static final char CONFIRMATION = 'C';
 	public static final char ERROR = 'E';
-//Coordenadas botones
+	// Coordenadas botones
 	public static final int UBICATION_X_BUTTON_ADD = 1016;
 	public static final int UBICATION_Y_BUTTON_ADD = 5;
 
-//Valores gráfica de barras
+	// Valores gráfica de barras
 	public static final Color DEFAULT_AXIS_COLOR = ConstantsGUI.COLOR_BLACK;
 	public static final int MAX_PIXEL_COL_HEIGHT_VALUE = 350;
 	public static final int MAX_PIXEL_COL_WIDTH_VALUE = 27;
 	public static final int AXIS_LINE_WIDTH = 1;
 	public static final int COL_SEPARATION = 5;
 	public static final int Y_AXIS_VALUE_QUANTITY = 5;
-	public static final Font DATA_LABEL_FONT = new Font("Arial",Font.PLAIN,9);
+	public static final Font DATA_LABEL_FONT = new Font("Arial", Font.PLAIN, 9);
 	public static final int Y_AXIS_LABEL_WIDTH = 30;
 
 	public static final int INFORMATION_CIRCLE_DIAMETER = 15;
 	public static final int INFORMATION_CIRCLE_ANGLE = 45;
 	public static final int INFORMATION_CIRCLE_SEPARATION = 15;
 	public static final int INFORMATION_CIRCLE_LABEL_SEPARATION = 5;
-	public static final Font TITLE_GRAPHIC_FONT = new Font("Arial", Font.BOLD, 15);
+	public static final Font TITLE_GRAPHIC_FONT = new Font("Arial", Font.BOLD,
+			15);
 	public static final Color TITLE_GRAPHIC_FOREGROUND = ConstantsGUI.COLOR_BLACK;
 
 	public static final int CIRCLE_GRAPHIC_RADIOUS = 150;
 	public static final double CIRCLE_GRAPHIC_MAX_ANGLE = 360;
 	public static final int CIRCLE_GRAPHIC_OVAL_SPACE = 6;
-	public static final int GRAPHIC_MAX_DATA_QUANTITY = 20;
+	public static final int GRAPHIC_MAX_DATA_QUANTITY = 10;
+	public static final Color GRAPHIC_BORDER_COLOR = Color.decode("#1e3a45");
+	public static final int POINT_GRAPHIC_CIRCLE_DIAMETER = 10;
 
 	public static JLabel createLabelTitles(String text) {
 		JLabel label = new JLabel(text);
@@ -182,12 +194,12 @@ public class ConstantsGUI {
 		label.setForeground(ConstantsGUI.COLOR_PRESENTATION);
 		return label;
 	}
-	
-	public static JLabel createLabelTitleMenu(String text,Color color) {
-		JLabel label = new JLabel(HTML_TAG_B+text);
+
+	public static JLabel createLabelTitleMenu(String text, Color color) {
+		JLabel label = new JLabel(HTML_TAG_B + text);
 		label.setFont(new Font("Roboto", Font.ITALIC, 30));
 		label.setForeground(color);
 		return label;
 	}
-	
+
 }

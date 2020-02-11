@@ -1,4 +1,5 @@
 package general;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,21 +9,21 @@ import java.util.Properties;
 public class HandlerProperties extends Properties {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private String fileName;
-	
-	public HandlerProperties(String fileName) throws IOException{
+
+	public HandlerProperties(String fileName) throws IOException {
 		this.fileName = fileName;
 	}
-	
-	public void load() throws IOException{
+
+	public void load() throws IOException {
 		InputStream input;
 		input = new FileInputStream(fileName);
 		load(input);
 		input.close();
-	}	
-	
-	public void save() throws IOException{
+	}
+
+	public void save() throws IOException {
 		FileOutputStream output = new FileOutputStream(fileName);
 		store(output, null);
 		output.close();
