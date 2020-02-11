@@ -10,7 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
-import exeptions.EmptyFieldsException;
+import exceptions.EmptyFieldsException;
+import exceptions.NumberNegativeException;
 import general.HandlerLanguage;
 import views.dialogs.JDialogAddAndEditCultives;
 import views.dialogs.JDialogMessages;
@@ -123,11 +124,11 @@ public class JFramePrincipal extends JFrame{
 		this.deleteDialogSearch.setVisible(false);
 	}
 	
-	public Object[] createCultive() {
+	public Object[] createCultive() throws NumberNegativeException {
 		return this.addDialog.createCultive();
 	}
 	
-	public Object[] CultiveEdited() {
+	public Object[] CultiveEdited() throws NumberNegativeException {
 		return this.editDialog.createCultiveEdited();
 	}
 	
@@ -238,5 +239,15 @@ public class JFramePrincipal extends JFrame{
 	
 	public void messageCorrectDeleteCultive() {
 		setMessageConfirmation(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.MESSAGE_CONFIRMATION_DELETE_CULTIVE));
+	}
+	
+	public int messageQuestionExit() {
+		warningDialog.setLocation((int)(ConstantsGUI.WIDTH-450),0);
+		setMessageWarning(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_MESSAGE_CONFIRMATION_END_PROGRAM));
+		return this.confirmation;
+	}
+	
+	public void ubicateWarningDialoge() {
+		warningDialog.setLocation((int)(ConstantsGUI.WIDTH/3),0);
 	}
 }

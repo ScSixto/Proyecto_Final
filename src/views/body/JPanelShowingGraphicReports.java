@@ -3,7 +3,6 @@ package views.body;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.util.HashMap;
 
 import javax.swing.BorderFactory;
@@ -32,10 +31,6 @@ public class JPanelShowingGraphicReports extends JPanel {
 		this.setOpaque(false);
 		this.addHeaderTitle(actionListener);
 		this.setPanelContainer();
-	}
-	
-	private void initComponents(){
-		
 	}
 	
 	private void addHeaderTitle(ActionListener actionListener) {

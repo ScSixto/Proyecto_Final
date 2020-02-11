@@ -10,8 +10,9 @@ import java.util.Locale;
 
 import org.json.simple.DeserializationException;
 
-import exeptions.EmptyFieldsException;
-import exeptions.UnfoundObjectException;
+import exceptions.EmptyFieldsException;
+import exceptions.NumberNegativeException;
+import exceptions.UnfoundObjectException;
 import general.HandlerLanguage;
 import models.Cultive;
 import models.FishFarmManager;
@@ -42,11 +43,6 @@ public class Controller implements ActionListener{
 	public Controller(){
 		this.farmManager = new FishFarmManager();
 	    this.fileManager = new JsonFile();
-//	    this.farmManager.showConsoleReport();
-//---------------------------------------------------------------------------------------------------
-//	    this.farmManager.showConsoleReport();
-//	    this.farmManager.reportdelreport();
-//---------------------------------------------------------------------------------------------------
 		this.init();
 	}
 	
@@ -56,9 +52,6 @@ public class Controller implements ActionListener{
 		frame = new JFramePrincipal(this);	
 		this.getLanguageDefault();
         showCultivesTable();
-//---------------------------------------------------------------------------------------------------
-//        farmManager.showConsoleReportReport();
-//---------------------------------------------------------------------------------------------------
     }
 
     private void readRecords(){
@@ -97,9 +90,7 @@ public class Controller implements ActionListener{
 	                    town.addCultive(cultive);
 	                    this.farmManager.addTown(town);
 	                }
-            	}catch(UnfoundObjectException e){
-            		System.out.println(e.getMessage());
-            	}
+            	}catch(UnfoundObjectException e){}
             }
         }catch(FileNotFoundException e){
             e.printStackTrace();
@@ -194,7 +185,7 @@ public class Controller implements ActionListener{
 			manageChangeLanguageES();
 			break;
 		case EXIT:
-//			endProgram();
+			endProgram();
 			break;
 		case TABLE_REPORTS:
 			showPanelButtonTableReports();
@@ -296,12 +287,12 @@ public class Controller implements ActionListener{
 		frame.showCardImage(key);
 	}
 	
-//	private void endProgram() {
-//		if(frame.showMessageConfirmationEndProgram() == frame.jOptionPaneYesOption()) {
-//			frame.showMessageEndProgram();
-//			System.exit(0);	
-//		}
-//	}
+	private void endProgram() {
+		if(frame.messageQuestionExit() == ConstantsGUI.YES_OPTION) 
+			System.exit(0);	
+		else 
+			frame.ubicateWarningDialoge();
+	}
 
 	private void showPanelInitial() {
 		showCardImage(ConstantsGUI.PANEL_INITIAL);
@@ -406,13 +397,15 @@ public class Controller implements ActionListener{
 			frame.closeDialog();
 		} catch (EmptyFieldsException e) {
 			frame.setMessageError(e.getMessage());
+		} catch (NumberNegativeException e) {
+			frame.setMessageError(e.getMessage());
 		}catch (NumberFormatException e) {
 			frame.messageNumberFormat();
 		}
 		
 	}
 	
-	private void createAndAddCultive() {
+	private void createAndAddCultive() throws NumberNegativeException {
 		Object [] infoCultives = Util.convertInformation(frame.createCultive());
 		Cultive cultive;
 		int speciesPosition;
@@ -439,6 +432,8 @@ public class Controller implements ActionListener{
 			frame.setMessageError(e.getMessage());
 		}catch (UnfoundObjectException e) {
 			frame.messageUnfoundObject();
+		}catch (NumberFormatException e) {
+			frame.messageNumberFormat();
 		}
 	}
 	
@@ -461,22 +456,24 @@ public class Controller implements ActionListener{
 	private void getInformationAndEditCultive() {
 		try {
 			frame.isEmptyComponentsEditDialog();
+			editCultive();
 			if(frame.messageQuestionEditCultive() == ConstantsGUI.YES_OPTION) {
-				editCultive();
 				frame.messageCorrectEditCultive();
 				showCultivesTable();
 				frame.closeDialog();
 			}
 		} catch (EmptyFieldsException e) {
 			frame.setMessageError(e.getMessage());
+		}catch (NumberNegativeException e) {
+			frame.setMessageError(e.getMessage());
 		}catch (NumberFormatException e) {
 			frame.messageNumberFormat();
 		}
 	}
 	
-	private void editCultive() {
-		Object [] infoCultives = Util.convertInformation(frame.CultiveEdited());
+	private void editCultive() throws NumberNegativeException {
 		try {
+		Object [] infoCultives = Util.convertInformation(frame.CultiveEdited());
 			infoCultives[2] = this.farmManager.getSpecies(this.farmManager.searchSpeciesByName((String)infoCultives[2]));
 			this.farmManager.editCultive(infoCultives);
 		}catch (UnfoundObjectException e) {

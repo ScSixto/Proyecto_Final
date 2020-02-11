@@ -25,8 +25,8 @@ public class JPanelMenu extends JPanel{
 	public static final String SEPARATOR = " |";
 	
 	private JMenuBar menu;
-	private JMenu export,reports;
-	private JMenuItem invalidRunners,tables,graphics,homePage,cultive;
+	private JMenu reports;
+	private JMenuItem tables,graphics,homePage,export,cultive;
 //	private JButton homePage;
 	
 	public JPanelMenu(ActionListener actionListenner) {
@@ -70,11 +70,9 @@ public class JPanelMenu extends JPanel{
 	
 	
 	private void addExportOptions(ActionListener actionListenner) {
-		export = createJMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXPORT));
-		invalidRunners = createJMenuItem("Corredores no validos");
-//		invalidRunners.addActionListener(actionListenner);
-//		invalidRunners.setActionCommand(Actions.EXPORT.toString());
-		export.add(invalidRunners);
+		export = createJMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXPORT) + SEPARATOR);
+		export.setForeground(Color.WHITE);
+		export.setPreferredSize(new Dimension(Integer.parseInt(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_SIZE_EXPORT)),export.getHeight()));
 		menu.add(export);
 	}
 	
@@ -103,6 +101,7 @@ public class JPanelMenu extends JPanel{
 	public void changeLanguage() {
 		cultive.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_CULTIVE) + SEPARATOR);
 		export.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXPORT) + SEPARATOR);
+		export.setPreferredSize(new Dimension(Integer.parseInt(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_SIZE_EXPORT)),export.getHeight()));
 		homePage.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_HOMEPAGE) + SEPARATOR);
 		homePage.setPreferredSize(new Dimension(Integer.parseInt(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_SIZE_HOMEPAGE)),homePage.getHeight()));
 		reports.setText(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_REPORTS)+ SEPARATOR);
@@ -126,18 +125,6 @@ public class JPanelMenu extends JPanel{
 		item.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		return item;
 	}
-	
-//	private JButton createJButton(String text) {
-//		JButton button = new JButton(text);
-//		button.setOpaque(false);
-//		button.setBorderPainted(false);
-//		button.setContentAreaFilled(false);
-//		button.addMouseMotionListener(null);
-//		button.addMouseWheelListener(null);
-//		button.repaint();
-//		createFont(button);
-//		return button;
-//	}
 	
 	private void createFont(Component component) {
 		component.setFont((new Font("Roboto", Font.BOLD,20)));

@@ -16,17 +16,6 @@ import java.net.URL;
 import java.net.UnknownHostException;
 
 public class JsonFile{
-//
-//	private static ArrayList<String> especies;
-//
-//	public JsonFile() {
-//		especies = new ArrayList<String>();
-//	}
-//
-//	public static BufferedReader readJSONWeb(String webServicePath) {
-//		BufferedReader buffer = new BufferedReader(new InputStreamReader(getHttpURLConnection(false,webServicePath)));
-//		return buffer;
-//	}
 
 	public static InputStream getHttpURLConnection(boolean isProxy, String filePath) {
 		HttpURLConnection httpURLConnection;
@@ -92,4 +81,21 @@ public class JsonFile{
 		}
 		return speciesList;
 	}
+	
+	//Reportes para exportar
+	
+//	public String 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

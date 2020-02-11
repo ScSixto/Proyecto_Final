@@ -1,8 +1,8 @@
 package models;
 
-import exeptions.UnfoundObjectException;
-
 import java.util.ArrayList;
+
+import exceptions.UnfoundObjectException;
 
 public class Town{
 

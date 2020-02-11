@@ -1,11 +1,11 @@
 package models;
 
-import exeptions.UnfoundObjectException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
+
+import exceptions.UnfoundObjectException;
 
 public class FishFarmManager{
 
@@ -494,20 +494,7 @@ public class FishFarmManager{
     	return cultivesPerYear;
     }
     
-    //Esto es solo de prueba
-    public void showConsoleReport(){
-        for(Town tow: this.townList){
-            System.out.println(tow.getId() + ". " + tow.getName());
-            for(Cultive cultive: tow.getCultiveList()){
-                System.out.println("\t" + cultive.getId() + ". Cultivo de " + cultive.getSpecies().getName() 
-                		+ "\n\t\t(" + cultive.getYear() + ") Catidad: " + cultive.getCultivatedQuantity());
-            }
-        }
-    }
+//    REPORTES PARA EXPORTAR
     
-    public void holaputo() {
-    	for (int species : getCultiveYearList()) {
-			System.out.println(species);
-		}
-    }
+    
 }

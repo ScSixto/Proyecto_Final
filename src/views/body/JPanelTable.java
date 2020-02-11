@@ -107,14 +107,6 @@ public class JPanelTable extends JPanel{
 		recalculateSize(numberRows);
 	}
 	
-//	private void recalculateSize(int numberRows) {
-//		int size = (HEIGHT_ROWS * MAX_QUANTITY_ROWS) + 1;
-//		int borde = 0;
-//		if(numberRows < MAX_QUANTITY_ROWS)
-//			borde = size - (numberRows*HEIGHT_ROWS);
-//		setBorder(BorderFactory.createEmptyBorder(10, 0, borde, 0));
-//	}
-	
 	private void recalculateSize(int numberRows) {
 		int minimumBorderValue = 0;
 		int borderCalculate = -(HEIGHT_ROWS)*numberRows+((HEIGHT_ROWS * MAX_QUANTITY_ROWS)-5);

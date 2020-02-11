@@ -95,6 +95,7 @@ public class JPanelBody extends JPanel{
         switch(key){
             case ConstantsGUI.PANEL_INITIAL:
                 this.layout.show(this, ConstantsGUI.PANEL_INITIAL);
+                this.setPreferredSize(new Dimension((int)(ConstantsGUI.WIDTH*0.9),(int)(ConstantsGUI.HEIGHT*1.2)));
                 break;
             case ConstantsGUI.PANEL_TABLE_CULTIVES:
                 this.layout.show(this, ConstantsGUI.PANEL_TABLE_CULTIVES);
