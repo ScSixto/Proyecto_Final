@@ -35,8 +35,7 @@ public class JFramePrincipal extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setExtendedState(MAXIMIZED_BOTH);
 		setIconImage(new ImageIcon("resources/img/logo3.png").getImage());
-		setTitle(HandlerLanguage.languageProperties
-				.getProperty(ConstantsGUI.TITLE_PROGRAM));
+		setTitle(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.TITLE_PROGRAM));
 		initComponents(actionListener);
 		setVisible(true);
 	}
@@ -277,4 +276,5 @@ public class JFramePrincipal extends JFrame {
 	public void confirmationExportFile() {
 		this.setMessageConfirmation(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_MESSAGE_CONFIRMATION_EXPORT));
 	}
+	
 }

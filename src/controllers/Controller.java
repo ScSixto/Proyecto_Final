@@ -551,8 +551,4 @@ public class Controller implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-
-	public static void main(String[] args) {
-		new Controller();
-	}
 }
