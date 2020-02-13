@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import controllers.Commands;
 import general.HandlerLanguage;
 import views.ConstantsGUI;
+import views.UtilView;
 import views.buttons.JButtonOptionsReports;
 
 public class JDialogMessages extends JDialog{
@@ -51,7 +52,7 @@ public class JDialogMessages extends JDialog{
 	}
 	
 	private void addTitlteAndText(ActionListener actionListener,String title) {
-		titleDialog = ConstantsGUI.createLabelTitleMenu(title,ConstantsGUI.COLOR_PRESENTATION);
+		titleDialog = UtilView.createLabelTitleMenu(title,ConstantsGUI.COLOR_PRESENTATION);
 		titleDialog.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
 		addFlowPanel(titleDialog);
 		textMessage = new JLabel();

@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import general.HandlerLanguage;
 import views.ConstantsGUI;
+import views.UtilView;
 import views.title.JPanelTitle;
 
 
@@ -27,7 +28,7 @@ public class JPanelButtonGraphicReports extends JPanel {
 	}
 	
 	private void initComponents(ActionListener actionListener) {
-		title = ConstantsGUI.createLabelTitles(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_REPORT_GRAPHICS));
+		title = UtilView.createLabelTitles(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_REPORT_GRAPHICS));
 		add(new JPanelTitle(title));
 		buttonsTop = new JPanelButtonsTop(actionListener);
 		add(buttonsTop);

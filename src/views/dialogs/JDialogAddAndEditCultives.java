@@ -20,6 +20,7 @@ import exceptions.EmptyFieldsException;
 import exceptions.NumberNegativeException;
 import general.HandlerLanguage;
 import views.ConstantsGUI;
+import views.UtilView;
 import views.buttons.JButtonOptionsReports;
 import views.buttons.JButtonsMenuAndDialogs;
 
@@ -67,7 +68,7 @@ public class JDialogAddAndEditCultives extends JDialog{
 	}
 	
 	private void addTitleAndButton(ActionListener actionListener) {
-		titleDialog = ConstantsGUI.createLabelTitleMenu((this.isAdd)?HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_ADD):HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT),ConstantsGUI.COLOR_WHITE);
+		titleDialog = UtilView.createLabelTitleMenu((this.isAdd)?HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_ADD):HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT),ConstantsGUI.COLOR_WHITE);
 		titleDialog.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
 		close = new JButtonsMenuAndDialogs("resources/img/cerrar2.png", 17, 17);
 		close.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));

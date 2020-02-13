@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import general.HandlerLanguage;
 import views.ConstantsGUI;
+import views.UtilView;
 import views.title.JPanelTitle;
 
 public class JPanelButtonTableReports extends JPanel{
@@ -25,7 +26,7 @@ public class JPanelButtonTableReports extends JPanel{
 	}
 	
 	private void initComponents(ActionListener actionListener) {
-		title = ConstantsGUI.createLabelTitles(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_REPORT_TABLES));
+		title = UtilView.createLabelTitles(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_REPORT_TABLES));
 		add(new JPanelTitle(title));
 		panelTablesReport = new JPanelButtonsTablesReport(actionListener);
 		add(panelTablesReport);

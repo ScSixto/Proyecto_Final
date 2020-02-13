@@ -48,7 +48,10 @@ public class JPanelInitiation extends JPanel {
 	}
 	
 	public void addInformation() {
-		labelTitle = ConstantsGUI.createLabelTitles(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_PISCICULTURE));
+		labelTitle = UtilView
+				.createLabelTitles(HandlerLanguage.languageProperties
+						.getProperty(ConstantsGUI.T_PISCICULTURE));
+		// labelTitle.setBackground(new Color(49,201,150,150));
 		labelTitle.setOpaque(false);
 		labelTitle.setForeground(ConstantsGUI.COLOR_PRESENTATION);
 		addPanel(labelTitle);

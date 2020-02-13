@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import controllers.Commands;
 import general.HandlerLanguage;
 import views.ConstantsGUI;
+import views.UtilView;
 import views.buttons.JButtonsMenuAndDialogs;
 
 public class JDialogExports extends JDialog{
@@ -41,7 +42,7 @@ public class JDialogExports extends JDialog{
 	}
 	
 	private void addTitleAndButton(ActionListener actionListener) {
-		titleDialog = ConstantsGUI.createLabelTitleMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXPORT),ConstantsGUI.COLOR_WHITE);
+		titleDialog = UtilView.createLabelTitleMenu(HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EXPORT),ConstantsGUI.COLOR_WHITE);
 		titleDialog.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
 		close = new JButtonsMenuAndDialogs("resources/img/cerrar2.png", 17, 17);
 		close.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));

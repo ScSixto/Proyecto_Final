@@ -9,11 +9,14 @@ import javax.swing.JPanel;
 
 import general.HandlerLanguage;
 import views.ConstantsGUI;
+import views.UtilView;
 import views.buttons.JButtonsMenuAndDialogs;
 
 public class JPanelHeaderShowReports extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String BACK_BUTTON_FILE_PATH  = "resources/img/flecha.png";
 
 	private JButtonsMenuAndDialogs buttonBack;
 	private JLabel labelTitleReport;
@@ -33,7 +36,7 @@ public class JPanelHeaderShowReports extends JPanel {
 	}
 
 	public void addButton(ActionListener actionListener, String command) {
-		buttonBack = new JButtonsMenuAndDialogs("resources/img/flecha.png", 50,
+		buttonBack = new JButtonsMenuAndDialogs(BACK_BUTTON_FILE_PATH, 50,
 				50);
 		buttonBack.addActionListener(actionListener);
 		buttonBack.setActionCommand(command);
@@ -48,7 +51,7 @@ public class JPanelHeaderShowReports extends JPanel {
 		text = title;
 		if (this.getComponents().length > 1)
 			this.remove(this.getComponent(1));
-		labelTitleReport = ConstantsGUI.createLabelTitleMenu(
+		labelTitleReport = UtilView.createLabelTitleMenu(
 				HandlerLanguage.languageProperties.getProperty(text),
 				ConstantsGUI.COLOR_WHITE);
 		labelTitleReport.setBorder(BorderFactory.createEmptyBorder(

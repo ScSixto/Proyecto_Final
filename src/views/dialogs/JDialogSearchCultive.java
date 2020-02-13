@@ -54,7 +54,7 @@ public class JDialogSearchCultive extends JDialog{
 	}
 	
 	private void addTitleAndButton(ActionListener actionListener) {
-		titleDialog = ConstantsGUI.createLabelTitleMenu((this.anotherButton)?HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT):HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_DELETE),ConstantsGUI.COLOR_WHITE);
+		titleDialog = UtilView.createLabelTitleMenu((this.anotherButton)?HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_EDIT):HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_DELETE),ConstantsGUI.COLOR_WHITE);
 		titleDialog.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
 		close = new JButtonsMenuAndDialogs("resources/img/cerrar2.png", 17, 17);
 		close.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));

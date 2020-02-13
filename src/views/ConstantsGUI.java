@@ -6,8 +6,6 @@ import java.awt.Paint;
 import java.awt.Toolkit;
 import java.awt.Font;
 
-import javax.swing.JLabel;
-
 public class ConstantsGUI {
 	// Vaores de la pantalla
 	public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit()
@@ -187,19 +185,4 @@ public class ConstantsGUI {
 	public static final int GRAPHIC_MAX_DATA_QUANTITY = 10;
 	public static final Color GRAPHIC_BORDER_COLOR = Color.decode("#1e3a45");
 	public static final int POINT_GRAPHIC_CIRCLE_DIAMETER = 10;
-
-	public static JLabel createLabelTitles(String text) {
-		JLabel label = new JLabel(text);
-		label.setFont(new Font("Roboto", Font.ITALIC, 50));
-		label.setForeground(ConstantsGUI.COLOR_PRESENTATION);
-		return label;
-	}
-
-	public static JLabel createLabelTitleMenu(String text, Color color) {
-		JLabel label = new JLabel(HTML_TAG_B + text);
-		label.setFont(new Font("Roboto", Font.ITALIC, 30));
-		label.setForeground(color);
-		return label;
-	}
-
 }

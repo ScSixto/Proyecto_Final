@@ -7,9 +7,11 @@ import java.util.Map.Entry;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 import views.ConstantsGUI;
 
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Color;
 import java.text.DecimalFormat;
@@ -194,5 +196,19 @@ public class UtilView {
             retorno /= 2;
         }
 		return retorno-1;
+    }
+    
+    public static JLabel createLabelTitles(String text) {
+		JLabel label = new JLabel(text);
+		label.setFont(new Font("Roboto", Font.ITALIC, 50));
+		label.setForeground(ConstantsGUI.COLOR_PRESENTATION);
+		return label;
+	}
+
+	public static JLabel createLabelTitleMenu(String text, Color color) {
+		JLabel label = new JLabel(ConstantsGUI.HTML_TAG_B + text);
+		label.setFont(new Font("Roboto", Font.ITALIC, 30));
+		label.setForeground(color);
+		return label;
 	}
 }

@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import general.HandlerLanguage;
 import views.ConstantsGUI;
+import views.UtilView;
 import views.buttons.JButtonsMenuAndDialogs;
 
 public class JPanelTableCultives extends JPanel{
@@ -34,7 +35,7 @@ public class JPanelTableCultives extends JPanel{
 	}
 	
 	public void addTable(ActionListener actionListener) {
-		labelTitleTable = ConstantsGUI.createLabelTitles( HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_TABLE_CULTIVES) );
+		labelTitleTable = UtilView.createLabelTitles( HandlerLanguage.languageProperties.getProperty(ConstantsGUI.T_TITLE_TABLE_CULTIVES) );
 		addPanel(labelTitleTable);
 		createLine();
 		
